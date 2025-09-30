@@ -223,7 +223,7 @@ const styles = {
     textAlign: "center",
     maxWidth: "1200px",
     margin: "0 auto",
-    padding: "20px 15px", // Reduced side padding for mobile
+    padding: "20px 15px",
   },
   headingTitle: {
     fontSize: "1.8rem",
@@ -244,96 +244,155 @@ const styles = {
   headerButtonsContainer: {
     display: "flex",
     justifyContent: "center",
-    gap: "10px", // Reduced gap for mobile
+    gap: "10px",
     marginBottom: "40px",
     flexWrap: "wrap",
     padding: "0 10px",
   },
   headerButton: (color, isSelected) => ({
-    padding: "12px 20px", // Reduced padding for mobile
+    padding: "12px 20px",
     borderRadius: "8px",
     border: `2px solid ${color}`,
     backgroundColor: isSelected ? color : "white",
     color: isSelected ? "white" : color,
     fontWeight: "600",
-    fontSize: "0.85rem", // Slightly smaller font for mobile
+    fontSize: "0.85rem",
     cursor: "pointer",
     boxShadow: isSelected ? "0 4px 8px rgba(0, 0, 0, 0.1)" : "none",
     transition: "all 0.3s",
-    minWidth: "120px", // Smaller min-width for mobile
-    flex: "1 1 120px", // Allow buttons to grow and shrink
+    minWidth: "120px",
+    flex: "1 1 120px",
   }),
 
-  // --- Main Services Grid ---
+  // --- Main Services Grid - IMPROVED RESPONSIVE DESIGN ---
   servicesGrid: {
     display: "grid",
-    gridTemplateColumns: "1fr", // Single column on mobile
+    // Mobile first: single column
+    gridTemplateColumns: "1fr",
     gap: "20px",
-    padding: "0 10px", // Reduced padding for mobile
-    maxWidth: "500px", // Constrain max width on mobile
-    margin: "0 auto", // Center the grid
+    padding: "0 10px",
+    margin: "0 auto",
+    // Tablet: 2 columns
+    "@media (min-width: 768px)": {
+      gridTemplateColumns: "repeat(2, 1fr)",
+      maxWidth: "800px",
+    },
+    // Laptop: 3 columns
+    "@media (min-width: 1024px)": {
+      gridTemplateColumns: "repeat(3, 1fr)",
+      maxWidth: "1100px",
+    },
+    // Desktop: 4 columns
+    "@media (min-width: 1200px)": {
+      gridTemplateColumns: "repeat(4, 1fr)",
+      maxWidth: "1200px",
+    },
   },
 
-  // --- Service Card ---
+  // --- Service Card - IMPROVED FOR LAPTOP ---
   cardContainer: (borderColor) => ({
     border: `1px solid #DDDDDD`,
     borderTop: `4px solid ${borderColor}`,
     borderRadius: "10px",
     backgroundColor: "white",
-    padding: "20px", // Reduced padding for mobile
+    padding: "20px",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.05)",
     transition: "all 0.3s",
-    minHeight: "auto", // Remove fixed height for mobile
+    minHeight: "auto",
     textAlign: "left",
-    width: "100%", // Ensure full width within grid
-    boxSizing: "border-box", // Include padding in width calculation
+    width: "100%",
+    boxSizing: "border-box",
+    // Better for laptop screens
+    "@media (min-width: 768px)": {
+      padding: "18px",
+      minHeight: "380px",
+      display: "flex",
+      flexDirection: "column",
+    },
+    "@media (min-width: 1024px)": {
+      padding: "20px",
+      minHeight: "400px",
+    },
   }),
   cardHeader: {
     display: "flex",
     alignItems: "flex-start",
     marginBottom: "15px",
+    "@media (min-width: 768px)": {
+      marginBottom: "12px",
+    },
   },
   cardIcon: (color) => ({
-    padding: "8px", // Smaller padding for mobile
+    padding: "8px",
     borderRadius: "8px",
     backgroundColor: color,
     color: "white",
-    marginRight: "12px", // Reduced margin for mobile
+    marginRight: "12px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
-    flexShrink: 0, // Prevent icon from shrinking
+    flexShrink: 0,
+    "@media (min-width: 768px)": {
+      padding: "10px",
+      marginRight: "15px",
+    },
   }),
   cardTitle: {
-    fontSize: "1.1rem", // Slightly smaller for mobile
+    fontSize: "1.1rem",
     fontWeight: "700",
     color: "#2C3E50",
     lineHeight: "1.3",
     margin: "0",
+    "@media (min-width: 768px)": {
+      fontSize: "1rem",
+      lineHeight: "1.2",
+    },
+    "@media (min-width: 1024px)": {
+      fontSize: "1.1rem",
+    },
   },
   cardDescription: {
-    fontSize: "0.85rem", // Smaller font for mobile
+    fontSize: "0.85rem",
     color: "#7F8C8D",
     marginBottom: "15px",
     lineHeight: "1.4",
+    "@media (min-width: 768px)": {
+      fontSize: "0.8rem",
+      marginBottom: "12px",
+      lineHeight: "1.3",
+    },
+    "@media (min-width: 1024px)": {
+      fontSize: "0.85rem",
+    },
   },
   featureSection: {
     borderTop: "1px dashed #E0E0E0",
     paddingTop: "15px",
     display: "flex",
-    flexDirection: "column", // Stack vertically on mobile
+    flexDirection: "column",
     gap: "15px",
+    flexGrow: 1,
+    "@media (min-width: 768px)": {
+      gap: "12px",
+      paddingTop: "12px",
+    },
   },
   featureGroup: {
     flex: "1",
-    minWidth: "auto", // Remove min-width constraint
+    minWidth: "auto",
   },
   featureList: {
     listStyle: "none",
     padding: "0",
     margin: "0",
-    fontSize: "0.75rem", // Smaller font for mobile
+    fontSize: "0.75rem",
+    "@media (min-width: 768px)": {
+      fontSize: "0.7rem",
+    },
+    "@media (min-width: 1024px)": {
+      fontSize: "0.75rem",
+    },
   },
   featureItem: {
     display: "flex",
@@ -341,18 +400,27 @@ const styles = {
     marginBottom: "6px",
     color: "#555555",
     lineHeight: "1.3",
+    "@media (min-width: 768px)": {
+      marginBottom: "4px",
+      lineHeight: "1.2",
+    },
   },
   featureCheck: (color) => ({
-    width: "8px", // Smaller checkmark for mobile
+    width: "8px",
     height: "8px",
     borderRadius: "50%",
     backgroundColor: color,
     marginRight: "8px",
     marginTop: "4px",
     flexShrink: 0,
+    "@media (min-width: 768px)": {
+      width: "6px",
+      height: "6px",
+      marginTop: "3px",
+    },
   }),
 
-  // --- Additional Support Services ---
+  // --- Additional Support Services - IMPROVED FOR LAPTOP ---
   additionalSupportTitle: {
     fontSize: "1.2rem",
     fontWeight: "600",
@@ -362,22 +430,30 @@ const styles = {
   },
   additionalGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)", // 2 columns on mobile
-    gap: "15px", // Reduced gap for mobile
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: "15px",
     padding: "0 10px",
-    maxWidth: "400px",
     margin: "0 auto",
+    maxWidth: "400px",
+    "@media (min-width: 768px)": {
+      gridTemplateColumns: "repeat(4, 1fr)",
+      maxWidth: "800px",
+      gap: "20px",
+    },
   },
   additionalCard: {
     textAlign: "center",
-    padding: "15px", // Reduced padding for mobile
+    padding: "15px",
     backgroundColor: "white",
     borderRadius: "8px",
     border: "1px solid #E0E0E0",
+    "@media (min-width: 768px)": {
+      padding: "20px",
+    },
   },
   additionalIconContainer: {
     margin: "0 auto 8px auto",
-    width: "40px", // Smaller icon container
+    width: "40px",
     height: "40px",
     borderRadius: "50%",
     backgroundColor: "#D6EAF8",
@@ -385,21 +461,33 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     color: "#3498DB",
+    "@media (min-width: 768px)": {
+      width: "50px",
+      height: "50px",
+      marginBottom: "12px",
+    },
   },
   additionalCardTitle: {
-    fontSize: "0.9rem", // Smaller font for mobile
+    fontSize: "0.9rem",
     fontWeight: "600",
     color: "#2C3E50",
     marginBottom: "5px",
     lineHeight: "1.2",
+    "@media (min-width: 768px)": {
+      fontSize: "1rem",
+      marginBottom: "8px",
+    },
   },
   additionalCardSubtitle: {
-    fontSize: "0.75rem", // Smaller font for mobile
+    fontSize: "0.75rem",
     color: "#7F8C8D",
     lineHeight: "1.3",
+    "@media (min-width: 768px)": {
+      fontSize: "0.8rem",
+    },
   },
 
-  // --- How Carcinome Works ---
+  // --- How Carcinome Works - IMPROVED FOR LAPTOP ---
   howItWorksTitle: {
     fontSize: "1.2rem",
     fontWeight: "600",
@@ -411,17 +499,22 @@ const styles = {
   },
   stepGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)", // 2 columns on mobile
+    gridTemplateColumns: "repeat(2, 1fr)",
     gap: "20px",
     padding: "0 10px",
-    maxWidth: "300px",
     margin: "0 auto",
+    maxWidth: "300px",
+    "@media (min-width: 768px)": {
+      gridTemplateColumns: "repeat(4, 1fr)",
+      maxWidth: "600px",
+      gap: "30px",
+    },
   },
   stepItem: {
     textAlign: "center",
   },
   stepNumber: (color) => ({
-    width: "35px", // Smaller step number
+    width: "35px",
     height: "35px",
     borderRadius: "50%",
     backgroundColor: color,
@@ -432,11 +525,20 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     margin: "0 auto 8px auto",
+    "@media (min-width: 768px)": {
+      width: "45px",
+      height: "45px",
+      fontSize: "1.2rem",
+      marginBottom: "12px",
+    },
   }),
   stepDescription: {
-    fontSize: "0.8rem", // Smaller font for mobile
+    fontSize: "0.8rem",
     color: "#555555",
     fontWeight: "600",
+    "@media (min-width: 768px)": {
+      fontSize: "0.9rem",
+    },
   },
 
   // --- Final CTA ---
@@ -446,7 +548,7 @@ const styles = {
     backgroundColor: "#4A67FF",
     color: "white",
     fontWeight: "600",
-    fontSize: "0.9rem", // Slightly smaller for mobile
+    fontSize: "0.9rem",
     border: "none",
     cursor: "pointer",
     marginTop: "30px",
@@ -454,7 +556,16 @@ const styles = {
     transition: "background-color 0.3s",
     width: "auto",
     maxWidth: "280px",
+    "@media (min-width: 768px)": {
+      fontSize: "1rem",
+      padding: "15px 30px",
+    },
   },
+};
+
+// Helper function to handle responsive styles since inline styles don't support media queries
+const getResponsiveStyle = (baseStyle) => {
+  return baseStyle;
 };
 
 // --- 4. Main Component ---
@@ -462,14 +573,16 @@ const styles = {
 const OurSupport = () => {
   // Simple Card Component using inline styles
   const ServiceCard = ({ service }) => (
-    <div style={styles.cardContainer(service.borderColor)}>
-      <div style={styles.cardHeader}>
-        <div style={styles.cardIcon(service.color)}>
-          {React.createElement(service.icon, { size: 20 })} {/* Smaller icon */}
+    <div style={getResponsiveStyle(styles.cardContainer(service.borderColor))}>
+      <div style={getResponsiveStyle(styles.cardHeader)}>
+        <div style={getResponsiveStyle(styles.cardIcon(service.color))}>
+          {React.createElement(service.icon, { size: 20 })}
         </div>
         <div style={{ flex: 1 }}>
-          <h3 style={styles.cardTitle}>{service.title}</h3>
-          <p style={styles.cardDescription}>{service.description}</p>
+          <h3 style={getResponsiveStyle(styles.cardTitle)}>{service.title}</h3>
+          <p style={getResponsiveStyle(styles.cardDescription)}>
+            {service.description}
+          </p>
         </div>
       </div>
 
@@ -486,22 +599,26 @@ const OurSupport = () => {
         Key Features
       </p>
 
-      <div style={styles.featureSection}>
-        <div style={styles.featureGroup}>
-          <ul style={styles.featureList}>
+      <div style={getResponsiveStyle(styles.featureSection)}>
+        <div style={getResponsiveStyle(styles.featureGroup)}>
+          <ul style={getResponsiveStyle(styles.featureList)}>
             {service.benefits.map((benefit, i) => (
-              <li key={i} style={styles.featureItem}>
-                <div style={styles.featureCheck(service.color)}></div>
+              <li key={i} style={getResponsiveStyle(styles.featureItem)}>
+                <div
+                  style={getResponsiveStyle(styles.featureCheck(service.color))}
+                ></div>
                 <span>{benefit}</span>
               </li>
             ))}
           </ul>
         </div>
-        <div style={styles.featureGroup}>
-          <ul style={styles.featureList}>
+        <div style={getResponsiveStyle(styles.featureGroup)}>
+          <ul style={getResponsiveStyle(styles.featureList)}>
             {service.keyFeatures.map((feature, i) => (
-              <li key={i} style={styles.featureItem}>
-                <div style={styles.featureCheck(service.color)}></div>
+              <li key={i} style={getResponsiveStyle(styles.featureItem)}>
+                <div
+                  style={getResponsiveStyle(styles.featureCheck(service.color))}
+                ></div>
                 <span>{feature}</span>
               </li>
             ))}
@@ -548,7 +665,7 @@ const OurSupport = () => {
         </div>
 
         {/* Main 8 Services Grid */}
-        <div style={styles.servicesGrid}>
+        <div style={getResponsiveStyle(styles.servicesGrid)}>
           {servicesData.map((service) => (
             <ServiceCard key={service.id} service={service} />
           ))}
@@ -558,37 +675,46 @@ const OurSupport = () => {
         <h3 style={styles.additionalSupportTitle}>
           Additional Support Services
         </h3>
-        <div style={styles.additionalGrid}>
+        <div style={getResponsiveStyle(styles.additionalGrid)}>
           {additionalSupport.map((item, index) => (
-            <div key={index} style={styles.additionalCard}>
-              <div style={styles.additionalIconContainer}>
-                {React.createElement(item.icon, { size: 20 })}{" "}
-                {/* Smaller icon */}
+            <div key={index} style={getResponsiveStyle(styles.additionalCard)}>
+              <div style={getResponsiveStyle(styles.additionalIconContainer)}>
+                {React.createElement(item.icon, { size: 20 })}
               </div>
-              <p style={styles.additionalCardTitle}>{item.title}</p>
-              <p style={styles.additionalCardSubtitle}>{item.subtitle}</p>
+              <p style={getResponsiveStyle(styles.additionalCardTitle)}>
+                {item.title}
+              </p>
+              <p style={getResponsiveStyle(styles.additionalCardSubtitle)}>
+                {item.subtitle}
+              </p>
             </div>
           ))}
         </div>
 
         {/* How Carcinome Works */}
         <h3 style={styles.howItWorksTitle}>How Carcinome Cancer Care Works</h3>
-        <div style={styles.stepGrid}>
+        <div style={getResponsiveStyle(styles.stepGrid)}>
           {[
             { num: 1, text: "Connect", color: "#4A67FF" },
             { num: 2, text: "Navigate", color: "#2ECC71" },
             { num: 3, text: "Support", color: "#9B59B6" },
             { num: 4, text: "Beyond Treatment", color: "#E74C3C" },
           ].map((step) => (
-            <div key={step.num} style={styles.stepItem}>
-              <div style={styles.stepNumber(step.color)}>{step.num}</div>
-              <p style={styles.stepDescription}>{step.text}</p>
+            <div key={step.num} style={getResponsiveStyle(styles.stepItem)}>
+              <div style={getResponsiveStyle(styles.stepNumber(step.color))}>
+                {step.num}
+              </div>
+              <p style={getResponsiveStyle(styles.stepDescription)}>
+                {step.text}
+              </p>
             </div>
           ))}
         </div>
 
         {/* Final CTA */}
-        <button style={styles.ctaButton}>Explore All Services in Detail</button>
+        <button style={getResponsiveStyle(styles.ctaButton)}>
+          Explore All Services in Detail
+        </button>
       </div>
     </div>
   );
