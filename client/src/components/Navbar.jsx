@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import "./Navbar.css";
 import logoImg from "../assets/Logo.png";
+import { useNavigate } from "react-router-dom";
+import "./Navbar.css"; // Import the CSS file
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("home");
+  const navigate = useNavigate();
 
   // Handle scroll effect
   useEffect(() => {
@@ -18,10 +20,15 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when clicking on a link
   const handleLinkClick = (section) => {
     setActiveLink(section);
     setIsOpen(false);
+
+    if (section === "services") {
+      navigate("/service");
+    } else {
+      navigate("/", { state: { section } });
+    }
   };
 
   // Close mobile menu when clicking outside
@@ -44,63 +51,68 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       {/* Left: Logo + Tagline */}
       <div className="nav-left">
-        <img src={logoImg} alt="Carcinome Logo" className="logo" />
+        <img src={logoImg} alt="Carcinome Logo" className="nav-logo" />
       </div>
 
       {/* Hamburger Icon */}
-      <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
-        <span className={isOpen ? "bar open" : "bar"}></span>
-        <span className={isOpen ? "bar open" : "bar"}></span>
-        <span className={isOpen ? "bar open" : "bar"}></span>
+      <div
+        className={`hamburger ${isOpen ? "open" : ""}`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className="hamburger-bar"></span>
+        <span className="hamburger-bar"></span>
+        <span className="hamburger-bar"></span>
       </div>
 
       {/* Nav Links */}
-      <ul className={`nav-links ${isOpen ? "active" : ""}`}>
+      <ul className={`nav-links ${isOpen ? "open" : ""}`}>
         <li>
-          <a
-            href="#home"
-            className={activeLink === "home" ? "active" : ""}
+          <button
+            className={`nav-link ${activeLink === "home" ? "active" : ""}`}
             onClick={() => handleLinkClick("home")}
           >
             Home
-          </a>
+          </button>
         </li>
+
         <li>
-          <a
-            href="#services"
-            className={activeLink === "services" ? "active" : ""}
-            onClick={() => handleLinkClick("services")}
-          >
-            About Us
-          </a>
-        </li>
-        <li>
-          <a
-            href="#about"
-            className={activeLink === "about" ? "active" : ""}
+          <button
+            className={`nav-link ${activeLink === "about" ? "active" : ""}`}
             onClick={() => handleLinkClick("about")}
           >
-            Services
-          </a>
+            About Us
+          </button>
         </li>
+
         <li>
-          <a
-            href="#contact"
-            className={activeLink === "contact" ? "active" : ""}
+          <button
+            className={`nav-link ${activeLink === "services" ? "active" : ""}`}
+            onClick={() => handleLinkClick("services")}
+          >
+            Services
+          </button>
+        </li>
+
+        <li>
+          <button
+            className={`nav-link ${activeLink === "contact" ? "active" : ""}`}
             onClick={() => handleLinkClick("contact")}
           >
             Contact Us
-          </a>
+          </button>
         </li>
+
         <li>
-          <a
-            href="#contact"
-            className={activeLink === "contact" ? "active" : ""}
-            onClick={() => handleLinkClick("contact")}
+          <button
+            className={`nav-link ${
+              activeLink === "consultation" ? "active" : ""
+            }`}
+            onClick={() => handleLinkClick("consultation")}
           >
             Book Consultation
-          </a>
+          </button>
         </li>
+
         <li>
           <button
             className="connect-btn"
