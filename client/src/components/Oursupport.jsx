@@ -188,9 +188,9 @@ const additionalSupport = [
   },
   {
     icon: Zap,
-    title: "Medical Record Medical Records Management",
+    title: "Medical Record Management",
     subtitle:
-      "Secure digital storage and management of all medical reports, test results, and treatment history  ",
+      "Secure digital storage and management of all medical reports, test results, and treatment history",
   },
   {
     icon: Heart,
@@ -216,20 +216,21 @@ const styles = {
     padding: "0 0 50px 0",
     color: "#333333",
     minWidth: "320px",
-    overflowX: "hidden", // Prevent horizontal scroll on mobile
+    overflowX: "hidden",
   },
   // General styles for sections
   sectionCenter: {
     textAlign: "center",
     maxWidth: "1200px",
     margin: "0 auto",
-    padding: "20px",
+    padding: "20px 15px", // Reduced side padding for mobile
   },
   headingTitle: {
     fontSize: "1.8rem",
     fontWeight: "700",
     marginBottom: "10px",
     color: "#2C3E50",
+    lineHeight: "1.2",
   },
   headingSubtitle: {
     fontSize: "1rem",
@@ -243,32 +244,34 @@ const styles = {
   headerButtonsContainer: {
     display: "flex",
     justifyContent: "center",
-    gap: "15px",
+    gap: "10px", // Reduced gap for mobile
     marginBottom: "40px",
     flexWrap: "wrap",
+    padding: "0 10px",
   },
   headerButton: (color, isSelected) => ({
-    padding: "12px 25px",
+    padding: "12px 20px", // Reduced padding for mobile
     borderRadius: "8px",
     border: `2px solid ${color}`,
     backgroundColor: isSelected ? color : "white",
     color: isSelected ? "white" : color,
     fontWeight: "600",
-    fontSize: "0.9rem",
+    fontSize: "0.85rem", // Slightly smaller font for mobile
     cursor: "pointer",
     boxShadow: isSelected ? "0 4px 8px rgba(0, 0, 0, 0.1)" : "none",
     transition: "all 0.3s",
-    minWidth: "150px", // Ensure buttons don't shrink too much
+    minWidth: "120px", // Smaller min-width for mobile
+    flex: "1 1 120px", // Allow buttons to grow and shrink
   }),
 
   // --- Main Services Grid ---
-  // Note: Inline styles cannot use media queries. We use a fluid grid setup here.
   servicesGrid: {
     display: "grid",
-    // On small screens, this behaves as 1 column. On wider screens, it flows to 2 columns.
-    gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))",
+    gridTemplateColumns: "1fr", // Single column on mobile
     gap: "20px",
-    padding: "0 20px",
+    padding: "0 10px", // Reduced padding for mobile
+    maxWidth: "500px", // Constrain max width on mobile
+    margin: "0 auto", // Center the grid
   },
 
   // --- Service Card ---
@@ -277,68 +280,75 @@ const styles = {
     borderTop: `4px solid ${borderColor}`,
     borderRadius: "10px",
     backgroundColor: "white",
-    padding: "25px",
+    padding: "20px", // Reduced padding for mobile
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.05)",
     transition: "all 0.3s",
-    minHeight: "350px",
-    textAlign: "left", // Override sectionCenter
+    minHeight: "auto", // Remove fixed height for mobile
+    textAlign: "left",
+    width: "100%", // Ensure full width within grid
+    boxSizing: "border-box", // Include padding in width calculation
   }),
   cardHeader: {
     display: "flex",
-    alignItems: "center",
+    alignItems: "flex-start",
     marginBottom: "15px",
   },
   cardIcon: (color) => ({
-    padding: "10px",
+    padding: "8px", // Smaller padding for mobile
     borderRadius: "8px",
     backgroundColor: color,
     color: "white",
-    marginRight: "15px",
+    marginRight: "12px", // Reduced margin for mobile
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
+    flexShrink: 0, // Prevent icon from shrinking
   }),
   cardTitle: {
-    fontSize: "1.2rem",
+    fontSize: "1.1rem", // Slightly smaller for mobile
     fontWeight: "700",
     color: "#2C3E50",
+    lineHeight: "1.3",
+    margin: "0",
   },
   cardDescription: {
-    fontSize: "0.9rem",
+    fontSize: "0.85rem", // Smaller font for mobile
     color: "#7F8C8D",
-    marginBottom: "20px",
+    marginBottom: "15px",
     lineHeight: "1.4",
   },
   featureSection: {
     borderTop: "1px dashed #E0E0E0",
     paddingTop: "15px",
     display: "flex",
-    flexWrap: "wrap", // Allow wrap on small screens
+    flexDirection: "column", // Stack vertically on mobile
     gap: "15px",
   },
   featureGroup: {
-    flex: 1,
-    minWidth: "150px", // Ensure groups don't overlap too much
+    flex: "1",
+    minWidth: "auto", // Remove min-width constraint
   },
   featureList: {
     listStyle: "none",
     padding: "0",
     margin: "0",
-    fontSize: "0.8rem",
+    fontSize: "0.75rem", // Smaller font for mobile
   },
   featureItem: {
     display: "flex",
-    alignItems: "center",
-    marginBottom: "5px",
+    alignItems: "flex-start",
+    marginBottom: "6px",
     color: "#555555",
+    lineHeight: "1.3",
   },
   featureCheck: (color) => ({
-    width: "10px",
-    height: "10px",
+    width: "8px", // Smaller checkmark for mobile
+    height: "8px",
     borderRadius: "50%",
     backgroundColor: color,
     marginRight: "8px",
+    marginTop: "4px",
     flexShrink: 0,
   }),
 
@@ -347,24 +357,28 @@ const styles = {
     fontSize: "1.2rem",
     fontWeight: "600",
     color: "#2C3E50",
-    marginTop: "60px",
-    marginBottom: "30px",
+    marginTop: "50px",
+    marginBottom: "25px",
   },
   additionalGrid: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "20px",
-    flexWrap: "wrap",
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)", // 2 columns on mobile
+    gap: "15px", // Reduced gap for mobile
+    padding: "0 10px",
+    maxWidth: "400px",
+    margin: "0 auto",
   },
   additionalCard: {
     textAlign: "center",
-    padding: "20px",
-    maxWidth: "180px", // Use max-width for better flow
+    padding: "15px", // Reduced padding for mobile
+    backgroundColor: "white",
+    borderRadius: "8px",
+    border: "1px solid #E0E0E0",
   },
   additionalIconContainer: {
-    margin: "0 auto 10px auto",
-    width: "50px",
-    height: "50px",
+    margin: "0 auto 8px auto",
+    width: "40px", // Smaller icon container
+    height: "40px",
     borderRadius: "50%",
     backgroundColor: "#D6EAF8",
     display: "flex",
@@ -373,13 +387,16 @@ const styles = {
     color: "#3498DB",
   },
   additionalCardTitle: {
-    fontSize: "1rem",
+    fontSize: "0.9rem", // Smaller font for mobile
     fontWeight: "600",
     color: "#2C3E50",
+    marginBottom: "5px",
+    lineHeight: "1.2",
   },
   additionalCardSubtitle: {
-    fontSize: "0.8rem",
+    fontSize: "0.75rem", // Smaller font for mobile
     color: "#7F8C8D",
+    lineHeight: "1.3",
   },
 
   // --- How Carcinome Works ---
@@ -387,53 +404,56 @@ const styles = {
     fontSize: "1.2rem",
     fontWeight: "600",
     color: "#2C3E50",
-    marginTop: "60px",
-    marginBottom: "30px",
+    marginTop: "50px",
+    marginBottom: "25px",
     borderTop: "1px solid #EAECEE",
-    paddingTop: "40px",
+    paddingTop: "30px",
   },
   stepGrid: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "20px", // Reduced gap for mobile
-    flexWrap: "wrap",
-    position: "relative",
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)", // 2 columns on mobile
+    gap: "20px",
+    padding: "0 10px",
+    maxWidth: "300px",
+    margin: "0 auto",
   },
   stepItem: {
     textAlign: "center",
-    width: "100px", // Reduced width for mobile flow
   },
   stepNumber: (color) => ({
-    width: "40px",
-    height: "40px",
+    width: "35px", // Smaller step number
+    height: "35px",
     borderRadius: "50%",
     backgroundColor: color,
     color: "white",
-    fontSize: "1.2rem",
+    fontSize: "1rem",
     fontWeight: "700",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    margin: "0 auto 10px auto",
+    margin: "0 auto 8px auto",
   }),
   stepDescription: {
-    fontSize: "0.85rem",
+    fontSize: "0.8rem", // Smaller font for mobile
     color: "#555555",
+    fontWeight: "600",
   },
 
   // --- Final CTA ---
   ctaButton: {
-    padding: "12px 30px",
+    padding: "12px 25px",
     borderRadius: "5px",
-    backgroundColor: "#4A67FF", // Blue
+    backgroundColor: "#4A67FF",
     color: "white",
     fontWeight: "600",
-    fontSize: "1rem",
+    fontSize: "0.9rem", // Slightly smaller for mobile
     border: "none",
     cursor: "pointer",
-    marginTop: "40px",
+    marginTop: "30px",
     boxShadow: "0 4px 10px rgba(74, 103, 255, 0.4)",
     transition: "background-color 0.3s",
+    width: "auto",
+    maxWidth: "280px",
   },
 };
 
@@ -445,23 +465,22 @@ const OurSupport = () => {
     <div style={styles.cardContainer(service.borderColor)}>
       <div style={styles.cardHeader}>
         <div style={styles.cardIcon(service.color)}>
-          {React.createElement(service.icon, { size: 24 })}
+          {React.createElement(service.icon, { size: 20 })} {/* Smaller icon */}
         </div>
-        <div>
+        <div style={{ flex: 1 }}>
           <h3 style={styles.cardTitle}>{service.title}</h3>
-          {/* Displaying full description now */}
           <p style={styles.cardDescription}>{service.description}</p>
         </div>
       </div>
 
       <p
         style={{
-          fontSize: "0.8rem",
+          fontSize: "0.75rem",
           fontWeight: "600",
           color: "#7F8C8D",
           borderTop: "1px solid #EAECEE",
-          paddingTop: "15px",
-          marginBottom: "10px",
+          paddingTop: "12px",
+          marginBottom: "8px",
         }}
       >
         Key Features
@@ -496,7 +515,13 @@ const OurSupport = () => {
     <div style={styles.pageContainer}>
       <div style={styles.sectionCenter}>
         {/* Header and Subtitle */}
-        <p style={{ ...styles.headingSubtitle, marginBottom: "10px" }}>
+        <p
+          style={{
+            ...styles.headingSubtitle,
+            marginBottom: "10px",
+            fontSize: "0.9rem",
+          }}
+        >
           Comprehensive Cancer Care Services | Essential Support Verticals
         </p>
         <h2 style={styles.headingTitle}>
@@ -537,7 +562,8 @@ const OurSupport = () => {
           {additionalSupport.map((item, index) => (
             <div key={index} style={styles.additionalCard}>
               <div style={styles.additionalIconContainer}>
-                {React.createElement(item.icon, { size: 30 })}
+                {React.createElement(item.icon, { size: 20 })}{" "}
+                {/* Smaller icon */}
               </div>
               <p style={styles.additionalCardTitle}>{item.title}</p>
               <p style={styles.additionalCardSubtitle}>{item.subtitle}</p>
