@@ -50,7 +50,7 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       {/* Left: Logo + Tagline */}
-      <div className="nav-left">
+      <div className="nav-left" onClick={() => handleLinkClick("home")}>
         <img src={logoImg} alt="Carcinome Logo" className="nav-logo" />
       </div>
 
