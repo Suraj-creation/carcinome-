@@ -6,31 +6,43 @@ import {
   CheckCircle,
   Mail,
   DollarSign,
+  Ambulance,
+  Building,
+  Heart,
+  FlaskRoundIcon as Flask,
+  FileText,
+  Users,
 } from "lucide-react";
 
-// --- Image Placeholders Updated ---
-// Using the provided file names 6.png and 7.png.
-// NOTE: These files must be placed in a public directory or imported if using a bundler.
+// --- Image Placeholders ---
+// Update these imports based on your actual image files
 import IMG_HOSPITAL_TIEUPS from "../assets/6.png";
 import IMG_HOME_CARE from "../assets/4.png";
+import IMG_AMBULANCE from "../assets/6.png"; // Add appropriate images
+import IMG_ACCOMMODATION from "../assets/6.png";
+import IMG_FINANCIAL from "../assets/6.png";
+import IMG_CLINICAL_TRIALS from "../assets/6.png";
+import IMG_GOVERNMENT from "../assets/6.png";
+import IMG_SECOND_OPINION from "../assets/6.png";
 
 // --- Style Definitions (Inline CSS Objects) ---
+// CSS has been modified below to match the new layout
 const styles = {
   // Colors
   COLOR_PRIMARY_BLUE: "#0047b3",
   COLOR_DARK_TEXT: "#101726",
   COLOR_LIGHT_TEXT: "#99A3BA",
   COLOR_ACCENT_GREEN: "#32CD32",
-  COLOR_BACKGROUND_LIGHT: "#F8F9FA",
+  COLOR_BACKGROUND_LIGHT: "#F8F9FA", // Light grey background for the page
 
   // Main Container
   pageContainer: {
     fontFamily: "Arial, sans-serif",
-    backgroundColor: "white",
+    backgroundColor: "#F8F9FA", // MODIFIED: Changed page background color
     minHeight: "100vh",
   },
 
-  // --- Hero Section Styles ---
+  // --- Hero Section Styles (Unchanged) ---
   heroContainer: {
     backgroundColor: "#0047b3",
     color: "white",
@@ -83,7 +95,7 @@ const styles = {
     minWidth: "fit-content",
   }),
 
-  // --- Pillars Introduction ---
+  // --- Pillars Introduction (Unchanged) ---
   pillarsIntro: {
     textAlign: "center",
     padding: "60px 20px 40px 20px",
@@ -103,7 +115,7 @@ const styles = {
     lineHeight: "1.5",
   },
 
-  // --- Service Card Styles ---
+  // --- Service Card Styles (Unchanged for mobile) ---
   serviceSection: {
     maxWidth: "1200px",
     margin: "0 auto 60px auto",
@@ -113,16 +125,14 @@ const styles = {
     border: "1px solid #E0E0E0",
     borderRadius: "12px",
     boxShadow: "0 4px 10px rgba(0, 0, 0, 0.05)",
+    backgroundColor: "white", // MODIFIED: Ensure card is white
     padding: "20px",
     marginBottom: "30px",
     display: "flex",
     gap: "20px",
     flexDirection: "column",
   },
-  // Flex direction control (for image/text flip) - Only applies on desktop
-  cardReverse: {
-    flexDirection: "column",
-  },
+  cardReverse: {}, // No style needed here, handled by class in media query
   cardImageWrapper: {
     width: "100%",
     overflow: "hidden",
@@ -205,16 +215,12 @@ const styles = {
     flexShrink: 0,
     marginTop: "2px",
   },
-
-  // Key Benefits Section (Home Care)
   keyBenefitsTitle: {
     fontSize: "0.9rem",
     fontWeight: "600",
     color: "#101726",
     marginBottom: "10px",
   },
-
-  // Action Button
   cardActionButton: {
     padding: "10px 20px",
     borderRadius: "5px",
@@ -236,47 +242,39 @@ const styles = {
 };
 
 // Media query styles for desktop
+// --- MODIFIED SECTION ---
 const desktopStyles = `
   @media (min-width: 768px) {
-    .hero-container {
-      padding: 80px 20px 100px 20px;
-    }
-    .hero-title {
-      font-size: 2.5rem;
-    }
-    .hero-buttons-container {
-      flex-wrap: nowrap;
-    }
-    .hero-button {
-      padding: 12px 30px;
-      font-size: 1rem;
-      width: auto;
-    }
-    .pillars-intro {
-      padding: 80px 20px 60px 20px;
-    }
-    .pillars-title {
-      font-size: 1.5rem;
-    }
+    /* Hero section styles (unchanged) */
+    .hero-container { padding: 80px 20px 100px 20px; }
+    .hero-title { font-size: 2.5rem; }
+    .hero-buttons-container { flex-wrap: nowrap; }
+    .hero-button { padding: 12px 30px; font-size: 1rem; width: auto; }
+    /* Pillars intro styles (unchanged) */
+    .pillars-intro { padding: 80px 20px 60px 20px; }
+    .pillars-title { font-size: 1.5rem; }
+
+    /* --- Card styles (MODIFIED) --- */
     .card-container {
       flex-direction: row;
-      padding: 30px;
+      padding: 40px; /* Increased padding */
       margin-bottom: 40px;
-      gap: 30px;
+      gap: 50px; /* Increased gap */
+      align-items: center; /* Vertically align content */
     }
     .card-reverse {
       flex-direction: row-reverse;
     }
     .card-image-wrapper {
-      flex: 1;
+      flex: 0 0 40%; /* Set image width to 40% */
       height: auto;
     }
     .card-image {
       height: 100%;
     }
     .card-content {
-      flex: 1;
-      padding: 10px 0;
+      flex: 1; /* Content will take the remaining space */
+      padding: 0; /* Removed padding to align with container */
     }
     .card-title {
       font-size: 1.5rem;
@@ -287,8 +285,9 @@ const desktopStyles = `
     }
   }
 `;
+// --- END OF MODIFIED SECTION ---
 
-// --- Main Component ---
+// --- Main Component (Unchanged) ---
 
 const Service = () => {
   return (
@@ -350,10 +349,9 @@ const Service = () => {
 
       {/* --- Service Pillars --- */}
       <div style={styles.serviceSection}>
-        {/* 1. Premium Hospital Tie-Ups & Priority Access (Normal order) */}
+        {/* 1. Premium Hospital Tie-Ups & Priority Access */}
         <div style={styles.cardContainer} className="card-container">
           <div style={styles.cardImageWrapper} className="card-image-wrapper">
-            {/* Image updated to 6.png */}
             <img
               src={IMG_HOSPITAL_TIEUPS}
               alt="Hospital staff moving a patient in a hallway"
@@ -367,37 +365,39 @@ const Service = () => {
             </h3>
             <p style={styles.cardSubtitle}>
               Skip the waiting lists. Get priority access to India's top cancer
-              specialists through our concierge service model.
+              hospitals through our strategic partnerships.
             </p>
             <p style={styles.cardDescription}>
               Your battle against cancer deserves the finest weapons. Carcinome
-              has forged strategic MOUs with India's most prestigious oncology
-              institutions, including Apollo, Manipal, AIIMS, Apollo Cradle
-              Cancers, and 200+ leading specialists. We bypass many of the usual
-              administrative headaches, ensuring quick scheduling. Our
-              specialist referral dashboard eliminates the agony of endless
-              waiting time, ensuring you receive the life-saving treatment you
-              need when every moment counts.
+              has forged strategic MOUs with India's most prestigious cancer
+              hospitals, including Tata Memorial, AIMS, Apollo Cancer Centers,
+              and 200+ leading oncology facilities nationwide. Our integrated
+              referral dashboard eliminates the agony of endless waiting lists,
+              ensuring you get the life-saving treatment you need when every
+              moment counts.
             </p>
 
             <div style={styles.keyFeaturesBox}>
-              <h4 style={styles.keyFeaturesTitle}>Key Features:</h4>
+              <h4 style={styles.keyFeaturesTitle}>
+                <CheckCircle style={styles.benefitIcon} /> Key Benefits:
+              </h4>
               <ul style={styles.benefitList}>
                 <li style={styles.benefitItem}>
                   <CheckCircle style={styles.benefitIcon} /> Minimal waiting
-                  time for diagnostic consultations across 200+ top hospitals
+                  time for diagnostic consultations across 200+ partner
+                  hospitals
                 </li>
                 <li style={styles.benefitItem}>
                   <CheckCircle style={styles.benefitIcon} /> Priority admission
-                  for surgery, chemotherapy, and radiation treatment
+                  for surgery, chemotherapy, and radiation therapy
                 </li>
                 <li style={styles.benefitItem}>
                   <CheckCircle style={styles.benefitIcon} /> Real-time treatment
                   updates sent directly to family members
                 </li>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Complete price
-                  protection and transparent billing with no hidden charges
+                  <CheckCircle style={styles.benefitIcon} /> End-to-end care
+                  coordinator and transparent billing with no hidden charges
                 </li>
               </ul>
             </div>
@@ -412,13 +412,12 @@ const Service = () => {
           </div>
         </div>
 
-        {/* 2. Compassionate Home & Palliative Care (Reverse order) */}
+        {/* 2. Compassionate Home & Palliative Care */}
         <div
-          style={{ ...styles.cardContainer, ...styles.cardReverse }}
+          style={styles.cardContainer}
           className="card-container card-reverse"
         >
           <div style={styles.cardImageWrapper} className="card-image-wrapper">
-            {/* Image updated to 7.png */}
             <img
               src={IMG_HOME_CARE}
               alt="Nurse smiling at the camera in a home setting"
@@ -436,32 +435,36 @@ const Service = () => {
             </p>
             <p style={styles.cardDescription}>
               Home is where healing happens best. Through our partnership with
-              Pallium India and certified nursing agencies, we bring expert
-              medical support directly to your doorstep. Our compassionate care
-              team understands that cancer isn't just about medicine - it's
-              about dignity, comfort, and keeping families together. Your
-              healing is our foremost priority.
+              Pallium India and certified nursing bureaus, we bring world-class
+              cancer care directly to your doorstep. Our compassionate care team
+              understands that recovery isn't just about medicine – it's about
+              dignity, comfort, and keeping families together during the most
+              challenging times.
             </p>
 
-            <div style={styles.keyBenefitsTitle}>Key Benefits:</div>
-            <ul style={styles.benefitList}>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> 24x7 doctor
-                consultations, nursing care, and Ryles Tube/IV line support
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> Advanced pain
-                management for maximum comfort
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> At-home chemotherapy
-                & infusion with monitoring
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> Emotional support and
-                caregiver training
-              </li>
-            </ul>
+            <div style={styles.keyFeaturesBox}>
+              <h4 style={styles.keyFeaturesTitle}>
+                <CheckCircle style={styles.benefitIcon} /> Key Benefits:
+              </h4>
+              <ul style={styles.benefitList}>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Board-certified
+                  oncology nurses available 24/7
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Advanced pain
+                  management for maximum comfort
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> At-home
+                  chemotherapy & infusion with monitoring
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Emotional support
+                  and caregiver training
+                </li>
+              </ul>
+            </div>
 
             <a
               href="#request-home-care"
@@ -473,367 +476,375 @@ const Service = () => {
           </div>
         </div>
 
-        {/* Repeat the same pattern for other cards */}
+        {/* 3. 24/7 Emergency & Medical Transport */}
         <div style={styles.cardContainer} className="card-container">
           <div style={styles.cardImageWrapper} className="card-image-wrapper">
             <img
-              src={IMG_HOSPITAL_TIEUPS}
-              alt="Hospital staff moving a patient in a hallway"
+              src={IMG_AMBULANCE}
+              alt="Ambulance with medical staff"
               style={styles.cardImage}
             />
           </div>
           <div style={styles.cardContent}>
             <p style={styles.cardServiceTag}>Service 3</p>
             <h3 style={styles.cardTitle} className="card-title">
-              Premium Hospital Tie-Ups & Priority Access
+              24/7 Emergency & Medical Transport
             </h3>
             <p style={styles.cardSubtitle}>
-              Skip the waiting lists. Get priority access to India's top cancer
-              specialists through our concierge service model.
+              Where every second matters, our 24/7 ambulance network ensures
+              rapid, safe transport with ICU-equipped vehicles.
             </p>
             <p style={styles.cardDescription}>
-              Your battle against cancer deserves the finest weapons. Carcinome
-              has forged strategic MOUs with India's most prestigious oncology
-              institutions, including Apollo, Manipal, AIIMS, Apollo Cradle
-              Cancers, and 200+ leading specialists. We bypass many of the usual
-              administrative headaches, ensuring quick scheduling. Our
-              specialist referral dashboard eliminates the agony of endless
-              waiting time, ensuring you receive the life-saving treatment you
-              need when every moment counts.
+              In cancer emergencies, every second can be the difference between
+              life and hope. Our centralized ambulance network spans across
+              India, featuring road, rail, and air ambulances equipped with
+              life-saving ICU facilities. Our partnerships with trusted
+              providers ensure that distance never becomes a barrier to
+              receiving critical care.
             </p>
 
             <div style={styles.keyFeaturesBox}>
-              <h4 style={styles.keyFeaturesTitle}>Key Features:</h4>
+              <h4 style={styles.keyFeaturesTitle}>
+                <CheckCircle style={styles.benefitIcon} /> Key Benefits:
+              </h4>
               <ul style={styles.benefitList}>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Minimal waiting
-                  time for diagnostic consultations across 200+ top hospitals
+                  <CheckCircle style={styles.benefitIcon} /> ICU equipment:
+                  ventilators, monitors, emergency meds
                 </li>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Priority admission
-                  for surgery, chemotherapy, and radiation treatment
+                  <CheckCircle style={styles.benefitIcon} /> Air ambulance for
+                  critical inter-city transfers
                 </li>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Real-time treatment
-                  updates sent directly to family members
+                  <CheckCircle style={styles.benefitIcon} /> Wheelchair-friendly
+                  vehicles for routine visits
                 </li>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Complete price
-                  protection and transparent billing with no hidden charges
+                  <CheckCircle style={styles.benefitIcon} /> Direct insurance
+                  billing to avoid upfront payment
                 </li>
               </ul>
             </div>
 
             <a
-              href="#find-hospitals"
+              href="#book-ambulance"
               style={styles.cardActionButton}
               className="card-action-button"
             >
-              Find Partner Hospitals Near You <Briefcase size={16} />
+              Book Emergency Ambulance <Ambulance size={16} />
             </a>
           </div>
         </div>
 
-        {/* 4. Compassionate Home & Palliative Care (Reverse order) */}
+        {/* 4. Budget-Friendly Accommodation Near Hospitals */}
         <div
-          style={{ ...styles.cardContainer, ...styles.cardReverse }}
+          style={styles.cardContainer}
           className="card-container card-reverse"
         >
           <div style={styles.cardImageWrapper} className="card-image-wrapper">
             <img
-              src={IMG_HOME_CARE}
-              alt="Nurse smiling at the camera in a home setting"
+              src={IMG_ACCOMMODATION}
+              alt="Comfortable accommodation room"
               style={styles.cardImage}
             />
           </div>
           <div style={styles.cardContent}>
             <p style={styles.cardServiceTag}>Service 4</p>
             <h3 style={styles.cardTitle} className="card-title">
-              Compassionate Home & Palliative Care
+              Budget-Friendly Accommodation Near Hospitals
             </h3>
             <p style={styles.cardSubtitle}>
-              Bring hospital-grade care to the comfort of your home with
-              certified nursing and palliative specialists.
+              Quality accommodation shouldn't drain your treatment budget. Find
+              verified, affordable stays near top hospitals.
             </p>
             <p style={styles.cardDescription}>
-              Home is where healing happens best. Through our partnership with
-              Pallium India and certified nursing agencies, we bring expert
-              medical support directly to your doorstep. Our compassionate care
-              team understands that cancer isn't just about medicine - it's
-              about dignity, comfort, and keeping families together. Your
-              healing is our foremost priority.
-            </p>
-
-            <div style={styles.keyBenefitsTitle}>Key Benefits:</div>
-            <ul style={styles.benefitList}>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> 24x7 doctor
-                consultations, nursing care, and Ryles Tube/IV line support
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> Advanced pain
-                management for maximum comfort
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> At-home chemotherapy
-                & infusion with monitoring
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> Emotional support and
-                caregiver training
-              </li>
-            </ul>
-
-            <a
-              href="#request-home-care"
-              style={styles.cardActionButton}
-              className="card-action-button"
-            >
-              Request Home Care Support <Home size={16} />
-            </a>
-          </div>
-        </div>
-
-        {/* Add remaining cards following the same pattern */}
-        <div style={styles.cardContainer} className="card-container">
-          <div style={styles.cardImageWrapper} className="card-image-wrapper">
-            {/* Image updated to 6.png */}
-            <img
-              src={IMG_HOSPITAL_TIEUPS}
-              alt="Hospital staff moving a patient in a hallway"
-              style={styles.cardImage}
-            />
-          </div>
-          <div style={styles.cardContent}>
-            <p style={styles.cardServiceTag}>Service 1</p>
-            <h3 style={styles.cardTitle} className="card-title">
-              Premium Hospital Tie-Ups & Priority Access
-            </h3>
-            <p style={styles.cardSubtitle}>
-              Skip the waiting lists. Get priority access to India's top cancer
-              specialists through our concierge service model.
-            </p>
-            <p style={styles.cardDescription}>
-              Your battle against cancer deserves the finest weapons. Carcinome
-              has forged strategic MOUs with India's most prestigious oncology
-              institutions, including Apollo, Manipal, AIIMS, Apollo Cradle
-              Cancers, and 200+ leading specialists. We bypass many of the usual
-              administrative headaches, ensuring quick scheduling. Our
-              specialist referral dashboard eliminates the agony of endless
-              waiting time, ensuring you receive the life-saving treatment you
-              need when every moment counts.
+              Cancer treatment often means long stays away from home, and
+              accommodation costs can quickly overwhelm families already facing
+              financial strain. Carcinome has curated a network of
+              budget-friendly, hygiene-certified stays within walking distance
+              of major cancer hospitals. From mid-ultra to charitable guest
+              houses, we ensure your family has a safe, clean place to rest
+              while you focus on recovery.
             </p>
 
             <div style={styles.keyFeaturesBox}>
-              <h4 style={styles.keyFeaturesTitle}>Key Features:</h4>
+              <h4 style={styles.keyFeaturesTitle}>
+                <CheckCircle style={styles.benefitIcon} /> Key Benefits:
+              </h4>
               <ul style={styles.benefitList}>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Minimal waiting
-                  time for diagnostic consultations across 200+ top hospitals
+                  <CheckCircle style={styles.benefitIcon} /> Caregiver-friendly
+                  facilities & background screening
                 </li>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Priority admission
-                  for surgery, chemotherapy, and radiation treatment
+                  <CheckCircle style={styles.benefitIcon} /> 24/7 power backup &
+                  Wi-Fi hospital shuttle services
                 </li>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Real-time treatment
-                  updates sent directly to family members
+                  <CheckCircle style={styles.benefitIcon} /> Smooth discharge
+                  coordination with hospital teams
                 </li>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Complete price
-                  protection and transparent billing with no hidden charges
+                  <CheckCircle style={styles.benefitIcon} />{" "}
+                  Wheelchair-accessible rooms and bathrooms
                 </li>
               </ul>
             </div>
 
             <a
-              href="#find-hospitals"
+              href="#find-accommodation"
               style={styles.cardActionButton}
               className="card-action-button"
             >
-              Find Partner Hospitals Near You <Briefcase size={16} />
+              Find Affordable Stays <Building size={16} />
             </a>
           </div>
         </div>
 
-        {/* 2. Compassionate Home & Palliative Care (Reverse order) */}
-        <div
-          style={{ ...styles.cardContainer, ...styles.cardReverse }}
-          className="card-container card-reverse"
-        >
-          <div style={styles.cardImageWrapper} className="card-image-wrapper">
-            {/* Image updated to 7.png */}
-            <img
-              src={IMG_HOME_CARE}
-              alt="Nurse smiling at the camera in a home setting"
-              style={styles.cardImage}
-            />
-          </div>
-          <div style={styles.cardContent}>
-            <p style={styles.cardServiceTag}>Service 2</p>
-            <h3 style={styles.cardTitle} className="card-title">
-              Compassionate Home & Palliative Care
-            </h3>
-            <p style={styles.cardSubtitle}>
-              Bring hospital-grade care to the comfort of your home with
-              certified nursing and palliative specialists.
-            </p>
-            <p style={styles.cardDescription}>
-              Home is where healing happens best. Through our partnership with
-              Pallium India and certified nursing agencies, we bring expert
-              medical support directly to your doorstep. Our compassionate care
-              team understands that cancer isn't just about medicine - it's
-              about dignity, comfort, and keeping families together. Your
-              healing is our foremost priority.
-            </p>
-
-            <div style={styles.keyBenefitsTitle}>Key Benefits:</div>
-            <ul style={styles.benefitList}>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> 24x7 doctor
-                consultations, nursing care, and Ryles Tube/IV line support
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> Advanced pain
-                management for maximum comfort
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> At-home chemotherapy
-                & infusion with monitoring
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> Emotional support and
-                caregiver training
-              </li>
-            </ul>
-
-            <a
-              href="#request-home-care"
-              style={styles.cardActionButton}
-              className="card-action-button"
-            >
-              Request Home Care Support <Home size={16} />
-            </a>
-          </div>
-        </div>
-
-        {/* Repeat the same pattern for other cards */}
+        {/* 5. Comprehensive Financial Assistance & Crowdfunding */}
         <div style={styles.cardContainer} className="card-container">
           <div style={styles.cardImageWrapper} className="card-image-wrapper">
             <img
-              src={IMG_HOSPITAL_TIEUPS}
-              alt="Hospital staff moving a patient in a hallway"
+              src={IMG_FINANCIAL}
+              alt="Financial assistance and crowdfunding"
               style={styles.cardImage}
             />
           </div>
           <div style={styles.cardContent}>
-            <p style={styles.cardServiceTag}>Service 3</p>
+            <p style={styles.cardServiceTag}>Service 5</p>
             <h3 style={styles.cardTitle} className="card-title">
-              Premium Hospital Tie-Ups & Priority Access
+              Comprehensive Financial Assistance & Crowdfunding
             </h3>
             <p style={styles.cardSubtitle}>
-              Skip the waiting lists. Get priority access to India's top cancer
-              specialists through our concierge service model.
+              Don't let financial barriers stop your fight. Access multiple
+              funding sources and create compelling campaigns.
             </p>
             <p style={styles.cardDescription}>
-              Your battle against cancer deserves the finest weapons. Carcinome
-              has forged strategic MOUs with India's most prestigious oncology
-              institutions, including Apollo, Manipal, AIIMS, Apollo Cradle
-              Cancers, and 200+ leading specialists. We bypass many of the usual
-              administrative headaches, ensuring quick scheduling. Our
-              specialist referral dashboard eliminates the agony of endless
-              waiting time, ensuring you receive the life-saving treatment you
-              need when every moment counts.
+              No family should have to choose between life-saving treatment and
+              financial security. Carcinome's financial assistance program
+              connects you with multiple funding sources including crowdfunding
+              campaigns and government initiatives. Our expert team helps create
+              compelling stories that touch hearts and open wallets, ensuring
+              your treatment is never compromised due to lack of funds.
             </p>
 
             <div style={styles.keyFeaturesBox}>
-              <h4 style={styles.keyFeaturesTitle}>Key Features:</h4>
+              <h4 style={styles.keyFeaturesTitle}>
+                <CheckCircle style={styles.benefitIcon} /> Key Benefits:
+              </h4>
               <ul style={styles.benefitList}>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Minimal waiting
-                  time for diagnostic consultations across 200+ top hospitals
+                  <CheckCircle style={styles.benefitIcon} /> Campaigns across
+                  various crowdfunding & social platforms
                 </li>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Priority admission
-                  for surgery, chemotherapy, and radiation treatment
+                  <CheckCircle style={styles.benefitIcon} /> 80G tax
+                  certificates and real-time donation tracking
                 </li>
                 <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Real-time treatment
-                  updates sent directly to family members
-                </li>
-                <li style={styles.benefitItem}>
-                  <CheckCircle style={styles.benefitIcon} /> Complete price
-                  protection and transparent billing with no hidden charges
+                  <CheckCircle style={styles.benefitIcon} /> Post-treatment
+                  financial counseling
                 </li>
               </ul>
             </div>
 
             <a
-              href="#find-hospitals"
+              href="#financial-aid"
               style={styles.cardActionButton}
               className="card-action-button"
             >
-              Find Partner Hospitals Near You <Briefcase size={16} />
+              Apply for Financial Aid <DollarSign size={16} />
             </a>
           </div>
         </div>
 
-        {/* 4. Compassionate Home & Palliative Care (Reverse order) */}
+        {/* 6. Access to Cutting-Edge Clinical Trials */}
         <div
-          style={{ ...styles.cardContainer, ...styles.cardReverse }}
+          style={styles.cardContainer}
           className="card-container card-reverse"
         >
           <div style={styles.cardImageWrapper} className="card-image-wrapper">
             <img
-              src={IMG_HOME_CARE}
-              alt="Nurse smiling at the camera in a home setting"
+              src={IMG_CLINICAL_TRIALS}
+              alt="Clinical trials and research"
               style={styles.cardImage}
             />
           </div>
           <div style={styles.cardContent}>
-            <p style={styles.cardServiceTag}>Service 4</p>
+            <p style={styles.cardServiceTag}>Service 6</p>
             <h3 style={styles.cardTitle} className="card-title">
-              Compassionate Home & Palliative Care
+              Access to Cutting-Edge Clinical Trials
             </h3>
             <p style={styles.cardSubtitle}>
-              Bring hospital-grade care to the comfort of your home with
-              certified nursing and palliative specialists.
+              When standard treatments aren't enough, clinical trials offer
+              hope. Get access to tomorrow's cures today.
             </p>
             <p style={styles.cardDescription}>
-              Home is where healing happens best. Through our partnership with
-              Pallium India and certified nursing agencies, we bring expert
-              medical support directly to your doorstep. Our compassionate care
-              team understands that cancer isn't just about medicine - it's
-              about dignity, comfort, and keeping families together. Your
-              healing is our foremost priority.
+              Hope doesn't end when conventional treatments reach their limits.
+              Carcinome opens doors to groundbreaking clinical trials across
+              India and internationally, connecting you with experimental
+              therapies that could be the key to your recovery. Our research
+              network includes partnerships with leading institutions conducting
+              trials for immunotherapy, targeted therapy, and revolutionary
+              treatment protocols.
             </p>
 
-            <div style={styles.keyBenefitsTitle}>Key Benefits:</div>
-            <ul style={styles.benefitList}>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> 24x7 doctor
-                consultations, nursing care, and Ryles Tube/IV line support
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> Advanced pain
-                management for maximum comfort
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> At-home chemotherapy
-                & infusion with monitoring
-              </li>
-              <li style={styles.benefitItem}>
-                <CheckCircle style={styles.benefitIcon} /> Emotional support and
-                caregiver training
-              </li>
-            </ul>
+            <div style={styles.keyFeaturesBox}>
+              <h4 style={styles.keyFeaturesTitle}>
+                <CheckCircle style={styles.benefitIcon} /> Key Benefits:
+              </h4>
+              <ul style={styles.benefitList}>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Immunotherapy,
+                  targeted therapy, CAR-T options
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> International PI
+                  second opinions before enrollment
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Travel &
+                  accommodation support if out-of-city
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Regular safety
+                  assessments and monitoring
+                </li>
+              </ul>
+            </div>
 
             <a
-              href="#request-home-care"
+              href="#clinical-trials"
               style={styles.cardActionButton}
               className="card-action-button"
             >
-              Request Home Care Support <Home size={16} />
+              Check Trial Eligibility <Flask size={16} />
+            </a>
+          </div>
+        </div>
+
+        {/* 7. Government Scheme Navigation & Support */}
+        <div style={styles.cardContainer} className="card-container">
+          <div style={styles.cardImageWrapper} className="card-image-wrapper">
+            <img
+              src={IMG_GOVERNMENT}
+              alt="Government scheme support"
+              style={styles.cardImage}
+            />
+          </div>
+          <div style={styles.cardContent}>
+            <p style={styles.cardServiceTag}>Service 7</p>
+            <h3 style={styles.cardTitle} className="card-title">
+              Government Scheme Navigation & Support
+            </h3>
+            <p style={styles.cardSubtitle}>
+              Navigate complex government healthcare schemes effortlessly. Get
+              maximum benefits with our expert guidance.
+            </p>
+            <p style={styles.cardDescription}>
+              Government healthcare schemes can be lifesavers, but navigating
+              the bureaucratic maze often feels impossible when you're fighting
+              cancer. Carcinome's dedicated government scheme specialists
+              transform this complexity into simplicity, ensuring you receive
+              every benefit you're entitled to under various central and state
+              healthcare programs.
+            </p>
+
+            <div style={styles.keyFeaturesBox}>
+              <h4 style={styles.keyFeaturesTitle}>
+                <CheckCircle style={styles.benefitIcon} /> Key Benefits:
+              </h4>
+              <ul style={styles.benefitList}>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Application
+                  completion within 7 days
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> High approval rates
+                  with expert guidance
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> State-wise scheme
+                  mapping across 28 states
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Retroactive claim
+                  filing for past treatments
+                </li>
+              </ul>
+            </div>
+
+            <a
+              href="#government-schemes"
+              style={styles.cardActionButton}
+              className="card-action-button"
+            >
+              Explore Government Schemes <FileText size={16} />
+            </a>
+          </div>
+        </div>
+
+        {/* 8. Digital Second Opinion Concierge */}
+        <div
+          style={styles.cardContainer}
+          className="card-container card-reverse"
+        >
+          <div style={styles.cardImageWrapper} className="card-image-wrapper">
+            <img
+              src={IMG_SECOND_OPINION}
+              alt="Digital second opinion service"
+              style={styles.cardImage}
+            />
+          </div>
+          <div style={styles.cardContent}>
+            <p style={styles.cardServiceTag}>Service 8</p>
+            <h3 style={styles.cardTitle} className="card-title">
+              Digital Second Opinion Concierge
+            </h3>
+            <p style={styles.cardSubtitle}>
+              Get expert second opinions from India's top oncologists and
+              international specialists within 48-72 hours.
+            </p>
+            <p style={styles.cardDescription}>
+              When facing a cancer diagnosis, a second opinion isn't just
+              recommended – it's essential. Carcinome's Digital Opinion
+              Concierge connects you with India's most respected oncologists and
+              international specialists, providing comprehensive second opinions
+              that can potentially change your treatment trajectory and
+              outcomes.
+            </p>
+
+            <div style={styles.keyFeaturesBox}>
+              <h4 style={styles.keyFeaturesTitle}>
+                <CheckCircle style={styles.benefitIcon} /> Key Benefits:
+              </h4>
+              <ul style={styles.benefitList}>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Rapid turnaround
+                  with detailed written reports
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Direct video
+                  consults when needed
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Risk-benefit
+                  analysis and alternative options
+                </li>
+                <li style={styles.benefitItem}>
+                  <CheckCircle style={styles.benefitIcon} /> Ongoing support
+                  throughout the journey
+                </li>
+              </ul>
+            </div>
+
+            <a
+              href="#second-opinion"
+              style={styles.cardActionButton}
+              className="card-action-button"
+            >
+              Get Second Opinion <Users size={16} />
             </a>
           </div>
         </div>
