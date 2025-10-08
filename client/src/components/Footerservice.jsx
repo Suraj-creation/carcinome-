@@ -110,12 +110,12 @@ const Footerservice = () => {
 
       {/* Buttons */}
       <div style={styles.buttonContainer}>
-        <button style={{ ...styles.button, ...styles.primaryButton }}>
+        {/* <button style={{ ...styles.button, ...styles.primaryButton }}>
           <CheckCircle size={18} style={{ marginRight: "8px" }} />
           Book Free Consultation
-        </button>
+        </button> */}
         <button style={{ ...styles.button, ...styles.secondaryButton }}>
-          Call +91-XXXXXXXXXX
+          Call +91 8191054955
         </button>
         <button style={{ ...styles.button, ...styles.tertiaryButton }}>
           <Heart

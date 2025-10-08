@@ -102,7 +102,7 @@ const Navbar = () => {
           </button>
         </li>
 
-        <li>
+        {/* <li>
           <button
             className={`nav-link ${
               activeLink === "consultation" ? "active" : ""
@@ -111,12 +111,15 @@ const Navbar = () => {
           >
             Book Consultation
           </button>
-        </li>
+        </li> */}
 
         <li>
           <button
             className="connect-btn"
-            onClick={() => handleLinkClick("connect")}
+            // onClick={() => handleLinkClick("connect")}
+            onClick={() =>
+              (window.location.href = "mailto:priyanka.joshi@carcinome.in")
+            }
           >
             Connect With Us
           </button>

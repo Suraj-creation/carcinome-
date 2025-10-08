@@ -1,722 +1,436 @@
+// Oursupport.jsx
 import React from "react";
-import {
-  Briefcase,
-  Home,
-  Shield,
-  Ambulance,
-  DollarSign,
-  Stethoscope,
-  Landmark,
-  MessageSquare,
-  Plus,
-  Zap,
-  Heart,
-  Users,
-} from "lucide-react"; // Added Users icon
 
-// --- 1. Data Structure for all 8 main services ---
-const servicesData = [
+// --- Self-Contained SVG Icons (No external libraries needed) ---
+const CheckIcon = () => (
+  <svg
+    className="check-icon"
+    xmlns="http://www.w.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+  >
+    <path
+      fillRule="evenodd"
+      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+const createGenericIcon = (color) => (
+  <svg
+    className="card-icon"
+    style={{ color }}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+  >
+    <circle cx="12" cy="12" r="10" opacity="0.1" />
+    <circle cx="12" cy="12" r="7" />
+  </svg>
+);
+
+// --- Professional Icons for "Additional Support Services" ---
+const EHRSystemIcon = () => (
+  <svg
+    className="additional-service-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+    />
+  </svg>
+);
+
+const NutritionalMgmtIcon = () => (
+  <svg
+    className="additional-service-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M12 21a9 9 0 01-9-9 10.5 10.5 0 012.3-6.5A2.3 2.3 0 017.6 3h8.8a2.3 2.3 0 012.3 2.5A10.5 10.5 0 0121 12a9 9 0 01-9 9z"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M12 5.5V3"
+    />
+  </svg>
+);
+
+const CaregiverSupportIcon = () => (
+  <svg
+    className="additional-service-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.134-1.276-.388-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.134-1.276.388-1.857m0 0a5.002 5.002 0 019.224 0M12 14a4 4 0 100-8 4 4 0 000 8z"
+    />
+  </svg>
+);
+
+const VerifiedSupportIcon = () => (
+  <svg
+    className="additional-service-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M8 11.857l2.5 2.5L15.857 9M12 20a8 8 0 100-16 8 8 0 000 16z"
+    />
+  </svg>
+);
+
+// --- Component Data with EXACT text from the image ---
+const serviceCardsData = [
   {
-    id: 1,
-    icon: Briefcase,
+    icon: createGenericIcon("#3b82f6"),
     title: "Hospital Tie-Ups & Network",
-    description:
-      "Connect with the top 50+ cancer specialists and hospitals in India. Secure personalized, high-quality care with zero wait time.",
+    features: [
+      "Access to 250+ hospitals across India",
+      "Cashless claims at network hospitals",
+      "Support in non-network hospitals",
+      "End-to-end admission and discharge support",
+    ],
     benefits: [
-      "Dedicated oncology coordinator",
-      "No wait time for consultations",
-      "Access to top 50+ specialists",
+      "Access to top cancer hospitals and oncologists",
+      "Reduced waiting time for appointments and treatments",
+      "Significant savings with negotiated corporate tariffs",
     ],
-    keyFeatures: [
-      "Instant appointment booking",
-      "Paperwork assistance",
-      "Specialist referral program",
-    ],
-    color: "#36A2EB", // Blue
-    borderColor: "#36A2EB",
-    backgroundColor: "#EBF5FB",
   },
   {
-    id: 2,
-    icon: Home,
+    icon: createGenericIcon("#22c55e"),
     title: "Home & Palliative Care",
-    description:
-      "Seamless continuation of care at home, improving comfort, quick recovery, and emotional well-being.",
-    benefits: [
-      "24/7 dedicated nursing staff",
-      "Post-operative monitoring",
-      "Palliative and end-of-life support",
-    ],
-    keyFeatures: [
-      "Doctor home visits",
-      "Tele-counseling support",
+    features: [
+      "Doctor consultations at home",
+      "Nursing and attendant care",
+      "Chemotherapy at home",
       "Medical equipment rentals",
+      "Palliative and end-of-life care",
     ],
-    color: "#2ECC71", // Green
-    borderColor: "#2ECC71",
-    backgroundColor: "#E8F6F3",
+    benefits: [
+      "Comfort of receiving care at home",
+      "Reduced risk of hospital-acquired infections",
+      "Improved quality of life for patients and family members",
+    ],
   },
   {
-    id: 3,
-    icon: Ambulance,
+    icon: createGenericIcon("#ef4444"),
     title: "Ambulance Support Network",
-    description:
-      "24/7 emergency and non-emergency transfer services, ensuring safe and quick transit to and from the hospital.",
+    features: [
+      "Network of 2,000+ ambulances across India",
+      "Emergency and non-emergency transport",
+      "Basic Life Support (BLS) & Advanced Cardiac Life Support (ACLS) ambulances",
+      "Air ambulance support",
+    ],
     benefits: [
-      "Verified emergency vehicles",
-      "Trained medical personnel",
-      "Negotiated lower rates",
+      "Timely and safe transport for patients",
+      "Access to specialized ambulances for critical care",
+      "Peace of mind for family members during emergencies",
     ],
-    keyFeatures: [
-      "Pan-India coverage",
-      "Real-time tracking",
-      "Dedicated emergency contact",
-    ],
-    color: "#E74C3C", // Red
-    borderColor: "#E74C3C",
-    backgroundColor: "#FADBD8",
   },
   {
-    id: 4,
-    icon: Shield,
+    icon: createGenericIcon("#8b5cf6"),
     title: "Affordable Stay Solutions",
-    description:
-      "Verified budget accommodation near hospitals for patients and caregivers during long treatment cycles.",
+    features: [
+      "Budget-friendly accommodation near hospitals",
+      "Clean, hygienic, and safe environments",
+      "Negotiated rates with partner hotels and guesthouses",
+      "Long-term stay options available",
+    ],
     benefits: [
-      "Clean and comfortable rooms",
-      "Proximity to hospitals",
-      "Verified safety standards",
+      "Reduced financial burden of accommodation",
+      "Convenient access to hospitals for treatment",
+      "Comfortable and stress-free stay for patients and caregivers",
     ],
-    keyFeatures: [
-      "Pre-booking assistance",
-      "Special discounted rates",
-      "Family accommodation options",
-    ],
-    color: "#9B59B6", // Purple
-    borderColor: "#9B59B6",
-    backgroundColor: "#F4F1F8",
   },
   {
-    id: 5,
-    icon: DollarSign,
+    icon: createGenericIcon("#f97316"),
     title: "Financial Aid & Crowdfunding",
-    description:
-      "Support for managing treatment costs through grants, aid applications, and verified crowdfunding campaigns.",
+    features: [
+      "Guidance on government schemes and financial aid",
+      "Assistance with crowdfunding campaigns",
+      "Support for documentation and application process",
+      "Collaboration with NGOs and trusts",
+    ],
     benefits: [
-      "Access to government grants",
-      "Crowdfunding setup & management",
-      "Direct payment to hospitals",
+      "Access to funds for expensive cancer treatments",
+      "Reduced financial stress on the family",
+      "Support from a community of donors and well-wishers",
     ],
-    keyFeatures: [
-      "Financial planning sessions",
-      "Documentation support",
-      "Transparent fund utilization",
-    ],
-    color: "#F39C12", // Orange
-    borderColor: "#F39C12",
-    backgroundColor: "#FEF9E7",
   },
   {
-    id: 6,
-    icon: Stethoscope,
+    icon: createGenericIcon("#06b6d4"),
     title: "Clinical Trials Access",
-    description:
-      "Get access to relevant national and international clinical trials, offering cutting-edge treatment options.",
+    features: [
+      "Information on ongoing clinical trials",
+      "Guidance on eligibility criteria and enrollment",
+      "Support throughout the clinical trial process",
+      "Access to cutting-edge treatments",
+    ],
     benefits: [
-      "Eligibility screening",
-      "Trial application guidance",
-      "Dedicated trial coordinator",
+      "Opportunity to receive innovative cancer treatments",
+      "Contribution to medical research and future cancer care",
+      "Access to expert medical supervision during trials",
     ],
-    keyFeatures: [
-      "Access to global network",
-      "Latest research updates",
-      "Ethical committee clearance",
-    ],
-    color: "#34495E", // Dark Grey
-    borderColor: "#34495E",
-    backgroundColor: "#F4F6F6",
   },
   {
-    id: 7,
-    icon: Landmark,
+    icon: createGenericIcon("#4f46e5"),
     title: "Government Scheme Support",
-    description:
-      "Guidance and assistance in enrolling for state and central government health insurance and aid schemes.",
+    features: [
+      "Comprehensive information on central and state government schemes",
+      "Assistance with application and documentation",
+      "Support in navigating bureaucratic processes",
+      "End-to-end guidance for scheme approval",
+    ],
     benefits: [
-      "Eligibility verification",
-      "Application submission help",
-      "Document preparation",
+      "Avail financial benefits from government initiatives",
+      "Reduced out-of-pocket expenditure on treatment",
+      "Leverage government aid for cancer care",
     ],
-    keyFeatures: [
-      "Scheme comparison tool",
-      "Quick enrollment process",
-      "Direct contact with scheme officials",
-    ],
-    color: "#8E44AD", // Violet
-    borderColor: "#8E44AD",
-    backgroundColor: "#FCF3CF",
   },
   {
-    id: 8,
-    icon: MessageSquare,
+    icon: createGenericIcon("#ec4899"),
     title: "Digital Opinion Concierge",
-    description:
-      "Secure and swift second opinion services from global experts, ensuring confidence in your treatment plan.",
+    features: [
+      "Second opinion from leading national and international oncologists",
+      "Comprehensive review of medical records",
+      "Personalized treatment recommendations",
+      "Coordination for tele/video consultations",
+    ],
     benefits: [
-      "Access to global specialists",
-      "Comprehensive report generation",
-      "Secure data handling",
+      "Clarity and confidence in treatment decisions",
+      "Access to global oncology expertise",
+      "Informed decision-making for better health outcomes",
     ],
-    keyFeatures: [
-      "Video consultation setup",
-      "Pre-consult document review",
-      "Follow-up support",
-    ],
-    color: "#D35400", // Brown
-    borderColor: "#D35400",
-    backgroundColor: "#FDEBD0",
   },
 ];
 
-// --- 2. Data Structure for additional support (bottom section) ---
-const additionalSupport = [
+const additionalSupportServices = [
+  // { icon: <EHRSystemIcon />, title: "EHR System / Case File Mgmt" },
+  // { icon: <NutritionalMgmtIcon />, title: "Nutritional Management" },
+  // { icon: <CaregiverSupportIcon />, title: "Caregiver Support Groups" },
+  { icon: <VerifiedSupportIcon />, title: "24/7 Cancer Care Helpline" },
+  { icon: <VerifiedSupportIcon />, title: "Medical Records Management" },
+  { icon: <VerifiedSupportIcon />, title: "Caregiver Support Programs" },
+  { icon: <VerifiedSupportIcon />, title: "Survivor Support Network" },
+];
+
+const howItWorksSteps = [
   {
-    icon: Plus,
-    title: "24/7 Cancer Care Helpline",
-    subtitle:
-      "Round-the-clock support for medical emergencies, treatment queries, and emotional support",
+    number: 1,
+    title: "Connect",
+    description:
+      "Book consultation online or upload your medical reports through our secure platform",
+    colorClass: "step-circle-blue",
   },
   {
-    icon: Zap,
-    title: "Medical Record Management",
-    subtitle:
-      "Secure digital storage and management of all medical reports, test results, and treatment history",
+    number: 2,
+    title: "Navigate",
+    description:
+      "Get personalized doctor and hospital guidance based on your specific cancer type and needs",
+    colorClass: "step-circle-green",
   },
   {
-    icon: Heart,
-    title: "Caregiver Support Programs",
-    subtitle:
-      "Training and support programs for family members and professional caregivers",
+    number: 3,
+    title: "Support",
+    description:
+      "Access financial aid, accommodation, and comprehensive support services",
+    colorClass: "step-circle-purple",
   },
   {
-    icon: Users,
-    title: "Survivor Support Network",
-    subtitle:
-      "Connect with cancer survivors and support groups for motivation and shared experiences",
+    number: 4,
+    title: "Beyond Treatment",
+    description:
+      "Receive ongoing emotional support, palliative care, and survivorship programs",
+    colorClass: "step-circle-orange",
   },
 ];
 
-// --- 3. Component Style Definitions (Inline CSS) ---
+const StyleTag = () => (
+  <style>{`
+    .support-container { background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; padding: 4rem 1rem; color: #1f2937; line-height: 1.5; }
+    .support-content-wrapper { max-width: 1280px; margin: 0 auto; }
+    .header-section { text-align: center; }
+    .main-title { font-size: 1.875rem; font-weight: 700; color: #111827; letter-spacing: -0.025em; line-height: 1.25; }
+    .main-subtitle { margin-top: 1rem; max-width: 56rem; margin-left: auto; margin-right: auto; font-size: 1.125rem; color: #4b5563; line-height: 1.75; }
+    .main-buttons-container { margin-top: 3rem; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    .main-button { color: white; font-size: 1.125rem; font-weight: 700; padding: 1.5rem 2rem; border-radius: 0.75rem; border: none; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); transition: all 0.3s ease-in-out; text-decoration: none; display: flex; justify-content: center; align-items: center;}
+    .main-button:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); transform: translateY(-4px); }
+    .button-blue { background-image: linear-gradient(to right, #2563eb, #3b82f6); }
+    .button-green { background-image: linear-gradient(to right, #16a34a, #22c55e); }
+    .button-purple { background-image: linear-gradient(to right, #7c3aed, #8b5cf6); }
+    .service-grid { margin-top: 4rem; display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    .service-card { border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; transition: box-shadow 0.3s ease; }
+    .service-card:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); }
+    .card-header { display: flex; align-items: center; gap: 1rem; }
+    .card-icon { width: 2.25rem; height: 2.25rem; }
+    .card-icon svg { width: 100%; height: 100%; }
+    .card-title { font-size: 1.125rem; font-weight: 600; color: #1f2937; }
+    .card-body { margin-top: 1.5rem; }
+    .card-section-title { font-weight: 600; color: #374151; font-size: 0.9375rem; }
+    .card-list { list-style: none; padding: 0; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .card-list-item { display: flex; align-items: flex-start; gap: 0.5rem; color: #4b5563; line-height: 1.5; font-size: 0.9375rem; }
+    .check-icon { color: #22c55e; margin-top: 4px; flex-shrink: 0; width: 1.25em; height: 1.25em; }
+    .card-footer { margin-top: auto; padding-top: 1.5rem; }
+    .card-link { font-weight: 600; color: #2563eb; text-decoration: none; transition: color 0.2s ease; font-size: 0.9375rem; }
+    .card-link:hover { color: #1d4ed8; }
+    .section-title { font-size: 1.5rem; font-weight: 700; color: #111827; text-align: center; }
+    .additional-services-section { margin-top: 5rem; }
+    .additional-services-grid { margin-top: 2rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .additional-service-item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0.5rem; }
+    .additional-service-icon { width: 2.5rem; height: 2.5rem; color: #2563eb; margin-bottom: 0.75rem; }
+    .additional-service-icon svg { width: 100%; height: 100%; }
+    .additional-service-title { font-weight: 600; color: #374151; font-size: 0.9375rem; line-height: 1.4; }
+    .how-it-works-section { margin-top: 5rem; }
+    .how-it-works-grid { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+    .how-it-works-step { display: flex; flex-direction: column; align-items: center; }
+    .step-circle { width: 4rem; height: 4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; margin-bottom: 1rem; }
+    .step-circle-blue { background-color: #3b82f6; }
+    .step-circle-green { background-color: #22c55e; }
+    .step-circle-purple { background-color: #8b5cf6; }
+    .step-circle-orange { background-color: #f97316; }
+    .step-title { font-weight: 700; font-size: 1.125rem; color: #1f2937; }
+    .step-description { margin-top: 0.25rem; color: #4b5563; font-size: 0.9375rem; }
+    .final-cta-section { margin-top: 5rem; text-align: center; }
+    .final-cta-button { background-color: #2563eb; color: white; font-weight: 600; padding: 0.75rem 2rem; font-size: 1rem; border-radius: 0.5rem; border: none; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+    .final-cta-button:hover { background-color: #1d4ed8; }
 
-const styles = {
-  // --- Global Container Styles ---
-  pageContainer: {
-    fontFamily: "Arial, sans-serif",
-    backgroundColor: "#F8F9FA",
-    padding: "0 0 50px 0",
-    color: "#333333",
-    minWidth: "320px",
-    overflowX: "hidden",
-  },
-  // General styles for sections
-  sectionCenter: {
-    textAlign: "center",
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "20px 15px",
-  },
-  headingTitle: {
-    fontSize: "1.8rem",
-    fontWeight: "700",
-    marginBottom: "10px",
-    color: "#2C3E50",
-    lineHeight: "1.2",
-  },
-  headingSubtitle: {
-    fontSize: "1rem",
-    color: "#7F8C8D",
-    maxWidth: "700px",
-    margin: "0 auto 40px auto",
-    lineHeight: "1.4",
-  },
-
-  // --- Top Header Buttons ---
-  headerButtonsContainer: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "10px",
-    marginBottom: "40px",
-    flexWrap: "wrap",
-    padding: "0 10px",
-  },
-  headerButton: (color, isSelected) => ({
-    padding: "12px 20px",
-    borderRadius: "8px",
-    border: `2px solid ${color}`,
-    backgroundColor: isSelected ? color : "white",
-    color: isSelected ? "white" : color,
-    fontWeight: "600",
-    fontSize: "0.85rem",
-    cursor: "pointer",
-    boxShadow: isSelected ? "0 4px 8px rgba(0, 0, 0, 0.1)" : "none",
-    transition: "all 0.3s",
-    minWidth: "120px",
-    flex: "1 1 120px",
-  }),
-
-  // --- Main Services Grid - IMPROVED RESPONSIVE DESIGN ---
-  servicesGrid: {
-    display: "grid",
-    // Mobile first: single column
-    gridTemplateColumns: "1fr",
-    gap: "20px",
-    padding: "0 10px",
-    margin: "0 auto",
-    // Tablet: 2 columns
-    "@media (min-width: 768px)": {
-      gridTemplateColumns: "repeat(2, 1fr)",
-      maxWidth: "800px",
-    },
-    // Laptop: 3 columns
-    "@media (min-width: 1024px)": {
-      gridTemplateColumns: "repeat(3, 1fr)",
-      maxWidth: "1100px",
-    },
-    // Desktop: 4 columns
-    "@media (min-width: 1200px)": {
-      gridTemplateColumns: "repeat(4, 1fr)",
-      maxWidth: "1200px",
-    },
-  },
-
-  // --- Service Card - IMPROVED FOR LAPTOP ---
-  cardContainer: (borderColor) => ({
-    border: `1px solid #DDDDDD`,
-    borderTop: `4px solid ${borderColor}`,
-    borderRadius: "10px",
-    backgroundColor: "white",
-    padding: "20px",
-    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.05)",
-    transition: "all 0.3s",
-    minHeight: "auto",
-    textAlign: "left",
-    width: "100%",
-    boxSizing: "border-box",
-    // Better for laptop screens
-    "@media (min-width: 768px)": {
-      padding: "18px",
-      minHeight: "380px",
-      display: "flex",
-      flexDirection: "column",
-    },
-    "@media (min-width: 1024px)": {
-      padding: "20px",
-      minHeight: "400px",
-    },
-  }),
-  cardHeader: {
-    display: "flex",
-    alignItems: "flex-start",
-    marginBottom: "15px",
-    "@media (min-width: 768px)": {
-      marginBottom: "12px",
-    },
-  },
-  cardIcon: (color) => ({
-    padding: "8px",
-    borderRadius: "8px",
-    backgroundColor: color,
-    color: "white",
-    marginRight: "12px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
-    flexShrink: 0,
-    "@media (min-width: 768px)": {
-      padding: "10px",
-      marginRight: "15px",
-    },
-  }),
-  cardTitle: {
-    fontSize: "1.1rem",
-    fontWeight: "700",
-    color: "#2C3E50",
-    lineHeight: "1.3",
-    margin: "0",
-    "@media (min-width: 768px)": {
-      fontSize: "1rem",
-      lineHeight: "1.2",
-    },
-    "@media (min-width: 1024px)": {
-      fontSize: "1.1rem",
-    },
-  },
-  cardDescription: {
-    fontSize: "0.85rem",
-    color: "#7F8C8D",
-    marginBottom: "15px",
-    lineHeight: "1.4",
-    "@media (min-width: 768px)": {
-      fontSize: "0.8rem",
-      marginBottom: "12px",
-      lineHeight: "1.3",
-    },
-    "@media (min-width: 1024px)": {
-      fontSize: "0.85rem",
-    },
-  },
-  featureSection: {
-    borderTop: "1px dashed #E0E0E0",
-    paddingTop: "15px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
-    flexGrow: 1,
-    "@media (min-width: 768px)": {
-      gap: "12px",
-      paddingTop: "12px",
-    },
-  },
-  featureGroup: {
-    flex: "1",
-    minWidth: "auto",
-  },
-  featureList: {
-    listStyle: "none",
-    padding: "0",
-    margin: "0",
-    fontSize: "0.75rem",
-    "@media (min-width: 768px)": {
-      fontSize: "0.7rem",
-    },
-    "@media (min-width: 1024px)": {
-      fontSize: "0.75rem",
-    },
-  },
-  featureItem: {
-    display: "flex",
-    alignItems: "flex-start",
-    marginBottom: "6px",
-    color: "#555555",
-    lineHeight: "1.3",
-    "@media (min-width: 768px)": {
-      marginBottom: "4px",
-      lineHeight: "1.2",
-    },
-  },
-  featureCheck: (color) => ({
-    width: "8px",
-    height: "8px",
-    borderRadius: "50%",
-    backgroundColor: color,
-    marginRight: "8px",
-    marginTop: "4px",
-    flexShrink: 0,
-    "@media (min-width: 768px)": {
-      width: "6px",
-      height: "6px",
-      marginTop: "3px",
-    },
-  }),
-
-  // --- Additional Support Services - IMPROVED FOR LAPTOP ---
-  additionalSupportTitle: {
-    fontSize: "1.2rem",
-    fontWeight: "600",
-    color: "#2C3E50",
-    marginTop: "50px",
-    marginBottom: "25px",
-  },
-  additionalGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gap: "15px",
-    padding: "0 10px",
-    margin: "0 auto",
-    maxWidth: "400px",
-    "@media (min-width: 768px)": {
-      gridTemplateColumns: "repeat(4, 1fr)",
-      maxWidth: "800px",
-      gap: "20px",
-    },
-  },
-  additionalCard: {
-    textAlign: "center",
-    padding: "15px",
-    backgroundColor: "white",
-    borderRadius: "8px",
-    border: "1px solid #E0E0E0",
-    "@media (min-width: 768px)": {
-      padding: "20px",
-    },
-  },
-  additionalIconContainer: {
-    margin: "0 auto 8px auto",
-    width: "40px",
-    height: "40px",
-    borderRadius: "50%",
-    backgroundColor: "#D6EAF8",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "#3498DB",
-    "@media (min-width: 768px)": {
-      width: "50px",
-      height: "50px",
-      marginBottom: "12px",
-    },
-  },
-  additionalCardTitle: {
-    fontSize: "0.9rem",
-    fontWeight: "600",
-    color: "#2C3E50",
-    marginBottom: "5px",
-    lineHeight: "1.2",
-    "@media (min-width: 768px)": {
-      fontSize: "1rem",
-      marginBottom: "8px",
-    },
-  },
-  additionalCardSubtitle: {
-    fontSize: "0.75rem",
-    color: "#7F8C8D",
-    lineHeight: "1.3",
-    "@media (min-width: 768px)": {
-      fontSize: "0.8rem",
-    },
-  },
-
-  // --- How Carcinome Works - IMPROVED FOR LAPTOP ---
-  howItWorksTitle: {
-    fontSize: "1.2rem",
-    fontWeight: "600",
-    color: "#2C3E50",
-    marginTop: "50px",
-    marginBottom: "25px",
-    borderTop: "1px solid #EAECEE",
-    paddingTop: "30px",
-  },
-  stepGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gap: "20px",
-    padding: "0 10px",
-    margin: "0 auto",
-    maxWidth: "300px",
-    "@media (min-width: 768px)": {
-      gridTemplateColumns: "repeat(4, 1fr)",
-      maxWidth: "600px",
-      gap: "30px",
-    },
-  },
-  stepItem: {
-    textAlign: "center",
-  },
-  stepNumber: (color) => ({
-    width: "35px",
-    height: "35px",
-    borderRadius: "50%",
-    backgroundColor: color,
-    color: "white",
-    fontSize: "1rem",
-    fontWeight: "700",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    margin: "0 auto 8px auto",
-    "@media (min-width: 768px)": {
-      width: "45px",
-      height: "45px",
-      fontSize: "1.2rem",
-      marginBottom: "12px",
-    },
-  }),
-  stepDescription: {
-    fontSize: "0.8rem",
-    color: "#555555",
-    fontWeight: "600",
-    "@media (min-width: 768px)": {
-      fontSize: "0.9rem",
-    },
-  },
-
-  // --- Final CTA ---
-  ctaButton: {
-    padding: "12px 25px",
-    borderRadius: "5px",
-    backgroundColor: "#4A67FF",
-    color: "white",
-    fontWeight: "600",
-    fontSize: "0.9rem",
-    border: "none",
-    cursor: "pointer",
-    marginTop: "30px",
-    boxShadow: "0 4px 10px rgba(74, 103, 255, 0.4)",
-    transition: "background-color 0.3s",
-    width: "auto",
-    maxWidth: "280px",
-    "@media (min-width: 768px)": {
-      fontSize: "1rem",
-      padding: "15px 30px",
-    },
-  },
-};
-
-// Helper function to handle responsive styles since inline styles don't support media queries
-const getResponsiveStyle = (baseStyle) => {
-  return baseStyle;
-};
-
-// --- 4. Main Component ---
+    @media (min-width: 640px) { .main-buttons-container { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 768px) {
+        .main-title { font-size: 2.25rem; }
+        .service-grid { grid-template-columns: repeat(2, 1fr); }
+        .additional-services-grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        .how-it-works-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (min-width: 1024px) { .support-container { padding: 4rem 2rem; } }
+  `}</style>
+);
 
 const OurSupport = () => {
-  // Simple Card Component using inline styles
-  const ServiceCard = ({ service }) => (
-    <div style={getResponsiveStyle(styles.cardContainer(service.borderColor))}>
-      <div style={getResponsiveStyle(styles.cardHeader)}>
-        <div style={getResponsiveStyle(styles.cardIcon(service.color))}>
-          {React.createElement(service.icon, { size: 20 })}
-        </div>
-        <div style={{ flex: 1 }}>
-          <h3 style={getResponsiveStyle(styles.cardTitle)}>{service.title}</h3>
-          <p style={getResponsiveStyle(styles.cardDescription)}>
-            {service.description}
-          </p>
-        </div>
-      </div>
-
-      <p
-        style={{
-          fontSize: "0.75rem",
-          fontWeight: "600",
-          color: "#7F8C8D",
-          borderTop: "1px solid #EAECEE",
-          paddingTop: "12px",
-          marginBottom: "8px",
-        }}
-      >
-        Key Features
-      </p>
-
-      <div style={getResponsiveStyle(styles.featureSection)}>
-        <div style={getResponsiveStyle(styles.featureGroup)}>
-          <ul style={getResponsiveStyle(styles.featureList)}>
-            {service.benefits.map((benefit, i) => (
-              <li key={i} style={getResponsiveStyle(styles.featureItem)}>
-                <div
-                  style={getResponsiveStyle(styles.featureCheck(service.color))}
-                ></div>
-                <span>{benefit}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div style={getResponsiveStyle(styles.featureGroup)}>
-          <ul style={getResponsiveStyle(styles.featureList)}>
-            {service.keyFeatures.map((feature, i) => (
-              <li key={i} style={getResponsiveStyle(styles.featureItem)}>
-                <div
-                  style={getResponsiveStyle(styles.featureCheck(service.color))}
-                ></div>
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
-    <div style={styles.pageContainer}>
-      <div style={styles.sectionCenter}>
-        {/* Header and Subtitle */}
-        <p
-          style={{
-            ...styles.headingSubtitle,
-            marginBottom: "10px",
-            fontSize: "0.9rem",
-          }}
-        >
-          Comprehensive Cancer Care Services | Essential Support Verticals
-        </p>
-        <h2 style={styles.headingTitle}>
-          Our Core Cancer Care Ecosystem: Complete Support Services
-        </h2>
-        <p style={styles.headingSubtitle}>
-          We fill every gap in the cancer care journey—from hospital access and
-          medical records to financial aid and home support—to ensure better
-          health outcomes, improved resources, and coverage for the care giving
-          ecosystem.
-        </p>
+    <>
+      <StyleTag />
+      <div className="support-container">
+        <div className="support-content-wrapper">
+          <div className="header-section">
+            <h1 className="main-title">
+              Our Core Cancer Care Services: Complete Support Ecosystem
+            </h1>
+            <p className="main-subtitle">
+              We provide end-to-end support for cancer patients. Our services
+              are designed to fill gaps in the cancer care continuum, improve
+              outcomes, and decentralize the care journey.
+            </p>
+          </div>
 
-        {/* Top Header Buttons (The 3 main categories) */}
-        <div style={styles.headerButtonsContainer}>
-          <button style={styles.headerButton("#4A67FF", true)}>
-            Hospital Network
-          </button>
-          <button style={styles.headerButton("#2ECC71", false)}>
-            Home Care
-          </button>
-          <button style={styles.headerButton("#9B59B6", false)}>
-            Digital Consultation
-          </button>
-        </div>
+          <div className="main-buttons-container">
+            <button className="main-button button-blue">Home Care</button>
+            <button className="main-button button-green">
+              Global Care Access
+            </button>
+            <button className="main-button button-purple">
+              Digital Care Access
+            </button>
+          </div>
 
-        {/* Main 8 Services Grid */}
-        <div style={getResponsiveStyle(styles.servicesGrid)}>
-          {servicesData.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
-        </div>
-
-        {/* Additional Support Services */}
-        <h3 style={styles.additionalSupportTitle}>
-          Additional Support Services
-        </h3>
-        <div style={getResponsiveStyle(styles.additionalGrid)}>
-          {additionalSupport.map((item, index) => (
-            <div key={index} style={getResponsiveStyle(styles.additionalCard)}>
-              <div style={getResponsiveStyle(styles.additionalIconContainer)}>
-                {React.createElement(item.icon, { size: 20 })}
+          <div className="service-grid">
+            {serviceCardsData.map((card, index) => (
+              <div key={index} className="service-card">
+                <div className="card-header">
+                  {card.icon}
+                  <h3 className="card-title">{card.title}</h3>
+                </div>
+                <div className="card-body">
+                  <p className="card-section-title">Key Features:</p>
+                  <ul className="card-list">
+                    {card.features.map((feature, i) => (
+                      <li key={i} className="card-list-item">
+                        <CheckIcon />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="card-body">
+                  <p className="card-section-title">Key Benefits:</p>
+                  <ul className="card-list">
+                    {card.benefits.map((benefit, i) => (
+                      <li key={i} className="card-list-item">
+                        <CheckIcon />
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="card-footer">
+                  <a href="#" className="card-link">
+                    View Service in Detail →
+                  </a>
+                </div>
               </div>
-              <p style={getResponsiveStyle(styles.additionalCardTitle)}>
-                {item.title}
-              </p>
-              <p style={getResponsiveStyle(styles.additionalCardSubtitle)}>
-                {item.subtitle}
-              </p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* How Carcinome Works */}
-        <h3 style={styles.howItWorksTitle}>How Carcinome Cancer Care Works</h3>
-        <div style={getResponsiveStyle(styles.stepGrid)}>
-          {[
-            { num: 1, text: "Connect", color: "#4A67FF" },
-            { num: 2, text: "Navigate", color: "#2ECC71" },
-            { num: 3, text: "Support", color: "#9B59B6" },
-            { num: 4, text: "Beyond Treatment", color: "#E74C3C" },
-          ].map((step) => (
-            <div key={step.num} style={getResponsiveStyle(styles.stepItem)}>
-              <div style={getResponsiveStyle(styles.stepNumber(step.color))}>
-                {step.num}
-              </div>
-              <p style={getResponsiveStyle(styles.stepDescription)}>
-                {step.text}
-              </p>
+          <div className="additional-services-section">
+            <h2 className="section-title">Additional Support Services</h2>
+            <div className="additional-services-grid">
+              {additionalSupportServices.map((service, index) => (
+                <div key={index} className="additional-service-item">
+                  {service.icon}
+                  <p className="additional-service-title">{service.title}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Final CTA */}
-        <button style={getResponsiveStyle(styles.ctaButton)}>
-          Explore All Services in Detail
-        </button>
+          <div className="how-it-works-section">
+            <h2 className="section-title">How Carcinome Cancer Care Works</h2>
+            <div className="how-it-works-grid">
+              {howItWorksSteps.map((step) => (
+                <div key={step.number} className="how-it-works-step">
+                  <div className={`step-circle ${step.colorClass}`}>
+                    {step.number}
+                  </div>
+                  <h3 className="step-title">{step.title}</h3>
+                  <p className="step-description">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="final-cta-section">
+            <button className="final-cta-button">
+              Explore All Services in Detail
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -9,6 +9,8 @@ import Awareness from "../components/Awereness";
 import AboveFooter from "../components/Abovefooter";
 import Footer from "../components/Footer";
 
+
+
 function Home() {
   const location = useLocation();
 

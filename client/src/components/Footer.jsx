@@ -287,7 +287,7 @@ const Footer = () => {
 
             <div style={styles.contactDetail}>
               <Phone style={styles.contactIcon} />
-              <span>+91-XXXXXXXXXX</span>
+              <span>+91-8191054955</span>
             </div>
 
             {/* FIX: Merged duplicate style attributes */}
@@ -308,9 +308,9 @@ const Footer = () => {
                 <Instagram size={20} />
               </div>
               {/* Note: Using black for Twitter/X logo as per image */}
-              <div style={styles.socialIcon("#000000")}>
+              {/* <div style={styles.socialIcon("#000000")}>
                 <Twitter size={20} />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

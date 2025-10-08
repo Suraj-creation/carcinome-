@@ -22,8 +22,15 @@ const HeroSection = () => {
             </p>
 
             <div className="hero-buttons">
-              <button className="btn-primary">Book Free Consultation</button>
-              <button className="btn-outline">Connect With Us</button>
+              {/* <button className="btn-primary">Book Free Consultation</button> */}
+              <button
+                className="btn-outline"
+                onClick={() =>
+                  (window.location.href = "mailto:priyanka.joshi@carcinome.in")
+                }
+              >
+                Connect With Us
+              </button>
             </div>
           </div>
 

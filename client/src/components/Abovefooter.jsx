@@ -273,9 +273,9 @@ const AboveFooter = () => {
             Connect with India’s leading cancer specialists for expert guidance,
             second opinions, and personalized treatment planning at no cost.
           </p>
-          <button style={styles.primaryButton}>
+          {/* <button style={styles.primaryButton}>
             Book a Free Consultation Now &rarr;
-          </button>
+          </button> */}
           <div style={styles.cardFooter}>
             <CheckCircle style={styles.footerIcon} />
             Available 24/7 • 48-72 hour response time
@@ -321,7 +321,7 @@ const AboveFooter = () => {
           <p style={styles.waysItemDescription}>
             24/7 immediate assistance for urgent medical queries.
           </p>
-          <p style={styles.waysItemDetail}>Call: +91 9000000000</p>
+          <p style={styles.waysItemDetail}>Call: +91 8191054955</p>
         </div>
         {/* Item 2: WhatsApp Support */}
         <div style={styles.waysItem}>
