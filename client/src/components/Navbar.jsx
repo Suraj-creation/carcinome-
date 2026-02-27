@@ -118,7 +118,7 @@ const Navbar = () => {
             className="connect-btn"
             // onClick={() => handleLinkClick("connect")}
             onClick={() =>
-              (window.location.href = `https://wa.me/91${import.meta.env.VITE_CONTACT_US_NO}`)
+              (window.location.href = "https://wa.me/918191054955")
             }
           >
             Connect With Us
