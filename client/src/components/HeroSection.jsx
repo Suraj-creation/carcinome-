@@ -26,7 +26,7 @@ const HeroSection = () => {
               <button
                 className="btn-outline"
                 onClick={() =>
-                  (window.location.href = "mailto:priyanka.joshi@carcinome.in")
+                  (window.location.href = `https://wa.me/91${import.meta.env.VITE_CONTACT_US_NO}`)
                 }
               >
                 Connect With Us

@@ -118,7 +118,7 @@ const Navbar = () => {
             className="connect-btn"
             // onClick={() => handleLinkClick("connect")}
             onClick={() =>
-              (window.location.href = "mailto:priyanka.joshi@carcinome.in")
+              (window.location.href = `https://wa.me/91${import.meta.env.VITE_CONTACT_US_NO}`)
             }
           >
             Connect With Us
