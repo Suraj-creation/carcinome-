@@ -1,0 +1,242 @@
+.bot-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Floating Button */
+.bot-floater {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4A67FF, #3A52CC);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(74, 103, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    outline: none;
+}
+
+.bot-floater:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(74, 103, 255, 0.6);
+}
+
+.bot-floater.active {
+    background: #FFD200;
+    /* Yellow */
+    box-shadow: 0 4px 15px rgba(255, 210, 0, 0.4);
+}
+
+.bot-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #4A67FF;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Toast Message */
+.bot-toast {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    cursor: pointer;
+    animation: slideIn 0.5s ease;
+}
+
+.bot-toast p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #1a2233;
+    font-weight: 500;
+}
+
+.toast-arrow {
+    position: absolute;
+    bottom: -8px;
+    right: 25px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Chat Window */
+.bot-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 320px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    animation: popup 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+        transform-origin: bottom right;
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.bot-header {
+    background: #4A67FF;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bot-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.bot-content {
+    padding: 20px;
+}
+
+.bot-message {
+    background: white;
+    padding: 12px 16px;
+    border-radius: 15px 15px 15px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.bot-message p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+.bot-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-btn {
+    background: white;
+    border: 1px solid #e0e6ed;
+    padding: 12px 16px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.option-btn span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.option-btn:hover {
+    border-color: #4A67FF;
+    background: rgba(74, 103, 255, 0.05);
+    transform: translateX(5px);
+}
+
+.option-btn.secondary:hover {
+    border-color: #25D366;
+    background: rgba(37, 211, 102, 0.05);
+}
+
+.bot-footer {
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.03);
+    text-align: center;
+}
+
+.bot-footer p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .bot-window {
+        width: calc(100vw - 40px);
+        right: -10px;
+    }
+
+    .bot-container {
+        bottom: 20px;
+        right: 20px;
+    }
+}
