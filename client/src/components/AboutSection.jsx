@@ -1,94 +1,63 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./AboutSection.css";
-import aboutImg from "../assets/5.png";
 
+// ─── Count-up hook ────────────────────────────────────────────────────────────
+function useCountUp(target, duration = 1800) {
+  const [value, setValue] = useState(0);
+  const ref = useRef(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const start = performance.now();
+          const tick = (now) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            setValue(Math.floor(ease * target));
+            if (progress < 1) requestAnimationFrame(tick);
+            else setValue(target);
+          };
+          requestAnimationFrame(tick);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return { ref, value };
+}
+
+// ─── Individual stat card ─────────────────────────────────────────────────────
+const StatCard = ({ target, prefix = "", suffix = "", label }) => {
+  const { ref, value } = useCountUp(target);
+
+  return (
+    <div className="stat-card" ref={ref}>
+      <h3>{prefix}{value}{suffix}</h3>
+      <p>{label}</p>
+    </div>
+  );
+};
+
+// ─── Main component ───────────────────────────────────────────────────────────
 const AboutSection = () => {
   return (
     <section className="about-section" id="about">
-      {/* Top Stats */}
       <div className="stats-grid">
-        <div className="stat-card">
-          <h3>50+</h3>
-          <p>Cancer Specialists</p>
-        </div>
-        <div className="stat-card">
-          <h3>10+</h3>
-          <p>Partner Hospitals</p>
-        </div>
-        <div className="stat-card">
-          <h3>100+</h3>
-          <p>Families Supported</p>
-        </div>
-        <div className="stat-card">
-          <h3>24/7</h3>
-          <p>Expert Support</p>
-        </div>
-      </div>
-
-      {/* Main Title */}
-      <div className="about-heading">
-        <h2>About Carcinome India’s First Integrative Oncology Platform</h2>
-        <p>
-          We are India’s first tech-enabled integrative oncology platform,
-          revolutionizing cancer care through comprehensive support, advanced
-          technology, a compassionate service.
-        </p>
-      </div>
-
-      {/* Content Grid */}
-      <div className="about-grid">
-        <div className="about-text">
-          <h3>Holistic Cancer Care Platform Built for Every Cancer Journey</h3>
-          <p>
-            Carcinome is India’s first holistic cancer care platform, built to
-            simplify and humanize the cancer Journey. Unlike most cancer
-            platforms that focus on specific diseases, Carcinome is a
-            comprehensive pan-cancer aggregator covering{" "}
-            <strong>
-              Gall-Bladder Cancer, Breast Cancer, Correctional Cancer, Head &
-              Neck Carcinoma, Lung Cancer, Cervical Cancer, And Rare Carcinomas
-            </strong>
-            .
-          </p>
-          <p>
-            We combine cutting-edge technology, trusted hospital partnerships,
-            and deep compassion to provide end-to-end cancer care support. Our
-            platform serves as a bridge between patients, families, healthcare
-            providers, NGOs, and government schemes, ensuring no one faces
-            cancer alone.
-          </p>
-          <p>
-            Founded by caregivers who have personally navigated the cancer
-            journey, we understand the pain, confusion, financial stress, and
-            emotional trauma that families face. Our mission is to transform
-            this experience through technology-enabled care navigation,
-            transparent pricing, and unwavering human support.
-          </p>
-        </div>
-
-        <div className="about-image">
-          <img src={aboutImg} alt="Doctors and patients" />
-        </div>
-      </div>
-
-      {/* Bottom Stats */}
-      <div className="stats-grid bottom-stats">
-        <div className="stat-card">
-          <h3>100+</h3>
-          <p>Families Supported</p>
-        </div>
-        <div className="stat-card">
-          <h3>10+</h3>
-          <p>Hospital Partners</p>
-        </div>
-        <div className="stat-card">
-          <h3>15+</h3>
-          <p>Cancer Types Covered</p>
-        </div>
-        <div className="stat-card">
-          <h3>24/7</h3>
-          <p>Support Available</p>
-        </div>
+        <StatCard target={50} suffix="+" label="Cancer Specialists" />
+        <StatCard target={10} suffix="+" label="Partner Hospitals" />
+        <StatCard target={100} suffix="+" label="Families Supported" />
+        <StatCard target={24} suffix="/7" label="Expert Support" />
       </div>
     </section>
   );

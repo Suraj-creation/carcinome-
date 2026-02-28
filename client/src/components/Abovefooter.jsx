@@ -19,7 +19,6 @@ const styles = {
     color: "white",
     padding: "50px 20px",
     textAlign: "center",
-    minHeight: "80vh",
   },
   // --- Header Section ---
   taglineContainer: {
@@ -241,130 +240,6 @@ const styles = {
 const AboveFooter = () => {
   return (
     <div style={styles.container} id="contact">
-      <div style={styles.taglineContainer}>
-        <Heart style={styles.taglineHeart} />
-        Your Journey to Healing Starts Here
-      </div>
-
-      <h1 style={styles.mainTitle}>
-        No Patient Should Ever Walk Alone in Their Cancer Journey
-      </h1>
-
-      <p style={styles.subText}>
-        Whether you're seeking expert treatment guidance, financial assistance,
-        emotional support, or advanced care options—**Carcinome stands by you at
-        every step.**
-      </p>
-
-      <div style={styles.midCallout}>
-        Join **10,000+ families** who've found hope, comprehensive support, and
-        life-changing cancer care through our platform.
-      </div>
-
-      {/* Consultation Cards */}
-      <div style={styles.cardWrapper}>
-        {/* Card 1: Free Consultation */}
-        <div style={styles.card}>
-          <div style={styles.cardIconContainer("#4A67FF")}>
-            <Briefcase size={32} />
-          </div>
-          <h2 style={styles.cardTitle}>Get Your Free Cancer Consultation</h2>
-          <p style={styles.cardDescription}>
-            Connect with India’s leading cancer specialists for expert guidance,
-            second opinions, and personalized treatment planning at no cost.
-          </p>
-          {/* <button style={styles.primaryButton}>
-            Book a Free Consultation Now &rarr;
-          </button> */}
-          <div style={styles.cardFooter}>
-            <CheckCircle style={styles.footerIcon} />
-            Available 24/7 • 48-72 hour response time
-          </div>
-        </div>
-
-        {/* Card 2: Talk to Experts */}
-        <div style={styles.card}>
-          <div style={styles.cardIconContainer("#2ECC71")}>
-            <Briefcase size={32} />{" "}
-            {/* Using Briefcase icon for consistency, adjusting color */}
-          </div>
-          <h2 style={styles.cardTitle}>Talk to Our Carcinome Experts</h2>
-          <p style={styles.cardDescription}>
-            Speak with experienced cancer care coordinators who understand your
-            journey and guide you to the right resources.
-          </p>
-          <button style={styles.secondaryButton}>
-            Talk to Our Carcinome Experts &rarr;
-          </button>
-          <div style={styles.cardFooter}>
-            <CheckCircle style={styles.footerIcon} />
-            Compassionate support • Expert guidance • Free consultation
-          </div>
-        </div>
-      </div>
-
-      {/* Multiple Ways to Get the Support You Need */}
-      <h2 style={styles.waysTitle}>
-        Multiple Ways to Get the Support You Need
-      </h2>
-      <p style={styles.waysSubtitle}>
-        Choose the option that works best for your situation.
-      </p>
-
-      <div style={styles.waysGrid}>
-        {/* Item 1: Hotline */}
-        <div style={styles.waysItem}>
-          <div style={styles.waysIconContainer}>
-            <Phone size={24} />
-          </div>
-          <h3 style={styles.waysItemTitle}>Emergency Hotline</h3>
-          <p style={styles.waysItemDescription}>
-            24/7 immediate assistance for urgent medical queries.
-          </p>
-          <p style={styles.waysItemDetail}>Call: +91 8191054955</p>
-        </div>
-        {/* Item 2: WhatsApp Support */}
-        <div style={styles.waysItem}>
-          <div style={styles.waysIconContainer}>
-            <MessageSquare size={24} />
-          </div>
-          <h3 style={styles.waysItemTitle}>WhatsApp Support</h3>
-          <p style={styles.waysItemDescription}>
-            Quick questions and appointment bookings.
-          </p>
-          <p style={styles.waysItemDetail}>Available 8 AM - 7 PM</p>
-        </div>
-        {/* Item 3: Video Consultation */}
-        <div style={styles.waysItem}>
-          <div style={styles.waysIconContainer}>
-            <Video size={24} />
-          </div>
-          <h3 style={styles.waysItemTitle}>Video Consultation</h3>
-          <p style={styles.waysItemDescription}>
-            Face-to-face expert consultations from anywhere.
-          </p>
-          <p style={styles.waysItemDetail}>Book online anytime</p>
-        </div>
-        {/* Item 4: Support Groups */}
-        <div style={styles.waysItem}>
-          <div style={styles.waysIconContainer}>
-            <Users size={24} />
-          </div>
-          <h3 style={styles.waysItemTitle}>Support Groups</h3>
-          <p style={styles.waysItemDescription}>
-            Connect with others on similar journeys.
-          </p>
-          <p style={styles.waysItemDetail}>Join our community</p>
-        </div>
-      </div>
-
-      {/* Stats Bar */}
-      <div style={styles.statsBar}>
-        <div style={styles.statPill}>50+ Specialists Available</div>
-        <div style={styles.statPill}>24/7 Expert Support</div>
-        <div style={styles.statPill}>100+ Families Helped</div>
-      </div>
-
       {/* Quote Box */}
       <div style={styles.quoteBox}>
         <Heart style={styles.quoteIcon} />

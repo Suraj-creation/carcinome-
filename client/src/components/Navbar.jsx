@@ -79,7 +79,7 @@ const Navbar = () => {
           </button>
         </li>
 
-        <li>
+        {/* <li>
           <button
             className={`nav-link ${activeLink === "about" ? "active" : ""}`}
             onClick={() => handleLinkClick("about")}
@@ -95,6 +95,15 @@ const Navbar = () => {
           >
             Services
           </button>
+        </li> */}
+
+        <li>
+          <button
+            className={`nav-link ${activeLink === "clinical-trials" ? "active" : ""}`}
+            onClick={() => handleLinkClick("clinical-trials")}
+          >
+            Clinical Trials
+          </button>
         </li>
 
         <li>
@@ -103,15 +112,6 @@ const Navbar = () => {
             onClick={() => handleLinkClick("home-care")}
           >
             Home Care
-          </button>
-        </li>
-
-        <li>
-          <button
-            className={`nav-link ${activeLink === "clinical-trials" ? "active" : ""}`}
-            onClick={() => handleLinkClick("clinical-trials")}
-          >
-            Clinical Trials
           </button>
         </li>
 
