@@ -195,7 +195,7 @@ const Footer = () => {
 
                   marginRight: "8px",
 
-                  filter: "brightness(0) invert(1)", // turns black → white
+                  filter: "invert(1)", // turns black → white while preserving details
                 }}
               />
             </a>
@@ -207,8 +207,22 @@ const Footer = () => {
                 width: isMobile ? "100%" : "auto",
               }}
             >
-              <button style={styles.talkButton}>Talk to Us</button>
-              <button style={styles.supportButton}>Seek Support</button>
+              <button
+                style={styles.talkButton}
+                onClick={() =>
+                  (window.location.href = "https://wa.me/918191054955")
+                }
+              >
+                Talk to Us
+              </button>
+              <button
+                style={styles.supportButton}
+                onClick={() =>
+                  (window.location.href = "https://wa.me/918191054955")
+                }
+              >
+                Seek Support
+              </button>
             </div>
           </div>
 
