@@ -230,110 +230,7 @@ const ThreePillars = () => {
     );
 };
 
-// ─── Section 3 : Cancer Care at Home ─────────────────────────────────────────
-const homeCareCards = [
-    {
-        num: 1,
-        title: "Infusions, Medical & Nursing Care:",
-        items: [
-            "Antibiotic & albumin infusions",
-            "Hydration, selected biologics, PCA pain infusions (where approved)",
-            "PICC line, Hickman & port-a-cath care",
-            "Injections: G-CSF, insulin, B12, anticoagulants, hormonal therapies",
-            "Post-operative dressings & wound care",
-        ],
-    },
-    {
-        num: 2,
-        title: "Monitoring & Symptom Management:",
-        items: [
-            "Vitals: BP, temperature, SpO\u2082, glucose",
-            "Infection watch for immunocompromised patients",
-            "Symptom checks: pain, nausea, fatigue, breathlessness",
-            "Early symptom flagging & doctor-aligned escalation pathways",
-        ],
-    },
-    {
-        num: 3,
-        title: "Supportive Therapies:",
-        items: [
-            "Oxygen concentrator setup, nebulization, tracheostomy care",
-            "Nutrition & feeding: NG/PEG feeds, oncology diet consults, TPN if indicated",
-            "Pain & symptom relief (oral/IV/patch), antiemetics, bowel care",
-        ],
-    },
-    {
-        num: 4,
-        title: "Rehabilitation & Allied Care:",
-        items: [
-            "Physiotherapy for mobility, strength, fatigue",
-            "Lymphedema management post-BCS",
-            "Psycho-oncology sessions",
-            "Scheduled tele-check-ins for continuity",
-        ],
-    },
-];
 
-const HomeCare = () => {
-    const headRef = useFadeIn();
-    const problemRef = useFadeIn();
-    const quoteRef = useFadeIn();
-    const gridRef = useFadeIn();
-
-    return (
-        <div className="cc-section cc-white">
-            <div className="cc-container">
-                <div ref={headRef} className="cc-fade" style={{ marginBottom: "2rem" }}>
-                    <Pill text="Home Care Programme" />
-                    <h2 className="cc-h2">Cancer Care at Home: Beyond Hospital Journey</h2>
-                </div>
-
-                <div ref={problemRef} className="cc-fade cc-problem-box">
-                    <h3 className="cc-h3 cc-blue" style={{ marginBottom: "0.75rem" }}>
-                        Background Problem (Why Home Care Matters)
-                    </h3>
-                    <p className="cc-body">
-                        Hospitals often require a <strong>minimum infusion count</strong>, causing patients who
-                        need just 1–2 simple infusions to wait for{" "}
-                        <strong>long hours or face unnecessary admissions</strong>. Trial-specific infusion
-                        protocols are also rarely available through hospital home-care services.{" "}
-                        <strong>
-                            Families end up managing repeated travel, long queues, infection exposure, and
-                            logistical stress.
-                        </strong>{" "}
-                        Even after discharge, patients still need symptom control, nutrition support, and{" "}
-                        <strong>safe monitoring</strong>, needs hospitals cannot provide continuously at home.
-                    </p>
-                </div>
-
-                <div ref={quoteRef} className="cc-fade cc-quote-block">
-                    <span className="cc-quote-bar" />
-                    <p className="cc-body">
-                        <strong>Carcinome</strong> delivers{" "}
-                        <strong>protocol-driven, nurse-led oncology care at home</strong>, aligned with the
-                        treating oncologist to reduce avoidable emergencies and improve patient comfort.
-                    </p>
-                </div>
-
-                <div ref={gridRef} className="cc-fade cc-grid-2">
-                    {homeCareCards.map((card) => (
-                        <div key={card.num} className="cc-numbered-card">
-                            <div className="cc-num-badge">{card.num}</div>
-                            <div>
-                                <h4 className="cc-h4">{card.title}</h4>
-                                <ol className="cc-ol">
-                                    {card.items.map((item, j) => (
-                                        <li key={j}>{item}</li>
-                                    ))}
-                                </ol>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
-};
 
 // ─── Root Export ──────────────────────────────────────────────────────────────
 const CarcinomeContent = () => (
@@ -561,7 +458,6 @@ const CarcinomeContent = () => (
     `}</style>
         <PlatformIntro />
         <ThreePillars />
-        <HomeCare />
     </>
 );
 

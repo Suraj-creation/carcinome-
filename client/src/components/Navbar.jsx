@@ -26,8 +26,6 @@ const Navbar = () => {
 
     if (section === "services") {
       navigate("/service");
-    } else if (section === "home-care") {
-      navigate("/home-care");
     } else if (section === "clinical-trials") {
       navigate("/clinical-trials");
     } else {
@@ -79,24 +77,6 @@ const Navbar = () => {
           </button>
         </li>
 
-        {/* <li>
-          <button
-            className={`nav-link ${activeLink === "about" ? "active" : ""}`}
-            onClick={() => handleLinkClick("about")}
-          >
-            About Us
-          </button>
-        </li>
-
-        <li>
-          <button
-            className={`nav-link ${activeLink === "services" ? "active" : ""}`}
-            onClick={() => handleLinkClick("services")}
-          >
-            Services
-          </button>
-        </li> */}
-
         <li>
           <button
             className={`nav-link ${activeLink === "clinical-trials" ? "active" : ""}`}
@@ -105,35 +85,6 @@ const Navbar = () => {
             Clinical Trials
           </button>
         </li>
-
-        <li>
-          <button
-            className={`nav-link ${activeLink === "home-care" ? "active" : ""}`}
-            onClick={() => handleLinkClick("home-care")}
-          >
-            Home Care
-          </button>
-        </li>
-
-        <li>
-          <button
-            className={`nav-link ${activeLink === "contact" ? "active" : ""}`}
-            onClick={() => handleLinkClick("contact")}
-          >
-            Contact Us
-          </button>
-        </li>
-
-        {/* <li>
-          <button
-            className={`nav-link ${
-              activeLink === "consultation" ? "active" : ""
-            }`}
-            onClick={() => handleLinkClick("consultation")}
-          >
-            Book Consultation
-          </button>
-        </li> */}
 
         <li>
           <button
