@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Bot,
   FlaskConical,
@@ -11,6 +11,7 @@ import {
   CheckCircle,
   ArrowDown,
   ArrowRight,
+  ArrowLeft,
   Lock,
   UserRoundCog,
   Microscope,
@@ -110,107 +111,121 @@ const styles = {
     textAlign: "center",
     marginBottom: "40px",
   },
-  // Column labels
-  columnLabel: {
-    fontSize: "0.7rem",
-    fontWeight: "700",
+  // Step labels
+  rowLabel: {
+    fontSize: "0.75rem",
+    fontWeight: "800",
     textTransform: "uppercase",
-    letterSpacing: "1px",
-    color: "#99A3BA",
-    textAlign: "center",
+    letterSpacing: "1.5px",
+    color: "#0047b3",
     marginBottom: "16px",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
   },
-  stepCard: {
+  labelLine: {
+    flex: 1,
+    height: "1px",
+    backgroundColor: "rgba(0, 71, 179, 0.15)",
+  },
+  stepCard: (isHighlighted, isMobile) => ({
     backgroundColor: "white",
-    border: "1px solid #E0E0E0",
-    borderRadius: "12px",
-    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.05)",
-    padding: "28px 30px",
-    marginBottom: "0",
+    border: isHighlighted ? "2px solid #0047b3" : "1px solid #E5E9F2",
+    borderRadius: "16px",
+    boxShadow: isHighlighted
+      ? "0 15px 40px rgba(0, 71, 179, 0.12)"
+      : "0 10px 30px rgba(0, 71, 179, 0.04)",
+    padding: "24px",
     position: "relative",
-  },
+    transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    transform: isHighlighted && !isMobile ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)",
+    zIndex: isHighlighted ? 10 : 1,
+  }),
   stepHeader: {
     display: "flex",
     alignItems: "center",
-    gap: "14px",
-    marginBottom: "14px",
+    gap: "12px",
+    marginBottom: "16px",
   },
-  stepIcon: (color) => ({
-    width: "48px",
-    height: "48px",
-    borderRadius: "12px",
+  stepIcon: (color, isHighlighted) => ({
+    width: "40px",
+    height: "40px",
+    borderRadius: "10px",
     backgroundColor: color,
     color: "white",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexShrink: 0,
+    boxShadow: isHighlighted ? `0 10px 20px ${color}66` : `0 6px 12px ${color}33`,
+    transition: "all 0.4s ease",
+    transform: isHighlighted ? "rotate(10deg)" : "rotate(0)",
   }),
   stepNumber: {
     display: "inline-block",
     fontSize: "0.65rem",
-    backgroundColor: "#F8F9FA",
-    color: "#99A3BA",
-    padding: "2px 8px",
+    backgroundColor: "#F0F4FF",
+    color: "#0047b3",
+    padding: "3px 8px",
     borderRadius: "4px",
-    fontWeight: "600",
-    border: "1px solid #E0E0E0",
-    marginBottom: "4px",
+    fontWeight: "700",
+    border: "1px solid #D0D8F0",
+    marginBottom: "8px",
+    alignSelf: "flex-start",
   },
   stepTitle: {
-    fontSize: "1.15rem",
+    fontSize: "1.1rem",
     fontWeight: "700",
-    color: "#101726",
-    lineHeight: "1.3",
+    color: "#1a1f36",
+    lineHeight: "1.2",
     margin: 0,
   },
   stepSubtitle: {
-    fontSize: "0.85rem",
-    fontWeight: "500",
-    color: "#32CD32",
-    margin: "2px 0 0 0",
+    fontSize: "0.8rem",
+    fontWeight: "600",
+    color: "#10b981",
+    marginTop: "2px",
   },
   featureList: {
     listStyle: "none",
     padding: "0",
     margin: "0",
+    borderTop: "1px solid #f0f2f7",
+    paddingTop: "12px",
+    flex: 1,
   },
   featureItem: {
     display: "flex",
     alignItems: "flex-start",
-    fontSize: "0.9rem",
-    color: "#333",
+    fontSize: "0.85rem",
+    color: "#4f566b",
     marginBottom: "8px",
-    lineHeight: "1.5",
+    lineHeight: "1.4",
   },
   featureIcon: {
     width: "16px",
     height: "16px",
     marginRight: "10px",
-    color: "#32CD32",
+    color: "#10b981",
     flexShrink: 0,
-    marginTop: "3px",
+    marginTop: "2px",
   },
-  connector: {
-    display: "flex",
-    justifyContent: "center",
-    padding: "8px 0",
-  },
-  connectorLine: {
-    width: "2px",
-    height: "30px",
-    backgroundColor: "#0047b3",
-    position: "relative",
-  },
-  connectorArrow: {
-    color: "#0047b3",
-  },
-  // Horizontal arrow between columns
-  horizontalArrow: {
+  connectorRow: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "0 8px",
+    color: "#0047b3",
+    opacity: 0.5,
+  },
+  connectorDown: {
+    display: "flex",
+    justifyContent: "center",
+    padding: "20px 0",
+    color: "#0047b3",
+    opacity: 0.5,
   },
 
   // Chat Section
@@ -401,26 +416,33 @@ const styles = {
 
 // Desktop styles
 const desktopStyles = `
-  @media (min-width: 768px) {
-    .ct-hero-container { padding: 80px 20px 100px 20px; }
-    .ct-hero-title { font-size: 2.5rem !important; }
-    .ct-flow-grid {
+  @media (min-width: 1024px) {
+    .ct-hero-container { padding: 100px 20px 120px 20px; }
+    .ct-hero-title { font-size: 3rem !important; }
+    .ct-flow-row {
       display: grid !important;
-      grid-template-columns: 1fr auto 1fr auto 1fr !important;
-      gap: 0 !important;
+      grid-template-columns: 1fr 40px 1fr 40px 1fr !important;
       align-items: stretch !important;
+      margin-bottom: 20px;
     }
-    .ct-flow-col {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .ct-flow-arrow-v { display: none !important; }
     .ct-flow-arrow-h {
       display: flex !important;
       align-items: center;
       justify-content: center;
-      padding: 0 6px;
+    }
+    .ct-flow-arrow-v {
+      display: none !important;
+    }
+    .ct-flow-arrow-down {
+      display: grid !important;
+      grid-template-columns: 1fr 40px 1fr 40px 1fr !important;
+      margin: 0px 0 20px 0;
+    }
+    .ct-step-card:hover {
+      transform: translateY(-8px) scale(1.03) !important;
+      box-shadow: 0 20px 45px rgba(0, 71, 179, 0.15) !important;
+      border-color: #0047b3 !important;
+      z-index: 20 !important;
     }
   }
 `;
@@ -507,11 +529,103 @@ const pipelineSteps = [
 
 // --- Component ---
 const ClinicalTrials = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const sectionRef = useRef(null);
+  const intervalRef = useRef(null);
+  const activeStepRef = useRef(0);
+  const isPausedRef = useRef(false);
+
+  // Sync refs with state for use in interval
+  useEffect(() => {
+    activeStepRef.current = activeStep;
+  }, [activeStep]);
+
+  useEffect(() => {
+    isPausedRef.current = isPaused;
+  }, [isPaused]);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    // Animation logic
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isMobile) {
+          setActiveStep(1);
+          intervalRef.current = setInterval(() => {
+            if (!isPausedRef.current) {
+              const next = activeStepRef.current < 6 ? activeStepRef.current + 1 : 1;
+              setActiveStep(next);
+            }
+          }, 1500);
+        } else {
+          setActiveStep(0);
+          if (intervalRef.current) clearInterval(intervalRef.current);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      observer.disconnect();
+    };
+  }, [isMobile]);
+
+  const renderStep = (stepNumber) => {
+    const step = pipelineSteps.find(s => s.number === `Step ${stepNumber}`);
+    const isHighlighted = activeStep === stepNumber;
+
+    return (
+      <div
+        className="ct-step-card"
+        style={styles.stepCard(isHighlighted, isMobile)}
+        onMouseEnter={() => {
+          if (!isMobile) {
+            setIsPaused(true);
+            setActiveStep(stepNumber);
+          }
+        }}
+        onMouseLeave={() => {
+          if (!isMobile) {
+            setIsPaused(false);
+          }
+        }}
+      >
+        <span style={styles.stepNumber}>{step.number}</span>
+        <div style={styles.stepHeader}>
+          <div style={styles.stepIcon(step.iconColor, isHighlighted)}>
+            {React.createElement(step.icon, { size: 20 })}
+          </div>
+          <div>
+            <h4 style={styles.stepTitle}>{step.title}</h4>
+            <p style={styles.stepSubtitle}>{step.subtitle}</p>
+          </div>
+        </div>
+        <ul style={styles.featureList}>
+          {step.features.map((f, i) => (
+            <li key={i} style={styles.featureItem}>
+              <CheckCircle style={styles.featureIcon} />
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <div style={styles.pageContainer}>
       <style>{desktopStyles}</style>
 
-      {/* Hero Banner */}
+      {/* Hero Banner ... (kept lines 526-558) */}
       <div style={styles.heroContainer} className="ct-hero-container">
         <div style={styles.heroTag}>
           <FlaskConical size={14} />
@@ -531,7 +645,6 @@ const ClinicalTrials = () => {
         <p style={styles.heroTagline}>Your Journey, Our Support.</p>
       </div>
 
-      {/* Intro Section */}
       <div style={styles.introSection}>
         <h2 style={styles.introTitle}>
           Accessibility for Clinical Trials
@@ -545,8 +658,8 @@ const ClinicalTrials = () => {
         </p>
       </div>
 
-      {/* Pipeline Flow — Horizontal 3–Column */}
-      <div style={styles.pipelineWrapper}>
+      {/* Pipeline Flow */}
+      <div style={styles.pipelineWrapper} ref={sectionRef}>
         <h3 style={styles.pipelineTitle}>
           How Our AI Trial Matching Works
         </h3>
@@ -554,120 +667,86 @@ const ClinicalTrials = () => {
           From patient data intake to trial enrollment — a seamless, AI-driven pipeline
         </p>
 
-        <div className="ct-flow-grid" style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          {/* LEFT COLUMN — Inputs */}
-          <div className="ct-flow-col">
-            <div style={styles.columnLabel}>Inputs</div>
-            {pipelineSteps.slice(0, 3).map((step, idx) => (
-              <React.Fragment key={step.number}>
-                <div style={styles.stepCard}>
-                  <span style={styles.stepNumber}>{step.number}</span>
-                  <div style={styles.stepHeader}>
-                    <div style={styles.stepIcon(step.iconColor)}>
-                      {React.createElement(step.icon, { size: 22 })}
-                    </div>
-                    <div>
-                      <h4 style={styles.stepTitle}>{step.title}</h4>
-                      <p style={styles.stepSubtitle}>{step.subtitle}</p>
-                    </div>
-                  </div>
-                  <ul style={styles.featureList}>
-                    {step.features.map((f, i) => (
-                      <li key={i} style={styles.featureItem}>
-                        <CheckCircle style={styles.featureIcon} />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                {idx < 2 && (
-                  <div className="ct-flow-arrow-v" style={styles.connector}>
-                    <div style={{ textAlign: "center" }}>
-                      <div style={{ ...styles.connectorLine, margin: "0 auto" }} />
-                      <ArrowDown size={20} style={styles.connectorArrow} />
-                    </div>
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          {/* Row 1: Steps 1, 2, 3 */}
+          <div style={styles.rowLabel}>
+            Inputs Phase <div style={styles.labelLine} />
+          </div>
+          <div className="ct-flow-row" style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            {renderStep(1)}
+            <div className="ct-flow-arrow-h" style={{ display: "none" }}>
+              <ArrowRight size={24} />
+            </div>
+            <div className="ct-flow-arrow-v" style={{ display: "flex", justifyContent: "center", padding: "10px 0", opacity: 0.3 }}>
+              <ArrowDown size={20} />
+            </div>
+
+            {renderStep(2)}
+            <div className="ct-flow-arrow-h" style={{ display: "none" }}>
+              <ArrowRight size={24} />
+            </div>
+            <div className="ct-flow-arrow-v" style={{ display: "flex", justifyContent: "center", padding: "10px 0", opacity: 0.3 }}>
+              <ArrowDown size={20} />
+            </div>
+
+            {renderStep(3)}
           </div>
 
-          {/* HORIZONTAL ARROW → */}
-          <div className="ct-flow-arrow-h" style={{ display: "none" }}>
-            <ArrowRight size={32} color="#0047b3" strokeWidth={2.5} />
+          {/* Row Connector (Desktop Only) - points down from 3 to 4 */}
+          <div className="ct-flow-arrow-down ct-flow-row" style={{ display: "none" }}>
+            <div /><div /><div /><div />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <ArrowDown size={32} color="#0047b3" strokeWidth={1.5} />
+            </div>
           </div>
 
-          {/* MIDDLE COLUMN — AI Intelligence */}
-          <div className="ct-flow-col" style={{ justifyContent: "center" }}>
-            <div style={styles.columnLabel}>AI Intelligence</div>
-            {(() => {
-              const step = pipelineSteps[3];
-              return (
-                <div style={{ ...styles.stepCard, border: "2px solid #0047b3" }}>
-                  <span style={styles.stepNumber}>{step.number}</span>
-                  <div style={styles.stepHeader}>
-                    <div style={styles.stepIcon(step.iconColor)}>
-                      {React.createElement(step.icon, { size: 22 })}
-                    </div>
-                    <div>
-                      <h4 style={styles.stepTitle}>{step.title}</h4>
-                      <p style={styles.stepSubtitle}>{step.subtitle}</p>
-                    </div>
-                  </div>
-                  <ul style={styles.featureList}>
-                    {step.features.map((f, i) => (
-                      <li key={i} style={styles.featureItem}>
-                        <CheckCircle style={styles.featureIcon} />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })()}
+          {/* Row 2: Steps 6, 5, 4 (Visual Order) */}
+          <div style={styles.rowLabel}>
+            Intelligence & Execution <div style={styles.labelLine} />
+          </div>
+          <div className="ct-flow-row" style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            {/* Visual Column 1: Step 6 (Mobile/Stack logic) if mobile, otherwise 6 */}
+            {isMobile ? renderStep(4) : renderStep(6)}
+
+            {/* Arrow between Col 1 and 2 */}
+            {isMobile ? (
+              <div className="ct-flow-arrow-v" style={{ display: "flex", justifyContent: "center", padding: "10px 0", opacity: 0.3 }}>
+                <ArrowDown size={20} />
+              </div>
+            ) : (
+              <div className="ct-flow-arrow-h" style={{ display: "none" }}>
+                <ArrowLeft size={24} />
+              </div>
+            )}
+
+            {/* Visual Column 2: Step 5 */}
+            {renderStep(5)}
+
+            {/* Arrow between Col 2 and 3 */}
+            {isMobile ? (
+              <div className="ct-flow-arrow-v" style={{ display: "flex", justifyContent: "center", padding: "10px 0", opacity: 0.3 }}>
+                <ArrowDown size={20} />
+              </div>
+            ) : (
+              <div className="ct-flow-arrow-h" style={{ display: "none" }}>
+                <ArrowLeft size={24} />
+              </div>
+            )}
+
+            {/* Visual Column 3: Step 4 (Desktop only, mobile renders it first in Row 2) */}
+            {isMobile ? (
+              <>
+                {renderStep(6)}
+              </>
+            ) : (
+              renderStep(4)
+            )}
           </div>
 
-          {/* HORIZONTAL ARROW → */}
-          <div className="ct-flow-arrow-h" style={{ display: "none" }}>
-            <ArrowRight size={32} color="#0047b3" strokeWidth={2.5} />
-          </div>
-
-          {/* RIGHT COLUMN — Execution & Governance */}
-          <div className="ct-flow-col">
-            <div style={styles.columnLabel}>Execution & Governance</div>
-            {pipelineSteps.slice(4).map((step, idx) => (
-              <React.Fragment key={step.number}>
-                <div style={styles.stepCard}>
-                  <span style={styles.stepNumber}>{step.number}</span>
-                  <div style={styles.stepHeader}>
-                    <div style={styles.stepIcon(step.iconColor)}>
-                      {React.createElement(step.icon, { size: 22 })}
-                    </div>
-                    <div>
-                      <h4 style={styles.stepTitle}>{step.title}</h4>
-                      <p style={styles.stepSubtitle}>{step.subtitle}</p>
-                    </div>
-                  </div>
-                  <ul style={styles.featureList}>
-                    {step.features.map((f, i) => (
-                      <li key={i} style={styles.featureItem}>
-                        <CheckCircle style={styles.featureIcon} />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                {idx < 1 && (
-                  <div className="ct-flow-arrow-v" style={styles.connector}>
-                    <div style={{ textAlign: "center" }}>
-                      <div style={{ ...styles.connectorLine, margin: "0 auto" }} />
-                      <ArrowDown size={20} style={styles.connectorArrow} />
-                    </div>
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
+          {/* Mobile cleanup: ensures 1-6 order */}
+          {isMobile && (
+            <div style={{ display: "none" }}>{/* placeholder */}</div>
+          )}
         </div>
       </div>
 

@@ -44,26 +44,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Bottom Strip - UPDATED WITH CONTAINER */}
-      <div className="hero-strip">
-        <div className="strip-container">
-          <div className="strip-content">
-            <div className="strip-search">
-              <input
-                type="text"
-                placeholder="Select Service"
-                className="search-input"
-              />
-              <input
-                type="text"
-                placeholder="City (e.g. Mumbai, Delhi, Kolkata)"
-                className="search-input"
-              />
-              <button className="get-help-btn">Get Help →</button>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </section>
   );
 };

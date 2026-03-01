@@ -28,6 +28,8 @@ const Navbar = () => {
       navigate("/service");
     } else if (section === "clinical-trials") {
       navigate("/clinical-trials");
+    } else if (section === "home-care") {
+      navigate("/home-care");
     } else {
       navigate("/", { state: { section } });
     }
@@ -74,6 +76,15 @@ const Navbar = () => {
             onClick={() => handleLinkClick("home")}
           >
             Home
+          </button>
+        </li>
+
+        <li>
+          <button
+            className={`nav-link ${activeLink === "home-care" ? "active" : ""}`}
+            onClick={() => handleLinkClick("home-care")}
+          >
+            Home Care
           </button>
         </li>
 
