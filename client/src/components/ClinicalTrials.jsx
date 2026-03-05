@@ -308,6 +308,7 @@ const ClinicalTrials = () => {
             target="_blank"
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
+            aria-label="Chat with our AI Navigator on WhatsApp"
           >
             <button className="ct-chat-button">
               <MessageCircle size={20} />
@@ -360,14 +361,14 @@ const ClinicalTrials = () => {
           handle documentation, and coordinate with trial sites — while your
           oncologist leads every decision.
         </p>
-        <button
+        <a
           className="ct-cta-button"
-          onClick={() =>
-            (window.location.href = "https://wa.me/918191054955")
-          }
+          href="https://wa.me/918191054955"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Connect With Us →
-        </button>
+        </a>
       </div>
     </div>
   );

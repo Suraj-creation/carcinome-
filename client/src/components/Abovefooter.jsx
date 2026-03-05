@@ -14,7 +14,7 @@ import {
 const styles = {
   // --- Main Container ---
   container: {
-    backgroundColor: "#3b82f6",
+    backgroundColor: "var(--color-primary, #0052cc)",
     color: "white",
     padding: "50px 20px",
     textAlign: "center",
@@ -37,7 +37,7 @@ const styles = {
     marginRight: "8px",
   },
   mainTitle: {
-    fontSize: "2.5rem",
+    fontSize: "2.25rem",
     fontWeight: "700",
     maxWidth: "800px",
     margin: "0 auto 20px auto",
@@ -47,7 +47,7 @@ const styles = {
     fontSize: "1.1rem",
     maxWidth: "900px",
     margin: "0 auto 40px auto",
-    fontWeight: "300",
+    fontWeight: "500",
   },
   // --- Mid-Section Callout ---
   midCallout: {
@@ -77,7 +77,7 @@ const styles = {
     width: "100%",
     maxWidth: "450px",
     textAlign: "left",
-    boxShadow: "0 8px 15px rgba(0, 0, 0, 0.2)",
+    boxShadow: "0 4px 14px rgba(0, 0, 0, 0.05)",
   },
   cardIconContainer: (color) => ({
     marginBottom: "20px",
@@ -97,9 +97,9 @@ const styles = {
   // --- Card Buttons ---
   primaryButton: {
     padding: "12px 25px",
-    borderRadius: "8px",
+    borderRadius: "10px",
     border: "none",
-    backgroundColor: "#3b82f6",
+    backgroundColor: "var(--color-primary, #0052cc)",
     color: "white",
     fontWeight: "600",
     fontSize: "1rem",
@@ -111,7 +111,7 @@ const styles = {
   },
   secondaryButton: {
     padding: "12px 25px",
-    borderRadius: "8px",
+    borderRadius: "10px",
     border: "2px solid #2ECC71", // Green border
     backgroundColor: "white",
     color: "#2ECC71", // Green text
@@ -146,7 +146,7 @@ const styles = {
   },
   waysSubtitle: {
     fontSize: "1rem",
-    fontWeight: "300",
+    fontWeight: "500",
     marginBottom: "40px",
   },
   waysGrid: {
@@ -183,7 +183,7 @@ const styles = {
   },
   waysItemDescription: {
     fontSize: "0.85rem",
-    fontWeight: "300",
+    fontWeight: "400",
     marginBottom: "10px",
   },
   waysItemDetail: {

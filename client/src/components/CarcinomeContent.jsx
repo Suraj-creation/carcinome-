@@ -262,17 +262,19 @@ const CarcinomeContent = () => (
 
       /* ---- Typography ---- */
       .cc-h2 {
-        font-size: 1.95rem;
+        font-size: 1.75rem;
         font-weight: 700;
         color: var(--color-text-heading, #1e293b);
         margin: 0 0 1rem 0;
-        line-height: 1.25;
+        line-height: 1.2;
+        text-wrap: balance;
       }
       .cc-h3 {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         font-weight: 700;
         color: var(--color-text-heading, #1e293b);
         margin: 0 0 0.6rem 0;
+        text-wrap: balance;
       }
       .cc-h4 {
         font-size: 1rem;
@@ -283,7 +285,7 @@ const CarcinomeContent = () => (
       .cc-lead {
         font-size: 1.05rem;
         color: var(--color-text-body, #475569);
-        line-height: 1.7;
+        line-height: 1.6;
         max-width: 820px;
         margin: 0 auto;
       }
@@ -312,7 +314,7 @@ const CarcinomeContent = () => (
         transition: transform 0.35s ease, box-shadow 0.35s ease;
       }
       .cc-card:hover {
-        transform: translateY(-8px);
+        transform: translateY(-6px);
         box-shadow: 0 12px 30px rgba(0,0,0,0.08);
       }
       .cc-card-blue { border-top: 4px solid var(--color-primary, #0052cc); }
@@ -329,7 +331,7 @@ const CarcinomeContent = () => (
         transition: transform 0.35s ease, box-shadow 0.35s ease;
       }
       .cc-pillar-card:hover {
-        transform: translateY(-8px);
+        transform: translateY(-6px);
         box-shadow: 0 12px 30px rgba(0,0,0,0.08);
       }
       .cc-pillar-icon { font-size: 2rem; margin-bottom: 0.75rem; }

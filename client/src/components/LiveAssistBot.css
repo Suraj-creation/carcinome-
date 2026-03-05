@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     outline: none;
 }
@@ -237,5 +237,17 @@
     .bot-container {
         bottom: 20px;
         right: 20px;
+    }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .bot-floater,
+    .bot-pulse,
+    .bot-toast,
+    .bot-window,
+    .option-btn {
+        animation: none;
+        transition: none;
     }
 }

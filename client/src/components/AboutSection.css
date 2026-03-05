@@ -23,7 +23,7 @@
 }
 
 .stat-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
@@ -47,7 +47,7 @@
 }
 
 .about-heading h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--color-text-heading, #1e293b);
@@ -69,7 +69,7 @@
 }
 
 .about-text h3 {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--color-text-heading, #1e293b);

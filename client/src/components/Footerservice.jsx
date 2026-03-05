@@ -17,7 +17,7 @@ const styles = {
     color: "#93d5ff",
   },
   title: {
-    fontSize: "2.5rem",
+    fontSize: "2.25rem",
     fontWeight: "700",
     marginBottom: "20px",
     maxWidth: "800px",
@@ -42,7 +42,7 @@ const styles = {
   },
   button: {
     padding: "14px 28px",
-    borderRadius: "8px",
+    borderRadius: "10px",
     fontSize: "1rem",
     fontWeight: "600",
     cursor: "pointer",
@@ -50,7 +50,8 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+    transition: "transform 0.35s ease, box-shadow 0.35s ease",
+    textDecoration: "none",
   },
   secondaryButton: {
     backgroundColor: "transparent",
@@ -96,17 +97,25 @@ const Footerservice = () => {
       </p>
 
       <div style={styles.buttonContainer}>
-        <button style={{ ...styles.button, ...styles.secondaryButton }}>
+        <a
+          href="tel:+918191054955"
+          style={{ ...styles.button, ...styles.secondaryButton }}
+        >
           Call +91 8191054955
-        </button>
-        <button style={{ ...styles.button, ...styles.tertiaryButton }}>
+        </a>
+        <a
+          href="https://wa.me/918191054955"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ ...styles.button, ...styles.tertiaryButton }}
+        >
           <Heart
             size={18}
             fill="#93d5ff"
             style={{ marginRight: "8px", color: "transparent" }}
           />
           Join Patient Community
-        </button>
+        </a>
       </div>
 
       <div style={styles.statsContainer}>

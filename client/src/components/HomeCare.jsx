@@ -172,14 +172,14 @@ const HomeCare = () => {
           Nurse-led infusions and monitoring reduce repeated hospital visits.
           Families receive continuity of care with improved outcomes.
         </p>
-        <button
+        <a
           className="hc-cta-button"
-          onClick={() =>
-            (window.location.href = "https://wa.me/918191054955")
-          }
+          href="https://wa.me/918191054955"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Connect With Us →
-        </button>
+        </a>
       </div>
     </div>
   );

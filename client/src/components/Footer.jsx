@@ -25,22 +25,22 @@ const Footer = () => {
             </a>
 
             <div className="footer-header-buttons">
-              <button
+              <a
                 className="footer-talk-btn"
-                onClick={() =>
-                  (window.location.href = "https://wa.me/918191054955")
-                }
+                href="https://wa.me/918191054955"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Talk to Us
-              </button>
-              <button
+              </a>
+              <a
                 className="footer-support-btn"
-                onClick={() =>
-                  (window.location.href = "https://wa.me/918191054955")
-                }
+                href="https://wa.me/918191054955"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Seek Support
-              </button>
+              </a>
             </div>
           </div>
 
@@ -107,12 +107,26 @@ const Footer = () => {
               Connect with us
             </div>
             <div className="footer-social-container">
-              <div className="footer-social-icon" style={{ backgroundColor: "#0077B5" }}>
+              <a
+                className="footer-social-icon"
+                style={{ backgroundColor: "#0077B5" }}
+                href="https://www.linkedin.com/company/carcinome"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Carcinome on LinkedIn"
+              >
                 <Linkedin size={20} />
-              </div>
-              <div className="footer-social-icon" style={{ backgroundColor: "#C13584" }}>
+              </a>
+              <a
+                className="footer-social-icon"
+                style={{ backgroundColor: "#C13584" }}
+                href="https://www.instagram.com/carcinome"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Carcinome on Instagram"
+              >
                 <Instagram size={20} />
-              </div>
+              </a>
             </div>
           </div>
         </div>
