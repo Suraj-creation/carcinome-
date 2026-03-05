@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Service.css";
 import {
   Briefcase,
@@ -25,9 +25,8 @@ import IMG_CLINICAL_TRIALS from "../assets/6.png";
 import IMG_GOVERNMENT from "../assets/6.png";
 import IMG_SECOND_OPINION from "../assets/6.png";
 
-// ─── Reusable Service Card ───
 const ServiceCard = ({ number, image, imageAlt, title, subtitle, description, features, actionLabel, ActionIcon, reverse }) => (
-  <div className={`svc-card ${reverse ? "svc-card-reverse" : ""}`}>
+  <div className={`svc-card reveal card-tilt ${reverse ? "svc-card-reverse" : ""}`} style={{ '--reveal-delay': `${((parseInt(number) - 1) % 3) * 0.15}s` }}>
     <div className="svc-card-image-wrapper">
       <img src={image} alt={imageAlt} className="svc-card-image" />
     </div>
@@ -55,24 +54,40 @@ const ServiceCard = ({ number, image, imageAlt, title, subtitle, description, fe
 );
 
 const Service = () => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="svc-page">
       {/* ─── Hero ─── */}
       <div className="svc-hero">
-        <div className="svc-hero-tag">
+        <div className="svc-hero-tag anim-fade-up delay-0">
           <Briefcase size={13} />
           Trusted by 50K+ Cancer Patients
         </div>
-        <h1 className="svc-hero-title">
+        <h1 className="svc-hero-title anim-fade-up delay-1">
           Comprehensive Cancer Care<br />
           at Every Point in Your Journey
         </h1>
-        <p className="svc-hero-subtitle">
+        <p className="svc-hero-subtitle anim-fade-up delay-2">
           From diagnosis to recovery, Carcinome ensures seamless, affordable,
           and compassionate support for patients and families. Your healing
           journey deserves nothing less than excellence.
         </p>
-        <div className="svc-hero-buttons">
+        <div className="svc-hero-buttons anim-fade-up delay-3">
           <a href="#start" className="svc-hero-btn svc-hero-btn-primary">
             <Clock size={15} /> Start Your Journey Today
           </a>
@@ -83,7 +98,7 @@ const Service = () => {
       </div>
 
       {/* ─── Pillars Intro ─── */}
-      <div className="svc-pillars-intro">
+      <div className="svc-pillars-intro reveal delay-0">
         <div className="svc-pillars-eyebrow">Eight Core Services</div>
         <h2 className="svc-pillars-title">Eight Pillars of Comprehensive Cancer Care</h2>
         <p className="svc-pillars-subtitle">

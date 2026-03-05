@@ -1,13 +1,13 @@
 ﻿/* ─── HomeCare Page ─── */
 
 .hc-page {
-  background-color: var(--color-bg-off-white, #f8f9fc);
+  background-color: var(--color-bg-off-white, #F5F7FF);
   min-height: 100vh;
 }
 
 /* ─── Hero ─── */
 .hc-hero-container {
-  background: linear-gradient(135deg, #1a3a5c 0%, var(--color-primary, #0052cc) 100%);
+  background: var(--gradient-hero, linear-gradient(135deg, #3451B2 0%, #4A6CF7 50%, #6366F1 100%));
   color: white;
   text-align: center;
   padding: 100px 20px 110px;
@@ -116,22 +116,23 @@
 }
 
 .hc-service-card {
-  border: 1px solid var(--color-border, #e2e8f0);
-  border-radius: 20px;
-  box-shadow: var(--shadow-card, 0 4px 24px rgba(0, 0, 0, 0.07));
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 24px;
+  box-shadow: var(--shadow-clay);
   background-color: white;
-  padding: 32px;
-  margin-bottom: 40px;
+  padding: 28px;
+  margin-bottom: 28px;
   display: flex;
-  gap: 32px;
+  gap: 28px;
   flex-direction: column;
+  align-items: stretch;
   transition: transform var(--transition-standard), box-shadow var(--transition-standard);
   overflow: hidden;
 }
 
 .hc-service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-card-hover, 0 16px 40px rgba(0, 0, 0, 0.1));
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-clay-hover);
 }
 
 /* Card icon header */
@@ -145,14 +146,15 @@
 .hc-card-icon-circle {
   width: 56px;
   height: 56px;
-  border-radius: 50%;
-  background-color: var(--color-primary-light, #e8f0fe);
-  color: var(--color-primary, #0052cc);
+  border-radius: 16px;
+  background-color: var(--color-primary-light, #EEF2FF);
+  color: var(--color-primary, #4A6CF7);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   transition: transform var(--transition-standard);
+  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.8), inset -1px -1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .hc-service-card:hover .hc-card-icon-circle {
@@ -163,16 +165,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: var(--color-primary-light, #e8f0fe);
-  color: var(--color-primary, #0052cc);
-  font-size: 0.8rem;
+  padding: 6px 16px;
+  border-radius: 50px;
+  background-color: var(--color-primary-light, #EEF2FF);
+  color: var(--color-primary, #4A6CF7);
+  font-size: 0.78rem;
   font-weight: 700;
-  border: 1.5px solid rgba(0, 82, 204, 0.2);
+  border: 1.5px solid rgba(74, 108, 247, 0.15);
   margin-bottom: 12px;
   flex-shrink: 0;
+  white-space: nowrap;
+  width: fit-content;
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.7), inset -1px -1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .hc-card-title {
@@ -215,12 +219,21 @@
   margin-top: 2px;
 }
 
+/* Card Content */
+.hc-card-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* Card Image */
 .hc-card-image-wrapper {
   width: 100%;
   overflow: hidden;
-  border-radius: 16px;
-  flex: none;
+  border-radius: 14px;
+  flex-shrink: 0;
   position: relative;
 }
 
@@ -228,17 +241,17 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 60%, rgba(26, 58, 92, 0.12) 100%);
-  border-radius: 16px;
+  background: linear-gradient(to bottom, transparent 70%, rgba(74, 108, 247, 0.08) 100%);
+  border-radius: 14px;
   pointer-events: none;
 }
 
 .hc-card-image {
   width: 100%;
-  height: 250px;
+  height: 240px;
   object-fit: cover;
   display: block;
-  border-radius: 16px;
+  border-radius: 14px;
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -248,7 +261,7 @@
 
 /* ─── CTA Banner ─── */
 .hc-cta-banner {
-  background: linear-gradient(135deg, #003080 0%, var(--color-primary, #0052cc) 55%, #1a65d6 100%);
+  background: var(--gradient-cta, linear-gradient(135deg, #4A6CF7 0%, #6366F1 50%, #7C3AED 100%));
   color: white;
   text-align: center;
   padding: 5rem 2rem;
@@ -335,18 +348,18 @@
 /* ─── Desktop ─── */
 @media (min-width: 768px) {
   .hc-hero-container {
-    padding: 120px 20px 140px;
+    padding: 80px 20px 90px;
   }
 
   .hc-hero-title {
-    font-size: 3.2rem;
+    font-size: 2.6rem;
   }
 
   .hc-service-card {
     flex-direction: row;
-    padding: 44px;
-    gap: 52px;
-    align-items: center;
+    padding: 32px;
+    gap: 36px;
+    align-items: stretch;
   }
 
   .hc-card-reverse {
@@ -354,16 +367,21 @@
   }
 
   .hc-card-image-wrapper {
-    flex: 0 0 38%;
+    flex: 0 0 42%;
+    max-width: 42%;
+    display: flex;
   }
 
   .hc-card-image {
     height: 100%;
-    min-height: 300px;
+    min-height: 280px;
+    object-fit: cover;
+    border-radius: 14px;
   }
 
   .hc-card-content {
     flex: 1;
+    min-width: 0;
   }
 
   .hc-cta-title {
@@ -380,4 +398,3 @@
     padding: 80px 20px 90px;
   }
 }
-

@@ -65,7 +65,7 @@ const preventionData = [
   {
     section: "Diet & Nutrition",
     percent: "30%",
-    color: "#4A67FF",
+    color: "#4A6CF7",
     items: [
       "Consume 5-7 servings of fresh fruits and vegetables daily.",
       "Limit red meat intake to 350-500g per week.",
@@ -119,7 +119,7 @@ const impactData = [
 const styles = {
   pageContainer: {
     fontFamily: "Arial, sans-serif",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#F5F7FF",
     minHeight: "100vh",
     padding: "20px 0",
     color: "#333",
@@ -147,13 +147,13 @@ const styles = {
   },
   // --- Knowledge Saves Lives Banner ---
   knowledgeBanner: {
-    background: "linear-gradient(135deg, #4A67FF, #3648B5)",
+    background: "linear-gradient(135deg, #4A6CF7, #6366F1)",
     color: "white",
     padding: "40px 20px",
-    borderRadius: "10px",
+    borderRadius: "20px",
     maxWidth: "900px",
     margin: "30px auto",
-    boxShadow: "0 8px 15px rgba(0, 0, 0, 0.2)",
+    boxShadow: "6px 6px 16px rgba(74,108,247,0.15), -3px -3px 8px rgba(255,255,255,0.5)",
   },
   knowledgeText: {
     fontSize: "1.2rem",
@@ -180,16 +180,16 @@ const styles = {
   factCard: {
     backgroundColor: "white",
     padding: "25px",
-    borderRadius: "10px",
-    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.05)",
+    borderRadius: "16px",
+    boxShadow: "6px 6px 12px rgba(0,0,0,0.06), -3px -3px 8px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.6), inset -1px -1px 2px rgba(0,0,0,0.04)",
     maxWidth: "300px",
-    borderTop: "5px solid #FF5733",
+    borderTop: "5px solid #F87171",
     textAlign: "left",
   },
   factNumber: {
     fontSize: "2rem",
     fontWeight: "700",
-    color: "#4A67FF",
+    color: "#4A6CF7",
     marginBottom: "5px",
   },
   factDescription: {
@@ -262,7 +262,7 @@ const styles = {
     width: "6px",
     height: "6px",
     borderRadius: "50%",
-    backgroundColor: "#4A67FF",
+    backgroundColor: "#4A6CF7",
     marginRight: "8px",
     marginTop: "6px",
     flexShrink: 0,
@@ -301,12 +301,13 @@ const styles = {
   },
   guidelineCard: {
     padding: "15px",
-    border: "1px solid #E0E0E0",
-    borderRadius: "8px",
+    border: "1px solid rgba(255,255,255,0.6)",
+    borderRadius: "16px",
     backgroundColor: "white",
     height: "100%",
     display: "flex",
     flexDirection: "column",
+    boxShadow: "6px 6px 12px rgba(0,0,0,0.06), -3px -3px 8px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.6), inset -1px -1px 2px rgba(0,0,0,0.04)",
   },
   guidelineHeader: {
     fontSize: "1rem",
@@ -344,12 +345,12 @@ const styles = {
   }),
   // --- Stay Informed CTA ---
   ctaBanner: {
-    backgroundColor: "#4A67FF",
+    background: "linear-gradient(135deg, #4A6CF7, #6366F1)",
     color: "white",
     padding: "40px 20px",
-    borderRadius: "10px",
+    borderRadius: "20px",
     margin: "60px 0",
-    boxShadow: "0 8px 15px rgba(0, 0, 0, 0.2)",
+    boxShadow: "6px 6px 16px rgba(74,108,247,0.15), -3px -3px 8px rgba(255,255,255,0.5)",
   },
   ctaTitle: {
     fontSize: "1.8rem",
@@ -401,7 +402,7 @@ const styles = {
   impactNumber: {
     fontSize: "2.5rem",
     fontWeight: "700",
-    color: "#4A67FF",
+    color: "#4A6CF7",
     marginBottom: "5px",
   },
   impactLabel: {
@@ -423,20 +424,21 @@ const styles = {
   communityButton: {
     padding: "12px 25px",
     border: "none",
-    borderRadius: "5px",
-    backgroundColor: "#4A67FF",
+    borderRadius: "50px",
+    backgroundColor: "#4A6CF7",
     color: "white",
     fontWeight: "600",
     fontSize: "1rem",
     cursor: "pointer",
     margin: "0 10px",
+    boxShadow: "0 4px 12px rgba(74,108,247,0.25)",
   },
   communitySecondaryButton: {
     padding: "12px 25px",
-    border: "1px solid #4A67FF",
-    borderRadius: "5px",
+    border: "1px solid #4A6CF7",
+    borderRadius: "50px",
     backgroundColor: "white",
-    color: "#4A67FF",
+    color: "#4A6CF7",
     fontWeight: "600",
     fontSize: "1rem",
     cursor: "pointer",
@@ -523,7 +525,7 @@ const Awareness = () => {
         </p>
 
         <div style={styles.factCardContainer}>
-          <div style={{ ...styles.factCard, borderTopColor: "#4A67FF" }}>
+          <div style={{ ...styles.factCard, borderTopColor: "#4A6CF7" }}>
             <div style={styles.factNumber}>1 in 9</div>
             <div
               style={{ fontSize: "0.9rem", fontWeight: "600", color: "#333" }}

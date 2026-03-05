@@ -3,8 +3,8 @@ import { Shield, CheckCircle, Heart, ArrowRight, Phone } from "lucide-react";
 
 const styles = {
   container: {
-    backgroundColor: "#1a3a5c",
-    padding: "80px 20px",
+    background: "linear-gradient(135deg, #2D3A6E 0%, #374385 100%)",
+    padding: "56px 20px",
     textAlign: "center",
     color: "white",
     display: "flex",

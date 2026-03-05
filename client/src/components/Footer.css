@@ -1,6 +1,6 @@
 /* ─── Footer ─── */
 .footer-container {
-  background-color: var(--color-bg-navy, #1a3a5c);
+  background: var(--gradient-footer, linear-gradient(135deg, #2D3A6E 0%, #374385 100%));
   color: white;
   padding: 5rem 2rem 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);

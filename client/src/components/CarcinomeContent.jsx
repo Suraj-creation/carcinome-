@@ -29,8 +29,8 @@ const Pill = ({ text }) => (
             display: "inline-block",
             padding: "5px 18px",
             borderRadius: "50px",
-            background: "rgba(0,82,204,0.08)",
-            color: "#0052cc",
+            background: "rgba(74,108,247,0.08)",
+            color: "#4A6CF7",
             fontSize: "0.78rem",
             fontWeight: 600,
             letterSpacing: "0.06em",
@@ -146,7 +146,7 @@ const services = [
         Icon: Home,
         title: "Cancer Care Beyond Hospitals",
         subtitle: "Nurse-led, protocol-driven care at home for patients and caregivers.",
-        accentColor: "#0052cc",
+        accentColor: "#4A6CF7",
         items: [
             ["Antibiotic & albumin infusions", "at home"],
             ["Line & port care", "(PICC flush/clean; port-a-cath care)"],
@@ -208,7 +208,7 @@ const ThreePillars = () => {
                             <div
                                 key={i}
                                 ref={cardRef}
-                                className="cc-fade cc-pillar-card"
+                                className="cc-fade cc-pillar-card card-tilt"
                                 style={{ animationDelay: `${i * 0.15}s`, borderTop: `4px solid ${svc.accentColor}` }}
                             >
                                 <div className="cc-pillar-icon-wrap" style={{ background: `${svc.accentColor}18`, color: svc.accentColor }}>
@@ -258,10 +258,10 @@ const CarcinomeContent = () => (
 
       /* ---- Layout ---- */
       .cc-section {
-        padding: var(--section-padding, 6rem 2rem);
-        }
-      .cc-white { background: #ffffff; }
-      .cc-grey  { background: var(--color-bg-grey, #f5f7fc); }
+        padding: var(--section-padding, 4rem 2rem);
+      }
+      .cc-white { background: #F5F7FF; }
+      .cc-grey  { background: var(--color-bg-grey, #EEF2FF); }
 
       .cc-container {
         max-width: 1200px;
@@ -271,7 +271,7 @@ const CarcinomeContent = () => (
 
       /* ---- Typography ---- */
       .cc-h2 {
-        font-size: 2.2rem;
+        font-size: 1.9rem;
         font-weight: 700;
         color: var(--color-text-heading, #1e293b);
         margin: 0 0 1rem 0;
@@ -295,7 +295,7 @@ const CarcinomeContent = () => (
         margin: 0 0 0.75rem 0;
       }
       .cc-lead {
-        font-size: 1.05rem;
+        font-size: 0.98rem;
         color: var(--color-text-body, #475569);
         line-height: 1.7;
         max-width: 820px;
@@ -307,7 +307,7 @@ const CarcinomeContent = () => (
         line-height: 1.7;
         margin: 0 0 0.5rem 0;
       }
-      .cc-blue { color: var(--color-primary, #0052cc); }
+      .cc-blue { color: var(--color-primary, #4A6CF7); }
 
       /* ---- Grid ---- */
       .cc-grid-3 {
@@ -320,14 +320,15 @@ const CarcinomeContent = () => (
       .cc-card-icon-wrap {
         width: 52px;
         height: 52px;
-        border-radius: 14px;
-        background: rgba(0, 82, 204, 0.08);
-        color: var(--color-primary, #0052cc);
+        border-radius: 16px;
+        background: rgba(74, 108, 247, 0.08);
+        color: var(--color-primary, #4A6CF7);
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 1rem;
         flex-shrink: 0;
+        box-shadow: inset 2px 2px 4px rgba(255,255,255,0.7), inset -1px -1px 3px rgba(0,0,0,0.04);
       }
       .cc-pillar-icon-wrap {
         width: 52px;
@@ -343,31 +344,33 @@ const CarcinomeContent = () => (
       /* ---- Plain card ---- */
       .cc-card {
         background: #fff;
-        border: 1px solid var(--color-border, #e2e8f0);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: var(--shadow-card, 0 4px 24px rgba(0,0,0,0.07));
+        border: 1px solid rgba(255,255,255,0.6);
+        border-radius: 24px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-clay, 8px 8px 16px rgba(0,0,0,0.06), -4px -4px 12px rgba(255,255,255,0.8), inset 2px 2px 4px rgba(255,255,255,0.6), inset -1px -1px 3px rgba(0,0,0,0.03));
         transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+        transform-style: preserve-3d;
       }
       .cc-card:hover {
         transform: translateY(-6px);
-        box-shadow: var(--shadow-card-hover, 0 16px 40px rgba(0,0,0,0.1));
+        box-shadow: var(--shadow-clay-hover, 12px 12px 24px rgba(0,0,0,0.08), -6px -6px 16px rgba(255,255,255,0.9), inset 2px 2px 4px rgba(255,255,255,0.6), inset -1px -1px 3px rgba(0,0,0,0.03));
       }
-      .cc-card-blue { border-top: 4px solid var(--color-primary, #0052cc); }
-      .cc-card-highlight { border-top: 4px solid var(--color-primary, #0052cc); background: var(--color-primary-light, #e8f0fe); }
+      .cc-card-blue { border-top: 4px solid var(--color-primary, #4A6CF7); }
+      .cc-card-highlight { border-top: 4px solid var(--color-primary, #4A6CF7); background: var(--color-primary-light, #EEF2FF); }
 
       /* ---- Pillar card ---- */
       .cc-pillar-card {
         background: #fff;
-        border: 1px solid var(--color-border, #e2e8f0);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: var(--shadow-card, 0 4px 24px rgba(0,0,0,0.07));
+        border: 1px solid rgba(255,255,255,0.6);
+        border-radius: 24px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-clay, 8px 8px 16px rgba(0,0,0,0.06), -4px -4px 12px rgba(255,255,255,0.8), inset 2px 2px 4px rgba(255,255,255,0.6), inset -1px -1px 3px rgba(0,0,0,0.03));
         transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+        transform-style: preserve-3d;
       }
       .cc-pillar-card:hover {
         transform: translateY(-6px);
-        box-shadow: var(--shadow-card-hover, 0 16px 40px rgba(0,0,0,0.1));
+        box-shadow: var(--shadow-clay-hover, 12px 12px 24px rgba(0,0,0,0.08), -6px -6px 16px rgba(255,255,255,0.9), inset 2px 2px 4px rgba(255,255,255,0.6), inset -1px -1px 3px rgba(0,0,0,0.03));
       }
 
       /* ---- List ---- */
@@ -382,7 +385,7 @@ const CarcinomeContent = () => (
         gap: 8px;
         font-size: 0.875rem;
         color: var(--color-text-body, #475569);
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.45rem;
         line-height: 1.6;
       }
       .cc-dot {
@@ -391,31 +394,32 @@ const CarcinomeContent = () => (
         height: 7px;
         min-width: 7px;
         border-radius: 50%;
-        background: var(--color-primary, #0052cc);
+        background: var(--color-primary, #4A6CF7);
         margin-top: 5px;
       }
 
       /* ---- Callout ---- */
       .cc-callout {
-        background: var(--color-primary-light, #e8f0fe);
-        border: 1px solid #c5d5f5;
-        border-left: 4px solid var(--color-primary, #0052cc);
-        border-radius: 12px;
+        background: var(--color-primary-light, #EEF2FF);
+        border: 1px solid rgba(74,108,247,0.15);
+        border-left: 4px solid var(--color-primary, #4A6CF7);
+        border-radius: 16px;
         padding: 1.8rem 2.2rem;
         font-size: 1rem;
-        color: var(--color-primary, #0052cc);
+        color: var(--color-primary, #4A6CF7);
         font-weight: 500;
         line-height: 1.7;
         text-align: center;
+        box-shadow: inset 2px 2px 4px rgba(255,255,255,0.7), inset -1px -1px 3px rgba(0,0,0,0.04);
       }
 
       /* ---- Problem box ---- */
       .cc-problem-box {
-        background: #f8f9fa;
-        border-radius: 12px;
+        background: #F5F7FF;
+        border-radius: 16px;
         padding: 1.8rem;
         margin-bottom: 1.5rem;
-        border-left: 4px solid #0052cc;
+        border-left: 4px solid #4A6CF7;
       }
 
       /* ---- Quote block ---- */
@@ -435,7 +439,7 @@ const CarcinomeContent = () => (
         width: 5px;
         min-width: 5px;
         border-radius: 4px;
-        background: #0052cc;
+        background: #4A6CF7;
         align-self: stretch;
       }
 
@@ -445,10 +449,10 @@ const CarcinomeContent = () => (
         align-items: flex-start;
         gap: 1.2rem;
         background: #fff;
-        border: 1px solid #eaeef7;
-        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.6);
+        border-radius: 20px;
         padding: 1.8rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        box-shadow: var(--shadow-clay, 8px 8px 16px rgba(0,0,0,0.06), -4px -4px 12px rgba(255,255,255,0.8), inset 2px 2px 4px rgba(255,255,255,0.6), inset -1px -1px 3px rgba(0,0,0,0.03));
       }
       .cc-num-badge {
         display: flex;
@@ -458,7 +462,7 @@ const CarcinomeContent = () => (
         height: 40px;
         min-width: 40px;
         border-radius: 50%;
-        background: #0052cc;
+        background: #4A6CF7;
         color: white;
         font-weight: 700;
         font-size: 1.1rem;

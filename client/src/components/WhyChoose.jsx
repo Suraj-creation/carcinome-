@@ -18,7 +18,7 @@ const PanCancerFocusIcon = () => (
       width: "35px",
       height: "35px",
       borderRadius: "50%",
-      backgroundColor: "#3b82f6",
+      backgroundColor: "#4A6CF7",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -109,12 +109,12 @@ const trustStats = [
 // Reusable Feature Card Component
 const FeatureCard = ({ feature, index }) => {
   const themeColors = {
-    blue: "#3b82f6",
-    purple: "#8b5cf6",
-    pink: "#ec4899",
-    red: "#ef4444",
-    orange: "#f59e0b",
-    green: "#10b981",
+    blue: "#4A6CF7",
+    purple: "#A78BFA",
+    pink: "#F472B6",
+    red: "#F87171",
+    orange: "#FBBF24",
+    green: "#34D399",
   };
 
   const color = themeColors[feature.theme];
@@ -123,9 +123,9 @@ const FeatureCard = ({ feature, index }) => {
     <div
       style={{
         backgroundColor: "white",
-        borderRadius: "12px",
+        borderRadius: "20px",
         padding: "24px",
-        boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+        boxShadow: "6px 6px 12px rgba(0,0,0,0.06), -3px -3px 8px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.6), inset -1px -1px 2px rgba(0,0,0,0.04)",
         borderTop: `4px solid ${color}`,
         transition: "all 0.3s ease",
         animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
@@ -227,14 +227,14 @@ const TrustIndicator = ({ item, index }) => (
       animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
     }}
   >
-    <div style={{ color: "#2563eb", marginBottom: "12px", opacity: 0.8 }}>
+    <div style={{ color: "#4A6CF7", marginBottom: "12px", opacity: 0.8 }}>
       {React.createElement(item.icon, { size: 32 })}
     </div>
     <div
       style={{
         fontSize: "2rem",
         fontWeight: "800",
-        color: "#2563eb",
+        color: "#4A6CF7",
         lineHeight: "1",
         marginBottom: "8px",
       }}
@@ -260,7 +260,7 @@ const WhyChoose = () => {
     <div
       style={{
         fontFamily: "system-ui, -apple-system, sans-serif",
-        background: "linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)",
+        background: "linear-gradient(135deg, #F5F7FF 0%, #EEF2FF 100%)",
         minHeight: "100vh",
         lineHeight: "1.6",
       }}
@@ -279,8 +279,8 @@ const WhyChoose = () => {
             gap: "8px",
             padding: "16px 32px",
             borderRadius: "50px",
-            border: "2px solid #3b82f6",
-            color: "#3b82f6",
+            border: "2px solid #4A6CF7",
+            color: "#4A6CF7",
             backgroundColor: "white",
             fontSize: "0.95rem",
             fontWeight: "600",
@@ -308,7 +308,7 @@ const WhyChoose = () => {
             color: "#1e293b",
             marginBottom: "16px",
             lineHeight: "1.2",
-            background: "linear-gradient(135deg, #1e293b 0%, #3b82f6 100%)",
+            background: "linear-gradient(135deg, #1e293b 0%, #4A6CF7 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",

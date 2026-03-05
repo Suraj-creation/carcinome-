@@ -6,9 +6,9 @@ const AboveFooter = () => {
     <div
       id="contact"
       style={{
-        background: "linear-gradient(135deg, #003080 0%, #0052cc 55%, #1a65d6 100%)",
+        background: "linear-gradient(135deg, #4A6CF7 0%, #6366F1 50%, #7C3AED 100%)",
         color: "white",
-        padding: "80px 20px",
+        padding: "60px 20px",
         textAlign: "center",
         position: "relative",
         overflow: "hidden",
@@ -29,7 +29,7 @@ const AboveFooter = () => {
       {/* Quote Box */}
       <div style={{
         backgroundColor: "rgba(255, 255, 255, 0.12)",
-        padding: "48px 40px",
+        padding: "36px 32px",
         borderRadius: "20px",
         maxWidth: "840px",
         margin: "0 auto",
@@ -68,8 +68,8 @@ const AboveFooter = () => {
         `}</style>
 
         <p style={{
-          fontSize: "1.2rem",
-          lineHeight: "1.85",
+          fontSize: "1.05rem",
+          lineHeight: "1.8",
           marginBottom: "18px",
           fontWeight: 400,
           fontStyle: "italic",

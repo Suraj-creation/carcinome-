@@ -108,7 +108,7 @@ const VerifiedSupportIcon = () => (
 // --- Component Data with EXACT text from the image ---
 const serviceCardsData = [
   {
-    icon: createGenericIcon("#3b82f6"),
+    icon: createGenericIcon("#4A6CF7"),
     title: "Hospital Tie-Ups & Network",
     features: [
       "Access to 250+ hospitals across India",
@@ -273,20 +273,20 @@ const howItWorksSteps = [
 
 const StyleTag = () => (
   <style>{`
-    .support-container { background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; padding: 4rem 1rem; color: #1f2937; line-height: 1.5; }
+    .support-container { background-color: #F5F7FF; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; padding: 4rem 1rem; color: #1f2937; line-height: 1.5; }
     .support-content-wrapper { max-width: 1280px; margin: 0 auto; }
     .header-section { text-align: center; }
     .main-title { font-size: 1.875rem; font-weight: 700; color: #111827; letter-spacing: -0.025em; line-height: 1.25; }
     .main-subtitle { margin-top: 1rem; max-width: 56rem; margin-left: auto; margin-right: auto; font-size: 1.125rem; color: #4b5563; line-height: 1.75; }
     .main-buttons-container { margin-top: 3rem; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-    .main-button { color: white; font-size: 1.125rem; font-weight: 700; padding: 1.5rem 2rem; border-radius: 0.75rem; border: none; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); transition: all 0.3s ease-in-out; text-decoration: none; display: flex; justify-content: center; align-items: center;}
-    .main-button:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); transform: translateY(-4px); }
-    .button-blue { background-image: linear-gradient(to right, #2563eb, #3b82f6); }
-    .button-green { background-image: linear-gradient(to right, #16a34a, #22c55e); }
-    .button-purple { background-image: linear-gradient(to right, #7c3aed, #8b5cf6); }
+    .main-button { color: white; font-size: 1.125rem; font-weight: 700; padding: 1.5rem 2rem; border-radius: 18px; border: none; cursor: pointer; box-shadow: 6px 6px 12px rgba(0,0,0,0.06), -3px -3px 8px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.3); transition: all 0.3s ease-in-out; text-decoration: none; display: flex; justify-content: center; align-items: center;}
+    .main-button:hover { box-shadow: 8px 8px 20px rgba(74,108,247,0.15), -4px -4px 12px rgba(255,255,255,0.9); transform: translateY(-4px); }
+    .button-blue { background-image: linear-gradient(to right, #4A6CF7, #6366F1); }
+    .button-green { background-image: linear-gradient(to right, #2DD4A0, #34D399); }
+    .button-purple { background-image: linear-gradient(to right, #8B5CF6, #A78BFA); }
     .service-grid { margin-top: 4rem; display: grid; grid-template-columns: 1fr; gap: 2rem; }
-    .service-card { border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; transition: box-shadow 0.3s ease; }
-    .service-card:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); }
+    .service-card { border: 1px solid rgba(255,255,255,0.6); border-radius: 20px; padding: 1.5rem; display: flex; flex-direction: column; transition: box-shadow 0.3s ease, transform 0.3s ease; box-shadow: 6px 6px 12px rgba(0,0,0,0.06), -3px -3px 8px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.6), inset -1px -1px 2px rgba(0,0,0,0.04); background: white; }
+    .service-card:hover { box-shadow: 8px 8px 20px rgba(74,108,247,0.12), -4px -4px 12px rgba(255,255,255,0.9), inset 1px 1px 3px rgba(255,255,255,0.7), inset -1px -1px 3px rgba(0,0,0,0.05); transform: translateY(-4px); }
     .card-header { display: flex; align-items: center; gap: 1rem; }
     .card-icon { width: 2.25rem; height: 2.25rem; }
     .card-icon svg { width: 100%; height: 100%; }
@@ -295,30 +295,30 @@ const StyleTag = () => (
     .card-section-title { font-weight: 600; color: #374151; font-size: 0.9375rem; }
     .card-list { list-style: none; padding: 0; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
     .card-list-item { display: flex; align-items: flex-start; gap: 0.5rem; color: #4b5563; line-height: 1.5; font-size: 0.9375rem; }
-    .check-icon { color: #22c55e; margin-top: 4px; flex-shrink: 0; width: 1.25em; height: 1.25em; }
+    .check-icon { color: #34D399; margin-top: 4px; flex-shrink: 0; width: 1.25em; height: 1.25em; }
     .card-footer { margin-top: auto; padding-top: 1.5rem; }
-    .card-link { font-weight: 600; color: #2563eb; text-decoration: none; transition: color 0.2s ease; font-size: 0.9375rem; }
-    .card-link:hover { color: #1d4ed8; }
+    .card-link { font-weight: 600; color: #4A6CF7; text-decoration: none; transition: color 0.2s ease; font-size: 0.9375rem; }
+    .card-link:hover { color: #3451B2; }
     .section-title { font-size: 1.5rem; font-weight: 700; color: #111827; text-align: center; }
     .additional-services-section { margin-top: 5rem; }
     .additional-services-grid { margin-top: 2rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .additional-service-item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0.5rem; }
-    .additional-service-icon { width: 2.5rem; height: 2.5rem; color: #2563eb; margin-bottom: 0.75rem; }
+    .additional-service-icon { width: 2.5rem; height: 2.5rem; color: #4A6CF7; margin-bottom: 0.75rem; }
     .additional-service-icon svg { width: 100%; height: 100%; }
     .additional-service-title { font-weight: 600; color: #374151; font-size: 0.9375rem; line-height: 1.4; }
     .how-it-works-section { margin-top: 5rem; }
     .how-it-works-grid { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr; gap: 2rem; text-align: center; }
     .how-it-works-step { display: flex; flex-direction: column; align-items: center; }
     .step-circle { width: 4rem; height: 4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; margin-bottom: 1rem; }
-    .step-circle-blue { background-color: #3b82f6; }
-    .step-circle-green { background-color: #22c55e; }
-    .step-circle-purple { background-color: #8b5cf6; }
-    .step-circle-orange { background-color: #f97316; }
+    .step-circle-blue { background-color: #4A6CF7; }
+    .step-circle-green { background-color: #34D399; }
+    .step-circle-purple { background-color: #A78BFA; }
+    .step-circle-orange { background-color: #FBBF24; }
     .step-title { font-weight: 700; font-size: 1.125rem; color: #1f2937; }
     .step-description { margin-top: 0.25rem; color: #4b5563; font-size: 0.9375rem; }
     .final-cta-section { margin-top: 5rem; text-align: center; }
-    .final-cta-button { background-color: #2563eb; color: white; font-weight: 600; padding: 0.75rem 2rem; font-size: 1rem; border-radius: 0.5rem; border: none; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
-    .final-cta-button:hover { background-color: #1d4ed8; }
+    .final-cta-button { background-color: #4A6CF7; color: white; font-weight: 600; padding: 0.75rem 2rem; font-size: 1rem; border-radius: 50px; border: none; cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease; box-shadow: 0 4px 12px rgba(74,108,247,0.25); }
+    .final-cta-button:hover { background-color: #3451B2; transform: translateY(-2px); }
 
     @media (min-width: 640px) { .main-buttons-container { grid-template-columns: repeat(3, 1fr); } }
     @media (min-width: 768px) {

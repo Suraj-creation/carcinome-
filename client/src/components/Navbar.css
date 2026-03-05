@@ -4,15 +4,16 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(234, 234, 234, 0.8);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(234, 234, 234, 0.5);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .navbar.scrolled {
@@ -105,11 +106,11 @@
 }
 
 .nav-link.active {
-  color: #0052cc;
+  color: #4A6CF7;
 }
 
 .nav-link:hover {
-  color: #0052cc;
+  color: #4A6CF7;
 }
 
 /* Link underline effect */
@@ -120,7 +121,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #0052cc, #6eb7ff);
+  background: linear-gradient(90deg, #4A6CF7, #A78BFA);
   border-radius: 1px;
   transition: width 0.3s ease;
 }
@@ -132,7 +133,7 @@
 
 /* Connect Button */
 .connect-btn {
-  background: linear-gradient(135deg, #0052cc 0%, #003d99 100%);
+  background: linear-gradient(135deg, var(--color-primary, #4A6CF7) 0%, var(--color-primary-dark, #3451B2) 100%);
   color: white;
   border: none;
   padding: 0.9rem 2rem;
@@ -141,7 +142,7 @@
   font-weight: 600;
   font-size: 0.95rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 82, 204, 0.2);
+  box-shadow: 0 4px 15px rgba(74, 108, 247, 0.25);
   position: relative;
   overflow: hidden;
 }

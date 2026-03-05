@@ -10,11 +10,11 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #4A67FF, #3A52CC);
+    background: linear-gradient(135deg, #4A6CF7, #6366F1);
     color: white;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(74, 103, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(74, 108, 247, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +25,7 @@
 
 .bot-floater:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(74, 103, 255, 0.6);
+    box-shadow: 0 6px 20px rgba(74, 108, 247, 0.6);
 }
 
 .bot-floater.active {
@@ -39,7 +39,7 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 2px solid #4A67FF;
+    border: 2px solid #4A6CF7;
     animation: pulse 3s infinite;
 }
 

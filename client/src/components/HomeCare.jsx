@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./HomeCare.css";
 import {
   CheckCircle,
@@ -11,8 +11,11 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-import IMG_HOME_CARE from "../assets/4.png";
-import IMG_NURSING from "../assets/5.png";
+import IMG_SECTION_1 from "../assets/8.png";
+import IMG_SECTION_2 from "../assets/9.png";
+import IMG_SECTION_3 from "../assets/10.jpeg";
+import IMG_SECTION_4 from "../assets/11.png";
+import IMG_SECTION_5 from "../assets/12.png";
 
 // --- Data ---
 const serviceSections = [
@@ -21,7 +24,7 @@ const serviceSections = [
     icon: Syringe,
     title: "Infusions, Medical & Nursing Care",
     subtitle: "Nurse-led, protocol-driven infusion care at home",
-    image: IMG_HOME_CARE,
+    image: IMG_SECTION_1,
     features: [
       "Antibiotic & albumin infusions",
       "Hydration, selected biologics, PCA pain infusions (where approved)",
@@ -35,7 +38,7 @@ const serviceSections = [
     icon: ThermometerSun,
     title: "Monitoring & Symptom Management",
     subtitle: "Early detection, timely escalation",
-    image: IMG_NURSING,
+    image: IMG_SECTION_2,
     features: [
       "Vitals: BP, temperature, SpO₂, glucose",
       "Infection watch for immunocompromised patients",
@@ -48,7 +51,7 @@ const serviceSections = [
     icon: Pill,
     title: "Supportive Therapies",
     subtitle: "Comfort-focused symptom relief at home",
-    image: IMG_HOME_CARE,
+    image: IMG_SECTION_3,
     features: [
       "Oxygen concentrator setup, nebulization, tracheostomy care",
       "Nutrition & feeding: NG/PEG feeds, oncology diet consults, TPN if indicated",
@@ -60,7 +63,7 @@ const serviceSections = [
     icon: Dumbbell,
     title: "Rehabilitation & Allied Care",
     subtitle: "Recovery support beyond medical treatment",
-    image: IMG_NURSING,
+    image: IMG_SECTION_4,
     features: [
       "Physiotherapy for mobility, strength, fatigue",
       "Lymphedema management post-BCS",
@@ -73,7 +76,7 @@ const serviceSections = [
     icon: Users,
     title: "General Support Services",
     subtitle: "Day-to-day care and logistics handled",
-    image: IMG_HOME_CARE,
+    image: IMG_SECTION_5,
     features: [
       "Trained attendants for ADLs: bathing, feeding, mobility",
       "At-home lab collection: CBC, KFT/LFT, tumor markers, urine/stool",
@@ -85,29 +88,45 @@ const serviceSections = [
 
 // --- Component ---
 const HomeCare = () => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="hc-page">
       {/* Hero Banner */}
       <div className="hc-hero-container">
-        <div className="hc-hero-tag">
+        <div className="hc-hero-tag anim-fade-up delay-0">
           <Home size={14} />
           Cancer Care at Home
         </div>
-        <h1 className="hc-hero-title">
+        <h1 className="hc-hero-title anim-fade-up delay-1">
           Cancer Care at Home:
           <br />
           Beyond the Hospital Journey
         </h1>
-        <p className="hc-hero-subtitle">
+        <p className="hc-hero-subtitle anim-fade-up delay-2">
           Carcinome delivers protocol-driven, nurse-led oncology care at home,
           aligned with the treating oncologist to reduce avoidable emergencies
           and improve patient comfort.
         </p>
-        <p className="hc-hero-tagline">Your Journey, Our Support.</p>
+        <p className="hc-hero-tagline anim-fade-up delay-3">Your Journey, Our Support.</p>
       </div>
 
       {/* Problem Background */}
-      <div className="hc-problem-section">
+      <div className="hc-problem-section reveal delay-0">
         <div className="hc-problem-eyebrow">Why Home Care?</div>
         <h2 className="hc-problem-title">Why Home Care Matters</h2>
         <p className="hc-problem-text">
@@ -127,7 +146,8 @@ const HomeCare = () => {
         {serviceSections.map((section, index) => (
           <div
             key={section.number}
-            className={`hc-service-card ${index % 2 !== 0 ? "hc-card-reverse" : ""}`}
+            className={`hc-service-card reveal card-tilt ${index % 2 !== 0 ? "hc-card-reverse" : ""}`}
+            style={{ "--reveal-delay": `${(index % 3) * 0.15}s` }}
           >
             {/* Image */}
             <div className="hc-card-image-wrapper">
