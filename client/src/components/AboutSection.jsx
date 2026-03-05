@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./AboutSection.css";
+import { Stethoscope, Building2, Heart, Clock } from "lucide-react";
 
 // ─── Count-up hook ────────────────────────────────────────────────────────────
 function useCountUp(target, duration = 1800) {
@@ -38,11 +39,16 @@ function useCountUp(target, duration = 1800) {
 }
 
 // ─── Individual stat card ─────────────────────────────────────────────────────
-const StatCard = ({ target, prefix = "", suffix = "", label }) => {
+const StatCard = ({ target, prefix = "", suffix = "", label, Icon }) => {
   const { ref, value } = useCountUp(target);
 
   return (
     <div className="stat-card" ref={ref}>
+      {Icon && (
+        <div className="stat-icon">
+          <Icon size={26} strokeWidth={1.8} />
+        </div>
+      )}
       <h3>{prefix}{value}{suffix}</h3>
       <p>{label}</p>
     </div>
@@ -53,11 +59,12 @@ const StatCard = ({ target, prefix = "", suffix = "", label }) => {
 const AboutSection = () => {
   return (
     <section className="about-section" id="about">
+      <div className="about-eyebrow"><span>Our Impact So Far</span></div>
       <div className="stats-grid">
-        <StatCard target={50} suffix="+" label="Cancer Specialists" />
-        <StatCard target={10} suffix="+" label="Partner Hospitals" />
-        <StatCard target={100} suffix="+" label="Families Supported" />
-        <StatCard target={24} suffix="/7" label="Expert Support" />
+        <StatCard target={50} suffix="+" label="Cancer Specialists" Icon={Stethoscope} />
+        <StatCard target={10} suffix="+" label="Partner Hospitals" Icon={Building2} />
+        <StatCard target={100} suffix="+" label="Families Supported" Icon={Heart} />
+        <StatCard target={24} suffix="/7" label="Expert Support" Icon={Clock} />
       </div>
     </section>
   );

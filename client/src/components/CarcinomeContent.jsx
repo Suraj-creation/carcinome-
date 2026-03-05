@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+﻿import React, { useEffect, useRef } from "react";
+import { Building2, Target, Link2, Home, Dna, UserCheck } from "lucide-react";
 
 // ─── Scroll Animation Hook ────────────────────────────────────────────────────
 function useFadeIn(options = {}) {
@@ -26,13 +27,14 @@ const Pill = ({ text }) => (
     <span
         style={{
             display: "inline-block",
-            padding: "5px 16px",
+            padding: "5px 18px",
             borderRadius: "50px",
             background: "rgba(0,82,204,0.08)",
             color: "#0052cc",
-            fontSize: "0.82rem",
+            fontSize: "0.78rem",
             fontWeight: 600,
-            letterSpacing: "0.04em",
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
             marginBottom: "1rem",
         }}
     >
@@ -58,6 +60,7 @@ const PlatformIntro = () => {
         <div className="cc-section cc-white">
             <div className="cc-container">
                 <div ref={headRef} className="cc-fade cc-text-center" style={{ marginBottom: "2.5rem" }}>
+                    <Pill text="About Us" />
                     <h2 className="cc-h2">
                         Cancer care is <span className="cc-blue">complex,</span> overwhelming,
                         and often fragmented.
@@ -73,8 +76,10 @@ const PlatformIntro = () => {
 
                 {/* Three columns */}
                 <div className="cc-grid-3" style={{ marginBottom: "2.5rem" }}>
-                    <div ref={col1Ref} className="cc-fade cc-card cc-card-blue" style={{ animationDelay: "0.1s" }}>
-                        <div className="cc-card-icon">🏥</div>
+                    <div ref={col1Ref} className="cc-fade cc-card cc-card-blue" style={{ animationDelay: "0s" }}>
+                        <div className="cc-card-icon-wrap">
+                            <Building2 size={24} strokeWidth={1.8} />
+                        </div>
                         <h3 className="cc-h3">Carcinome was created to close these gaps.</h3>
                         <p className="cc-body">
                             Carcinome is a <strong>specialized oncology-support platform</strong> designed to{" "}
@@ -91,8 +96,10 @@ const PlatformIntro = () => {
                         </ul>
                     </div>
 
-                    <div ref={col2Ref} className="cc-fade cc-card cc-card-blue" style={{ animationDelay: "0.22s" }}>
-                        <div className="cc-card-icon">🎯</div>
+                    <div ref={col2Ref} className="cc-fade cc-card cc-card-blue" style={{ animationDelay: "0.15s" }}>
+                        <div className="cc-card-icon-wrap">
+                            <Target size={24} strokeWidth={1.8} />
+                        </div>
                         <h3 className="cc-h3">Our Mission</h3>
                         <p className="cc-body">
                             To ensure that every patient experiences a <strong>smoother, safer,</strong> and
@@ -106,8 +113,10 @@ const PlatformIntro = () => {
                         </ul>
                     </div>
 
-                    <div ref={col3Ref} className="cc-fade cc-card cc-card-blue" style={{ animationDelay: "0.34s" }}>
-                        <div className="cc-card-icon">🔗</div>
+                    <div ref={col3Ref} className="cc-fade cc-card cc-card-blue" style={{ animationDelay: "0.3s" }}>
+                        <div className="cc-card-icon-wrap">
+                            <Link2 size={24} strokeWidth={1.8} />
+                        </div>
                         <h3 className="cc-h3">Clinical Coordination Layer</h3>
                         <p className="cc-body">
                             We serve as a <strong>bridging layer</strong> making complex care pathways accessible
@@ -134,10 +143,10 @@ const PlatformIntro = () => {
 // ─── Section 2 : Three Core Pillars ──────────────────────────────────────────
 const services = [
     {
-        icon: "🏠",
+        Icon: Home,
         title: "Cancer Care Beyond Hospitals",
         subtitle: "Nurse-led, protocol-driven care at home for patients and caregivers.",
-        color: "#0052cc",
+        accentColor: "#0052cc",
         items: [
             ["Antibiotic & albumin infusions", "at home"],
             ["Line & port care", "(PICC flush/clean; port-a-cath care)"],
@@ -148,10 +157,10 @@ const services = [
         ],
     },
     {
-        icon: "🧬",
+        Icon: Dna,
         title: "AI Clinical Trials Guidance",
         subtitle: "Accessible pathways to Indian and international clinical trials.",
-        color: "#7d4cff",
+        accentColor: "#7d4cff",
         items: [
             ["Repository of trials", "by cancer type, biomarkers & line of therapy"],
             ["Basic eligibility screening", "(stage, prior lines, genetics, comorbidities)"],
@@ -162,10 +171,10 @@ const services = [
         ],
     },
     {
-        icon: "👨‍⚕️",
+        Icon: UserCheck,
         title: "Secondary Opinion",
         subtitle: "Secondary opinions from leading international experts.",
-        color: "#00a86b",
+        accentColor: "#00a86b",
         items: [
             ["Access to experts", "associated with MSK, MD Anderson & global centers"],
             ["Case summary prep:", "reports, imaging, timelines, prior therapies"],
@@ -200,10 +209,10 @@ const ThreePillars = () => {
                                 key={i}
                                 ref={cardRef}
                                 className="cc-fade cc-pillar-card"
-                                style={{ animationDelay: `${i * 0.15}s`, borderTop: '4px solid var(--color-primary, #0052cc)' }}
+                                style={{ animationDelay: `${i * 0.15}s`, borderTop: `4px solid ${svc.accentColor}` }}
                             >
-                                <div className="cc-pillar-icon">
-                                    {svc.icon}
+                                <div className="cc-pillar-icon-wrap" style={{ background: `${svc.accentColor}18`, color: svc.accentColor }}>
+                                    <svc.Icon size={24} strokeWidth={1.8} />
                                 </div>
                                 <h3 className="cc-h3">
                                     {svc.title}
@@ -214,7 +223,7 @@ const ThreePillars = () => {
                                 <ul className="cc-list">
                                     {svc.items.map(([bold, rest], j) => (
                                         <li key={j} className="cc-list-item">
-                                            <span className="cc-dot" />
+                                            <span className="cc-dot" style={{ background: svc.accentColor }} />
                                             <span>
                                                 <strong>{bold}</strong> {rest}
                                             </span>
@@ -240,7 +249,7 @@ const CarcinomeContent = () => (
       .cc-fade {
         opacity: 0;
         transform: translateY(28px);
-        transition: opacity 0.65s ease, transform 0.65s ease;
+        transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
       }
       .cc-fade.cc-visible {
         opacity: 1;
@@ -249,7 +258,7 @@ const CarcinomeContent = () => (
 
       /* ---- Layout ---- */
       .cc-section {
-        padding: 5rem 2rem;
+        padding: var(--section-padding, 6rem 2rem);
         }
       .cc-white { background: #ffffff; }
       .cc-grey  { background: var(--color-bg-grey, #f5f7fc); }
@@ -262,12 +271,15 @@ const CarcinomeContent = () => (
 
       /* ---- Typography ---- */
       .cc-h2 {
-        font-size: 1.75rem;
+        font-size: 2.2rem;
         font-weight: 700;
         color: var(--color-text-heading, #1e293b);
         margin: 0 0 1rem 0;
-        line-height: 1.2;
+        line-height: 1.15;
         text-wrap: balance;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
       }
       .cc-h3 {
         font-size: 1.1rem;
@@ -285,7 +297,7 @@ const CarcinomeContent = () => (
       .cc-lead {
         font-size: 1.05rem;
         color: var(--color-text-body, #475569);
-        line-height: 1.6;
+        line-height: 1.7;
         max-width: 820px;
         margin: 0 auto;
       }
@@ -304,22 +316,45 @@ const CarcinomeContent = () => (
         gap: 1.5rem;
       }
 
+      /* ---- Icon circles ---- */
+      .cc-card-icon-wrap {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: rgba(0, 82, 204, 0.08);
+        color: var(--color-primary, #0052cc);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        flex-shrink: 0;
+      }
+      .cc-pillar-icon-wrap {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        flex-shrink: 0;
+      }
+
       /* ---- Plain card ---- */
       .cc-card {
         background: #fff;
         border: 1px solid var(--color-border, #e2e8f0);
         border-radius: 16px;
         padding: 2rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        box-shadow: var(--shadow-card, 0 4px 24px rgba(0,0,0,0.07));
+        transition: transform var(--transition-standard), box-shadow var(--transition-standard);
       }
       .cc-card:hover {
         transform: translateY(-6px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        box-shadow: var(--shadow-card-hover, 0 16px 40px rgba(0,0,0,0.1));
       }
       .cc-card-blue { border-top: 4px solid var(--color-primary, #0052cc); }
       .cc-card-highlight { border-top: 4px solid var(--color-primary, #0052cc); background: var(--color-primary-light, #e8f0fe); }
-      .cc-card-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
 
       /* ---- Pillar card ---- */
       .cc-pillar-card {
@@ -327,14 +362,13 @@ const CarcinomeContent = () => (
         border: 1px solid var(--color-border, #e2e8f0);
         border-radius: 16px;
         padding: 2rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        box-shadow: var(--shadow-card, 0 4px 24px rgba(0,0,0,0.07));
+        transition: transform var(--transition-standard), box-shadow var(--transition-standard);
       }
       .cc-pillar-card:hover {
         transform: translateY(-6px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        box-shadow: var(--shadow-card-hover, 0 16px 40px rgba(0,0,0,0.1));
       }
-      .cc-pillar-icon { font-size: 2rem; margin-bottom: 0.75rem; }
 
       /* ---- List ---- */
       .cc-list {
@@ -348,7 +382,7 @@ const CarcinomeContent = () => (
         gap: 8px;
         font-size: 0.875rem;
         color: var(--color-text-body, #475569);
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.6rem;
         line-height: 1.6;
       }
       .cc-dot {
@@ -365,9 +399,10 @@ const CarcinomeContent = () => (
       .cc-callout {
         background: var(--color-primary-light, #e8f0fe);
         border: 1px solid #c5d5f5;
+        border-left: 4px solid var(--color-primary, #0052cc);
         border-radius: 12px;
-        padding: 1.4rem 1.8rem;
-        font-size: 0.95rem;
+        padding: 1.8rem 2.2rem;
+        font-size: 1rem;
         color: var(--color-primary, #0052cc);
         font-weight: 500;
         line-height: 1.7;
@@ -448,8 +483,8 @@ const CarcinomeContent = () => (
 
       /* ---- Responsive ---- */
       @media (max-width: 768px) {
-        .cc-h2 { font-size: 1.5rem; }
-        .cc-section { padding: 2.5rem 1rem; }
+        .cc-h2 { font-size: 1.7rem; }
+        .cc-section { padding: 3rem 1.25rem; }
         .cc-grid-3 { grid-template-columns: 1fr; }
         .cc-grid-2 { grid-template-columns: 1fr; }
       }

@@ -1,5 +1,5 @@
 /* Import Montserrat font */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap");
 
 /* ─── Root Design Tokens ─── */
 :root {
@@ -8,6 +8,7 @@
   --color-primary-dark: #003d99;
   --color-primary-light: #e8f0fe;
   --color-highlight: #93d5ff;
+  --color-accent-green: #00a86b;
   --color-bg-white: #ffffff;
   --color-bg-off-white: #f8f9fc;
   --color-bg-grey: #f5f7fc;
@@ -19,15 +20,15 @@
 
   /* Typography Scale */
   --font-family: "Montserrat", sans-serif;
-  --fs-h1: 2.25rem;
-  --fs-h2: 1.75rem;
-  --fs-h3: 1.35rem;
+  --fs-h1: 2.5rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.4rem;
   --fs-h4: 1.1rem;
   --fs-body: 1rem;
   --fs-small: 0.9rem;
   --fs-xs: 0.8rem;
-  --lh-heading: 1.2;
-  --lh-body: 1.6;
+  --lh-heading: 1.15;
+  --lh-body: 1.7;
   --lh-ui: 1.5;
 
   /* Spacing Scale */
@@ -36,17 +37,17 @@
   --space-md: 1.5rem;
   --space-lg: 2rem;
   --space-xl: 3rem;
-  --section-padding: 5rem 2rem;
+  --section-padding: 6rem 2rem;
   --max-width: 1200px;
   --max-width-text: 800px;
 
   /* Shadows */
-  --shadow-card: 0 4px 14px rgba(0, 0, 0, 0.05);
-  --shadow-card-hover: 0 12px 30px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.07);
+  --shadow-card-hover: 0 16px 40px rgba(0, 0, 0, 0.1);
 
   /* Transitions */
   --transition-micro: 0.2s ease;
-  --transition-standard: 0.35s ease;
+  --transition-standard: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 * {

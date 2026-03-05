@@ -1,6 +1,7 @@
 import React from "react";
 import "./HeroSection.css";
 import heroImg from "../assets/4.png";
+import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -9,8 +10,14 @@ const HeroSection = () => {
       <div className="hero-main">
         <div className="hero-content">
           <div className="hero-left">
+            {/* Eyebrow pill */}
+            <div className="hero-eyebrow">
+              <span className="hero-eyebrow-dot" />
+              India's First Tech-Enabled Platform
+            </div>
+
             <h1>
-              Carcinome – India's First{" "}
+              Carcinome –{" "}
               <span className="highlight">Tech-Enabled</span> Cancer Care
               Aggregator Platform
             </h1>
@@ -22,7 +29,6 @@ const HeroSection = () => {
             </p>
 
             <div className="hero-buttons">
-              {/* <button className="btn-primary">Book Free Consultation</button> */}
               <button
                 className="btn-outline"
                 onClick={() =>
@@ -31,6 +37,25 @@ const HeroSection = () => {
               >
                 Connect With Us
               </button>
+            </div>
+
+            {/* Trust strip */}
+            <div className="hero-trust-strip">
+              <span className="hero-trust-item">
+                <span className="hero-trust-dot">✦</span> 50+ Cancer Specialists
+              </span>
+              <span className="hero-trust-sep">·</span>
+              <span className="hero-trust-item">
+                <span className="hero-trust-dot">✦</span> 10+ Partner Hospitals
+              </span>
+              <span className="hero-trust-sep">·</span>
+              <span className="hero-trust-item">
+                <span className="hero-trust-dot">✦</span> 100+ Families Supported
+              </span>
+              <span className="hero-trust-sep">·</span>
+              <span className="hero-trust-item">
+                <span className="hero-trust-dot">✦</span> 24/7 Support
+              </span>
             </div>
           </div>
 
@@ -42,9 +67,12 @@ const HeroSection = () => {
             />
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <div className="hero-scroll-indicator">
+          <ChevronDown size={22} />
+        </div>
       </div>
-
-
     </section>
   );
 };

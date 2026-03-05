@@ -8,6 +8,7 @@ import {
   Pill,
   Dumbbell,
   Users,
+  ArrowRight,
 } from "lucide-react";
 
 import IMG_HOME_CARE from "../assets/4.png";
@@ -107,6 +108,7 @@ const HomeCare = () => {
 
       {/* Problem Background */}
       <div className="hc-problem-section">
+        <div className="hc-problem-eyebrow">Why Home Care?</div>
         <h2 className="hc-problem-title">Why Home Care Matters</h2>
         <p className="hc-problem-text">
           Hospitals often require a minimum infusion count, causing patients who
@@ -178,8 +180,13 @@ const HomeCare = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Connect With Us →
+          Connect With Us <ArrowRight size={16} />
         </a>
+        <div className="hc-cta-trust">
+          <span className="hc-cta-trust-item">✓ 24/7 Support</span>
+          <span className="hc-cta-trust-item">✓ Nurse-Led Care</span>
+          <span className="hc-cta-trust-item">✓ Pan-India Network</span>
+        </div>
       </div>
     </div>
   );
