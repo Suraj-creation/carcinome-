@@ -200,12 +200,12 @@ const ThreePillars = () => {
                                 key={i}
                                 ref={cardRef}
                                 className="cc-fade cc-pillar-card"
-                                style={{ animationDelay: `${i * 0.15}s`, borderTop: `4px solid ${svc.color}` }}
+                                style={{ animationDelay: `${i * 0.15}s`, borderTop: '4px solid var(--color-primary, #0052cc)' }}
                             >
-                                <div className="cc-pillar-icon" style={{ color: svc.color }}>
+                                <div className="cc-pillar-icon">
                                     {svc.icon}
                                 </div>
-                                <h3 className="cc-h3" style={{ color: svc.color }}>
+                                <h3 className="cc-h3">
                                     {svc.title}
                                 </h3>
                                 <p className="cc-body" style={{ marginBottom: "1rem" }}>
@@ -214,7 +214,7 @@ const ThreePillars = () => {
                                 <ul className="cc-list">
                                     {svc.items.map(([bold, rest], j) => (
                                         <li key={j} className="cc-list-item">
-                                            <span className="cc-dot" style={{ background: svc.color }} />
+                                            <span className="cc-dot" />
                                             <span>
                                                 <strong>{bold}</strong> {rest}
                                             </span>
@@ -249,18 +249,13 @@ const CarcinomeContent = () => (
 
       /* ---- Layout ---- */
       .cc-section {
-        /* Use margin to pull the element up */
-        margin-top: -1.5rem; 
-        
-        /* Increased top padding to 4rem to lower the content */
-        padding: 1rem 3rem 1.5rem; 
-        font-family: system-ui, -apple-system, sans-serif;
+        padding: 5rem 2rem;
         }
       .cc-white { background: #ffffff; }
-      .cc-grey  { background: #f5f7fc; }
+      .cc-grey  { background: var(--color-bg-grey, #f5f7fc); }
 
       .cc-container {
-        max-width: 1160px;
+        max-width: 1200px;
         margin: 0 auto;
       }
       .cc-text-center { text-align: center; }
@@ -269,36 +264,36 @@ const CarcinomeContent = () => (
       .cc-h2 {
         font-size: 1.95rem;
         font-weight: 700;
-        color: #111;
+        color: var(--color-text-heading, #1e293b);
         margin: 0 0 1rem 0;
         line-height: 1.25;
       }
       .cc-h3 {
         font-size: 1.15rem;
         font-weight: 700;
-        color: #111;
+        color: var(--color-text-heading, #1e293b);
         margin: 0 0 0.6rem 0;
       }
       .cc-h4 {
         font-size: 1rem;
         font-weight: 700;
-        color: #111;
+        color: var(--color-text-heading, #1e293b);
         margin: 0 0 0.75rem 0;
       }
       .cc-lead {
         font-size: 1.05rem;
-        color: #444;
-        line-height: 1.65;
+        color: var(--color-text-body, #475569);
+        line-height: 1.7;
         max-width: 820px;
         margin: 0 auto;
       }
       .cc-body {
         font-size: 0.95rem;
-        color: #555;
-        line-height: 1.6;
+        color: var(--color-text-body, #475569);
+        line-height: 1.7;
         margin: 0 0 0.5rem 0;
       }
-      .cc-blue { color: #0052cc; }
+      .cc-blue { color: var(--color-primary, #0052cc); }
 
       /* ---- Grid ---- */
       .cc-grid-3 {
@@ -310,31 +305,32 @@ const CarcinomeContent = () => (
       /* ---- Plain card ---- */
       .cc-card {
         background: #fff;
-        border: 1px solid #eaeef7;
-        border-radius: 14px;
-        padding: 1.8rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid var(--color-border, #e2e8f0);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
       }
       .cc-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
       }
-      .cc-card-blue { border-top: 4px solid #0052cc; }
-      .cc-card-highlight { border-top: 4px solid #4A67FF; background: #f0f4ff; }
+      .cc-card-blue { border-top: 4px solid var(--color-primary, #0052cc); }
+      .cc-card-highlight { border-top: 4px solid var(--color-primary, #0052cc); background: var(--color-primary-light, #e8f0fe); }
       .cc-card-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
 
       /* ---- Pillar card ---- */
       .cc-pillar-card {
         background: #fff;
-        border-radius: 14px;
-        padding: 1.8rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid var(--color-border, #e2e8f0);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
       }
       .cc-pillar-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
       }
       .cc-pillar-icon { font-size: 2rem; margin-bottom: 0.75rem; }
 
@@ -349,9 +345,9 @@ const CarcinomeContent = () => (
         align-items: flex-start;
         gap: 8px;
         font-size: 0.875rem;
-        color: #444;
+        color: var(--color-text-body, #475569);
         margin-bottom: 0.5rem;
-        line-height: 1.45;
+        line-height: 1.6;
       }
       .cc-dot {
         display: inline-block;
@@ -359,20 +355,20 @@ const CarcinomeContent = () => (
         height: 7px;
         min-width: 7px;
         border-radius: 50%;
-        background: #0052cc;
+        background: var(--color-primary, #0052cc);
         margin-top: 5px;
       }
 
       /* ---- Callout ---- */
       .cc-callout {
-        background: #f0f4ff;
+        background: var(--color-primary-light, #e8f0fe);
         border: 1px solid #c5d5f5;
-        border-radius: 10px;
-        padding: 1.2rem 1.6rem;
+        border-radius: 12px;
+        padding: 1.4rem 1.8rem;
         font-size: 0.95rem;
-        color: #0052cc;
+        color: var(--color-primary, #0052cc);
         font-weight: 500;
-        line-height: 1.6;
+        line-height: 1.7;
         text-align: center;
       }
 

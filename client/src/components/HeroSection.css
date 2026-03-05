@@ -7,7 +7,7 @@
 
 /* Main Content Area */
 .hero-main {
-  background: linear-gradient(135deg, #0a6cff 0%, #d2dce6 100%);
+  background: linear-gradient(135deg, #1a3a5c 0%, #2a5a8c 50%, #3b82f6 100%);
   flex: 1;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: end;
-  max-width: 1400px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   gap: 4rem;
@@ -48,7 +48,7 @@
 }
 
 .highlight {
-  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  background: linear-gradient(135deg, #60b4ff 0%, #a5d8ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -63,7 +63,7 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  background: linear-gradient(90deg, #60b4ff, #a5d8ff);
   border-radius: 2px;
 }
 
@@ -204,13 +204,12 @@
   position: relative;
   z-index: 5;
   width: 100%;
-  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Container to ensure same width as hero-main */
 .strip-container {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -227,14 +226,14 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  padding: 0.6rem 0.6rem 0.6rem 1.5rem;
   border-radius: 60px;
   width: 100%;
   max-width: 800px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .search-input {
@@ -258,14 +257,14 @@
   background: linear-gradient(135deg, #0052cc 0%, #003d99 100%);
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 30px;
+  padding: 0.85rem 2rem;
+  border-radius: 60px;
   cursor: pointer;
   font-weight: 700;
   transition: all 0.3s ease;
   white-space: nowrap;
   font-size: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 82, 204, 0.3);
+  box-shadow: none;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;

@@ -14,8 +14,7 @@ import {
 const styles = {
   // --- Main Container ---
   container: {
-    fontFamily: "Arial, sans-serif",
-    backgroundColor: "#4A67FF", // Deep Blue background for the entire section
+    backgroundColor: "#3b82f6",
     color: "white",
     padding: "50px 20px",
     textAlign: "center",
@@ -100,7 +99,7 @@ const styles = {
     padding: "12px 25px",
     borderRadius: "8px",
     border: "none",
-    backgroundColor: "#4A67FF",
+    backgroundColor: "#3b82f6",
     color: "white",
     fontWeight: "600",
     fontSize: "1rem",
@@ -210,12 +209,13 @@ const styles = {
   },
   // --- Quote Box ---
   quoteBox: {
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
     padding: "40px 30px",
-    borderRadius: "12px",
+    borderRadius: "16px",
     maxWidth: "850px",
     margin: "0 auto",
     border: "1px solid rgba(255, 255, 255, 0.3)",
+    backdropFilter: "blur(8px)",
   },
   quoteIcon: {
     width: "24px",
@@ -223,15 +223,18 @@ const styles = {
     margin: "0 auto 15px auto",
   },
   quoteText: {
-    fontSize: "1.1rem",
-    lineHeight: "1.6",
+    fontSize: "1.15rem",
+    lineHeight: "1.8",
     marginBottom: "15px",
-    fontWeight: "300",
+    fontWeight: "400",
     fontStyle: "italic",
+    opacity: 1,
+    color: "#ffffff",
   },
   quoteAuthor: {
     fontSize: "0.9rem",
-    fontWeight: "600",
+    fontWeight: "700",
+    color: "#e0f2ff",
   },
 };
 

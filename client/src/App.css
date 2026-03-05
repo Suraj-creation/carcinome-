@@ -1,37 +1,55 @@
 /* Import Montserrat font */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
 
+/* ─── Root Color Palette ─── */
+:root {
+  --color-primary: #0052cc;
+  --color-primary-dark: #003d99;
+  --color-primary-light: #e8f0fe;
+  --color-secondary: #6eb7ff;
+  --color-accent: #4A67FF;
+  --color-bg-white: #ffffff;
+  --color-bg-off-white: #f8f9fc;
+  --color-bg-grey: #f5f7fc;
+  --color-bg-navy: #1a3a5c;
+  --color-text-heading: #1e293b;
+  --color-text-body: #475569;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --font-family: "Montserrat", sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-family) !important;
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-family) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  color: var(--color-text-body);
 }
 
-/* Ensure all text elements use Montserrat */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span,
-a,
-button,
-input,
-textarea,
-select,
-li,
-div {
-  font-family: "Montserrat", sans-serif;
+/* Ensure all text elements use Montserrat — override any inline font-family */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family) !important;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  line-height: 1.25;
+}
+
+p, span, a, button, input, textarea, select, li, div, label {
+  font-family: var(--font-family) !important;
+}
+
+p {
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-text-body);
 }
 
 html {

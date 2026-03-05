@@ -1,5 +1,5 @@
 .about-section {
-  padding: 2.5rem 1.5rem 1rem;
+  padding: 5rem 2rem 3rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -13,29 +13,30 @@
 }
 
 .stat-card {
-  background: #f9fbff;
-  border: 1px solid #eaeaea;
-  padding: 1.2rem;
-  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--color-border, #e2e8f0);
+  padding: 2rem;
+  border-radius: 16px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .stat-card h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0052cc;
+  color: var(--color-primary, #0052cc);
   margin-bottom: 0.3rem;
 }
 
 .stat-card p {
   font-size: 0.95rem;
-  color: #555;
+  color: var(--color-text-body, #475569);
 }
 
 /* Heading */
@@ -49,13 +50,13 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #111;
+  color: var(--color-text-heading, #1e293b);
 }
 
 .about-heading p {
   font-size: 1.1rem;
-  color: #444;
-  line-height: 1.6;
+  color: var(--color-text-body, #475569);
+  line-height: 1.7;
 }
 
 /* Main Content Grid */
@@ -71,14 +72,14 @@
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #111;
+  color: var(--color-text-heading, #1e293b);
 }
 
 .about-text p {
   font-size: 1rem;
-  color: #555;
+  color: var(--color-text-body, #475569);
   margin-bottom: 1.2rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .about-image img {

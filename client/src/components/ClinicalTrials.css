@@ -1,0 +1,473 @@
+/* ─── Clinical Trials Page ─── */
+
+.ct-page {
+  background-color: var(--color-bg-off-white, #f8f9fc);
+  min-height: 100vh;
+}
+
+/* ─── Hero ─── */
+.ct-hero-container {
+  background: linear-gradient(135deg, #1a3a5c 0%, #3b82f6 100%);
+  color: white;
+  text-align: center;
+  padding: 70px 20px 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ct-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 8px 18px;
+  margin-bottom: 24px;
+  font-weight: 400;
+  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ct-hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  max-width: 850px;
+  margin: 0 auto 20px auto;
+  color: white;
+}
+
+.ct-hero-subtitle {
+  font-size: 1rem;
+  max-width: 800px;
+  margin: 0 auto 10px auto;
+  line-height: 1.7;
+  opacity: 0.92;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.ct-hero-tagline {
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 1;
+  font-style: italic;
+  margin-top: 10px;
+  color: #e0f2ff;
+}
+
+/* ─── Intro ─── */
+.ct-intro-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem 3rem;
+  text-align: center;
+}
+
+.ct-intro-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-heading, #1e293b);
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.ct-intro-text {
+  font-size: 0.95rem;
+  color: var(--color-text-body, #475569);
+  line-height: 1.7;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* ─── Pipeline ─── */
+.ct-pipeline-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.ct-pipeline-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text-heading, #1e293b);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.ct-pipeline-subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #64748b);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ct-row-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-primary, #0052cc);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ct-label-line {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(0, 82, 204, 0.12);
+}
+
+/* ─── Step Cards ─── */
+.ct-step-card {
+  background-color: white;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+  position: relative;
+  transition: all 0.35s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.ct-step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-primary, #0052cc);
+  z-index: 20;
+}
+
+.ct-step-card.ct-highlighted {
+  border: 2px solid var(--color-primary, #0052cc);
+  box-shadow: 0 15px 40px rgba(0, 82, 204, 0.12);
+  z-index: 10;
+}
+
+.ct-step-number {
+  display: inline-block;
+  font-size: 0.65rem;
+  background-color: var(--color-primary-light, #e8f0fe);
+  color: var(--color-primary, #0052cc);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  border: 1px solid rgba(0, 82, 204, 0.12);
+  margin-bottom: 8px;
+  align-self: flex-start;
+}
+
+.ct-step-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ct-step-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--color-primary-light, #e8f0fe);
+  color: var(--color-primary, #0052cc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 82, 204, 0.1);
+  transition: all 0.35s ease;
+}
+
+.ct-highlighted .ct-step-icon {
+  box-shadow: 0 8px 18px rgba(0, 82, 204, 0.2);
+  transform: rotate(8deg);
+}
+
+.ct-step-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-heading, #1e293b);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.ct-step-subtitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary, #0052cc);
+  margin-top: 2px;
+}
+
+.ct-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--color-border, #e2e8f0);
+  padding-top: 12px;
+  flex: 1;
+}
+
+.ct-feature-item {
+  display: flex;
+  align-items: flex-start;
+  font-size: 0.85rem;
+  color: var(--color-text-body, #475569);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.ct-feature-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  color: var(--color-primary, #0052cc);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ─── Flow Arrows ─── */
+.ct-flow-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ct-flow-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ct-flow-arrow-h {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5e1;
+  opacity: 0.6;
+}
+
+.ct-flow-arrow-v {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  color: #cbd5e1;
+  opacity: 0.5;
+}
+
+.ct-flow-arrow-down {
+  display: none;
+}
+
+/* ─── Chat Section ─── */
+.ct-chat-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.ct-chat-card {
+  background-color: white;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 40px 35px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.ct-chat-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--color-primary, #0052cc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+  color: white;
+}
+
+.ct-chat-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text-heading, #1e293b);
+  margin-bottom: 8px;
+}
+
+.ct-chat-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-body, #475569);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.ct-chat-button {
+  padding: 14px 36px;
+  border-radius: 50px;
+  border: none;
+  background: #25D366;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+}
+
+.ct-chat-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+}
+
+/* How to Start steps */
+.ct-chat-steps {
+  margin-top: 30px;
+  text-align: left;
+  max-width: 400px;
+  margin: 30px auto 0 auto;
+}
+
+.ct-chat-steps-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-heading, #1e293b);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.ct-chat-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  color: var(--color-text-body, #475569);
+  line-height: 1.6;
+}
+
+.ct-chat-step-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--color-primary, #0052cc);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ct-chat-step-arrow {
+  display: flex;
+  justify-content: center;
+  padding: 2px 0 2px 11px;
+  color: #cbd5e1;
+}
+
+.ct-chat-code {
+  background-color: var(--color-primary-light, #e8f0fe);
+  border: 1px solid rgba(0, 82, 204, 0.12);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-family: monospace;
+  font-weight: 600;
+  color: var(--color-primary, #0052cc);
+  font-size: 0.85rem;
+}
+
+/* ─── CTA Banner ─── */
+.ct-cta-banner {
+  background: linear-gradient(135deg, #2563eb 0%, #1a3a5c 100%);
+  color: white;
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.ct-cta-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  color: white;
+}
+
+.ct-cta-subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 25px;
+  max-width: 600px;
+  margin: 0 auto 25px auto;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ct-cta-button {
+  padding: 14px 32px;
+  border-radius: 8px;
+  border: 2px solid white;
+  background-color: white;
+  color: var(--color-primary, #0052cc);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ct-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── Desktop ─── */
+@media (min-width: 1024px) {
+  .ct-hero-container {
+    padding: 100px 20px 120px;
+  }
+
+  .ct-hero-title {
+    font-size: 3rem;
+  }
+
+  .ct-flow-row {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr 40px 1fr;
+    align-items: stretch;
+    margin-bottom: 20px;
+  }
+
+  .ct-flow-arrow-h {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ct-flow-arrow-v {
+    display: none;
+  }
+
+  .ct-flow-arrow-down {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr 40px 1fr;
+    margin: 0 0 20px 0;
+  }
+
+  .ct-highlighted {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  .ct-step-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 45px rgba(0, 82, 204, 0.12);
+    border-color: var(--color-primary, #0052cc);
+    z-index: 20;
+  }
+}
