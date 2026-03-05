@@ -243,17 +243,20 @@
 .hero-right {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   position: relative;
+  overflow: visible;
 }
 
 .hero-main-img {
-  width: 100%;
-  max-width: 480px;
+  width: 115%;
+  max-width: 600px;
   object-fit: contain;
-  border-radius: 12px;
+  border-radius: 24px;
   animation: heroFloat 6s ease-in-out infinite;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.15));
+  -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 50%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 90% 85% at 50% 50%, #000 55%, transparent 100%);
 }
 
 @keyframes heroFloat {
